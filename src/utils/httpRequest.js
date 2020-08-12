@@ -3,7 +3,7 @@ import axios from 'axios'
 import router from '@/router'
 import qs from 'qs'
 import merge from 'lodash/merge'
-import httpUrl from "../../static/config/env";
+import httpUrl from "@/assets/config/env";
 
 
 const http = axios.create({

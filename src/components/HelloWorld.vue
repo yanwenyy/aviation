@@ -94,7 +94,6 @@ export default {
   },
   mounted(){
     this.path=this.$httpUrl;
-    console.log(process.env.API_ROOT)
   }
 }
 </script>
