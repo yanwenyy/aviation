@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <Header ref="head"></Header>
+    <!--<Header ref="head"></Header>-->
     <div :style="'margin-top:'+headerHeight+'px'">
       <router-view/>
     </div>
-    <Footer></Footer>
+    <!--<Footer></Footer>-->
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
   },
   mounted(){
     this.headerHeight=this.$refs.head.$el.offsetHeight;
-    console.log(this.headerHeight)
+    // console.log(this.headerHeight)
   }
 }
 </script>

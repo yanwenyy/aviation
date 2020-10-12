@@ -4,16 +4,22 @@
       <div class="logo">中国航空协会</div>
       <div class="tab-list">
         <div class="tab inline-block pointer" :class="tabMsg=='1'?'tabClick':''" @click="tabMsg=1"><router-link to="home">首页</router-link></div>
-        <div class="tab inline-block pointer" :class="tabMsg=='2'?'tabClick':''" @click="tabMsg=2">协会介绍</div>
-        <div class="tab inline-block pointer" :class="tabMsg=='3'?'tabClick':''" @click="tabMsg=3">协会论团</div>
-        <div class="tab inline-block pointer" :class="tabMsg=='4'?'tabClick':''" @click="tabMsg=4">协会会员</div>
+        <div class="tab inline-block pointer" :class="tabMsg=='2'?'tabClick':''" @click="tabMsg=2">关于我们</div>
+        <div class="tab inline-block pointer" :class="tabMsg=='3'?'tabClick':''" @click="tabMsg=3"><a :href="ltUrl">信息咨讯</a></div>
+        <div class="tab inline-block pointer" :class="tabMsg=='4'?'tabClick':''" @click="tabMsg=4">会员风采</div>
+        <div class="tab inline-block pointer" :class="tabMsg=='5'?'tabClick':''" @click="tabMsg=5">入会申请</div>
       </div>
       <div class="login-list">
         <img class="login-img" src="../../static/img/cloud.png" alt="">
-        <div class="inline-block login-msg">
-          <div class="inline-block pointer">登录</div>
+        <div class="inline-block login-msg" v-if="userName!=''">
+          <div class="inline-block pointer" @click="login">{{userName}}</div>
           <span> & </span>
-          <div class="inline-block pointer">注册</div>
+          <div class="inline-block pointer" @click="login">退出登录</div>
+        </div>
+        <div class="inline-block login-msg" v-if="userName==''">
+          <div class="inline-block pointer" @click="login">登录</div>
+          <!--<span> & </span>-->
+          <!--<div class="inline-block pointer" @click="register">注册</div>-->
         </div>
       </div>
     </div>
@@ -22,10 +28,37 @@
 
 <script>
     export default {
-        name: "Header",
-        data(){
-          return{
-            tabMsg:'1'
+      name: "Header",
+      data(){
+        return{
+          tabMsg:'1',
+          ltUrl:'',
+          userName:''
+        }
+      },
+      mounted(){
+        this.ltUrl=this.$baseUrl.ltUrl;
+        this.userName=localStorage.getItem("userName")||sessionStorage.getItem("userName")||'';
+      },
+      computed: {
+        myValue() {
+          return this.$store.state.loginName
+        }
+      },
+      watch: {
+        myValue: function(newVal, oldVal) {
+          //其他业务代码
+          this.userName=this.$store.state.loginName;
+        }
+      },
+      methods:{
+          login:function () {
+            this.$router.push({name:'login'});
+            localStorage.removeItem("userName");
+            this.userName='';
+          },
+          register:function () {
+
           }
         }
     }
@@ -42,6 +75,7 @@
     position: fixed;
     top:0;
     left: 0;
+    z-index: 99;
   }
   .tab{
     width: 10%;
