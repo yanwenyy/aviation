@@ -1,83 +1,107 @@
 <template>
-  <div class="header mainColor">
-    <div class="container">
-      <div class="logo">中国航空协会</div>
-      <div class="tab-list">
-        <div class="tab inline-block pointer" :class="tabMsg=='1'?'tabClick':''" @click="tabMsg=1"><router-link to="home">首页</router-link></div>
-        <div class="tab inline-block pointer" :class="tabMsg=='2'?'tabClick':''" @click="tabMsg=2">协会介绍</div>
-        <div class="tab inline-block pointer" :class="tabMsg=='3'?'tabClick':''" @click="tabMsg=3">协会论团</div>
-        <div class="tab inline-block pointer" :class="tabMsg=='4'?'tabClick':''" @click="tabMsg=4">协会会员</div>
-      </div>
-      <div class="login-list">
-        <img class="login-img" src="../../static/img/cloud.png" alt="">
-        <div class="inline-block login-msg">
-          <div class="inline-block pointer">登录</div>
-          <span> & </span>
-          <div class="inline-block pointer">注册</div>
+  <div>
+    <div class="header-top">
+      <div class="container">
+        <img class="header-logo" src="../../static/img/logo-2.png" alt="">
+        <div class="go-lt">
+          工作论坛 <img src="../../static/img/go-lt.png" alt="">
         </div>
       </div>
+    </div>
+    <div class="header-tab">
+      <div class="container">
+        <div  @click="$router.push({name:'home'})" class="tab-list pointer inline-block" :class="title=='首页'?'tab-list-act':''">首页 <span v-show="title=='首页'" class="tab-list-line inline-block"></span></div>
+        <div class="tab-list pointer inline-block" :class="title=='关于我们'?'tab-list-act':''">关于我们 <span v-show="title=='关于我们'" class="tab-list-line inline-block"></span></div>
+        <div class="tab-list pointer inline-block" :class="title=='信息资讯'?'tab-list-act':''">信息资讯 <span v-show="title=='信息资讯'" class="tab-list-line inline-block"></span></div>
+        <div class="tab-list pointer inline-block" :class="title=='入会申请'?'tab-list-act':''">入会申请 <span v-show="title=='入会申请'" class="tab-list-line inline-block"></span></div>
+      </div>
+    </div>
+    <div class="header-img">
+      <img class="header-img-bg" src="../../static/img/header-banner-bg.png" alt="">
+      <!--<div class="header-img-shadow"></div>-->
     </div>
   </div>
 </template>
 
 <script>
     export default {
-        name: "Header",
-        data(){
-          return{
-            tabMsg:'1'
-          }
+      name: "Header",
+      props:{
+          'title':String,
         }
     }
 </script>
 
 <style scoped>
-  .container{
-    position: relative;
-  }
-  .header{
+  .header-img-bg{
     width: 100%;
-    color:#fff;
-    border-bottom: 8px solid #0079CD;
-    position: fixed;
+    height: 416px;
+  }
+  .header-img-shadow{
+    width: 100%;
+    height: 100%;
+    background: #05255B;
+    opacity: 0.64;
+    position: absolute;
     top:0;
     left: 0;
   }
-  .tab{
-    width: 10%;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
+  .header-img{
+    margin-top: -64px;
+    z-index: 0;
+    position: relative;
+  }
+  .tab-list-act{
     font-size: 18px;
-    margin-right:-5px;
-  }
-  .tab>a{
-    color: #fff;
-  }
-  .logo{
-    padding: 10px 0 30px 0;
-    font-size: 30px;
     font-weight: bold;
   }
-  .login-list{
+  .tab-list-line{
+    width: 50%;
+    height: 2px;
+    background: #fff;
     position: absolute;
-    top:10px;
-    right:0;
+    bottom:0;
+    left:25%;
   }
-  .login-img{
-    opacity: 0.5;
-    width: 60px;
-    height: auto;
-    vertical-align: bottom;
+  .tab-list{
+    position: relative;
+    margin-right: 2.6%;
   }
-  .login-msg{
-    border-bottom: 3px dotted rgba(95,171,223,.5);
-    padding:0 30px 10px 10px;
-    margin-left: -5px;
+  .header-tab{
+    width: 100%;
+    height: 64px;
+    line-height: 64px;
+    background: rgba(0,0,0,0.16);
+    color:#fff;
+    text-align: right;
+    font-size: 18px;
+    z-index: 9999;
+    position: relative;
+  }
+  .go-lt{
     font-size: 14px;
+    color: #0E367A;
+    width: 145px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    border: 1px solid #0E367A;
+    border-radius: 17px;
+    float: right;
+    margin-top: 27px;
   }
-  .login-msg>div:hover{
-    font-weight: bold;
-    color:#01C9FE;
+  .go-lt>img{
+    width: 17px;
+    height: 14px;
+    vertical-align: middle;
+  }
+  .header-logo{
+    width: 323px;
+    height: 70px;
+    margin-top: 7px;
+  }
+  .header-top{
+    width: 100%;
+    height: 85px;
   }
 </style>
