@@ -6,13 +6,13 @@
           <Crumbs></Crumbs>
           <div class="main-msg-body">
             <div class="left-tab">
-              <div @click="tabMsg='专委会介绍',$router.push({name:'aboutUs'})" class="pointer" :class="tabMsg=='专委会介绍'?'left-tab-act':''">
+              <div @click="tabMsg='专委会介绍',$router.push({name:'aboutUsDetail'})" class="pointer" :class="tabMsg=='专委会介绍'?'left-tab-act':''">
                 <span class="inline-block left-tab-dot"></span>专委会介绍
               </div>
               <div @click="tabMsg='会员介绍',$router.push({name:'vip'})" class="pointer" :class="tabMsg=='会员介绍'?'left-tab-act':''">
                 <span class="inline-block left-tab-dot"></span>会员介绍
               </div>
-              <div class="pointer" :class="tabMsg=='大事记'?'left-tab-act':''">
+              <div @click="tabMsg='大事记',$router.push({name:'memorabilia'})" class="pointer" :class="tabMsg=='大事记'?'left-tab-act':''">
                 <span class="inline-block left-tab-dot"></span>大事记
               </div>
             </div>

@@ -29,6 +29,7 @@
 <style scoped>
   #page{
     text-align: center;
+    margin-top: 97px;
   }
   >>>.prePage,>>>.nextPage{
     width: 50px;

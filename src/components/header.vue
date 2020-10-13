@@ -11,8 +11,8 @@
     <div class="header-tab">
       <div class="container">
         <div  @click="$router.push({name:'home'})" class="tab-list pointer inline-block" :class="title=='首页'?'tab-list-act':''">首页 <span v-show="title=='首页'" class="tab-list-line inline-block"></span></div>
-        <div class="tab-list pointer inline-block" :class="title=='关于我们'?'tab-list-act':''">关于我们 <span v-show="title=='关于我们'" class="tab-list-line inline-block"></span></div>
-        <div class="tab-list pointer inline-block" :class="title=='信息资讯'?'tab-list-act':''">信息资讯 <span v-show="title=='信息资讯'" class="tab-list-line inline-block"></span></div>
+        <div  @click="$router.push({name:'aboutUs'})" class="tab-list pointer inline-block" :class="title=='关于我们'?'tab-list-act':''">关于我们 <span v-show="title=='关于我们'" class="tab-list-line inline-block"></span></div>
+        <div  @click="$router.push({name:'information'})" class="tab-list pointer inline-block" :class="title=='信息资讯'?'tab-list-act':''">信息资讯 <span v-show="title=='信息资讯'" class="tab-list-line inline-block"></span></div>
         <div class="tab-list pointer inline-block" :class="title=='入会申请'?'tab-list-act':''">入会申请 <span v-show="title=='入会申请'" class="tab-list-line inline-block"></span></div>
       </div>
     </div>
