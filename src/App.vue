@@ -22,10 +22,10 @@ export default {
     Header,
     Footer
   },
-  mounted(){
-    this.headerHeight=this.$refs.head.$el.offsetHeight;
-    // console.log(this.headerHeight)
-  }
+  // mounted(){
+  //   this.headerHeight=this.$refs.head.$el.offsetHeight;
+  //   // console.log(this.headerHeight)
+  // }
 }
 </script>
 
