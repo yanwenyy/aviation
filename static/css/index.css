@@ -11,6 +11,73 @@
   width: 1200px!important;
   margin: 0 auto;
 }
+/*详情头部*/
+.detail-title-line{
+  width: 27px;
+  height: 3px;
+  background: #B21219;
+  margin-top: 11px;
+}
+.detail-title-name{
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 36px;
+}
+.detail-title-date{
+  font-size: 18px;
+  font-weight: bold;
+  color:#2A5AAC;
+  margin-bottom: 12px;
+}
+.detail-title{
+  padding-bottom: 36px;
+  border-bottom: 1px dotted #eee;
+  margin-bottom: 33px;
+}
+.detail-title-source{
+  font-size: 16px;
+  color:#999;
+}
+.dts-date{
+  font-size: 18px;
+  margin-right: 27px;
+  margin-top: 12px;
+}
+.detial-fj{
+  width: 326px;
+  padding:13px;
+  background: #FAFAFA;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+.detial-fj>div{
+  vertical-align: middle;
+}
+.detial-fj>img{
+  width: 60px;
+  height: 64px;
+  vertical-align: middle;
+}
+.down-fj{
+  font-size: 11px;
+  color:#2A5AAC;
+  margin-top: 8px;
+}
+.detail-url{
+  font-size: 15px;
+  color:#2A5AAC;
+  margin-bottom: 20px;
+}
+/*结束*/
+.notice-label-group{
+  width: 100%;
+  padding:21px 0 21px 32px;
+  font-size: 18px;
+  font-weight: bold;
+  color:#2A5AAC;
+  background: #EBF4FE;
+  margin-bottom: 34px;
+}
 @media (max-width: 900px){
   .container{
     width: 100%!important;

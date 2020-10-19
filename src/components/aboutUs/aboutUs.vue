@@ -53,7 +53,7 @@
     background: #eee;
   }
   .right-msg{
-    width: 916px;
+    width:76%;
   }
   .main-msg-body{
     display: flex;

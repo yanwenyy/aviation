@@ -1,6 +1,9 @@
 <template>
     <div>
-      <div v-for="item in 3" class="it-list box-sizing pointer">
+      <div class="notice-label-group box-sizing">
+        #机型标签
+      </div>
+      <div v-for="item in 3" class="it-list box-sizing pointer" @click="$router.push({name:'industryTrendsDetail'})">
         <img v-show="item==1" class="it-list-img" src="../../../static/img/test1.jpg" alt="">
         <div class="inline-block" :class="item==1?'it-msg-show':''">
           <div class="it-title">电动航空时代来了？当地时间10日，世界上第一架全电动商用飞机完成了首次试飞。</div>

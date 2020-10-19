@@ -13,12 +13,28 @@
         <div  @click="$router.push({name:'home'})" class="tab-list pointer inline-block" :class="title=='首页'?'tab-list-act':''">首页 <span v-show="title=='首页'" class="tab-list-line inline-block"></span></div>
         <div  @click="$router.push({name:'aboutUs'})" class="tab-list pointer inline-block" :class="title=='关于我们'?'tab-list-act':''">关于我们 <span v-show="title=='关于我们'" class="tab-list-line inline-block"></span></div>
         <div  @click="$router.push({name:'information'})" class="tab-list pointer inline-block" :class="title=='信息资讯'?'tab-list-act':''">信息资讯 <span v-show="title=='信息资讯'" class="tab-list-line inline-block"></span></div>
-        <div class="tab-list pointer inline-block" :class="title=='入会申请'?'tab-list-act':''">入会申请 <span v-show="title=='入会申请'" class="tab-list-line inline-block"></span></div>
+        <div  @click="$router.push({name:'vipReply'})" class="tab-list pointer inline-block" :class="title=='入会申请'?'tab-list-act':''">入会申请 <span v-show="title=='入会申请'" class="tab-list-line inline-block"></span></div>
       </div>
     </div>
     <div class="header-img">
       <img class="header-img-bg" src="../../static/img/header-banner-bg.png" alt="">
-      <!--<div class="header-img-shadow"></div>-->
+      <div class="header-img-shadow">
+        <div v-show="title=='关于我们'">
+          <div class="his-name-en">ABOUT US</div>
+          <div class="his-line"></div>
+          <div class="his-name-zn">关于我们</div>
+        </div>
+        <div v-show="title=='信息资讯'">
+          <div class="his-name-en">NEWS</div>
+          <div class="his-line"></div>
+          <div class="his-name-zn">信息资讯</div>
+        </div>
+        <div v-show="title=='入会申请'">
+          <div class="his-name-en">MEMBER</div>
+          <div class="his-line"></div>
+          <div class="his-name-zn">入会申请</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +49,24 @@
 </script>
 
 <style scoped>
+  .his-name-zn{
+    font-size: 28px;
+  }
+  .his-line{
+    width: 70px;
+    height: 3px;
+    background: #FFFFFF;
+    opacity: 0.46;
+    margin: 30px auto;
+  }
+  .his-name-en{
+    font-size: 46px;
+    margin-top: 169px;
+  }
+  .header-img-shadow{
+    color:#fff;
+    text-align: center;
+  }
   .header-img-bg{
     width: 100%;
     height: 416px;

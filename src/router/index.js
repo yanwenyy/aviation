@@ -4,6 +4,7 @@ import Main from '@/components/main'
 import home from  '@/components/home'
 import login from  '@/components/login'
 import aboutUs from '@/components/aboutUs/aboutUs'
+import vipReply from '@/components/vip-reply'
 import aboutUsDetail from '@/components/aboutUs/aboutUs-detail'
 import vip from '@/components/aboutUs/vip'
 import vipDetail from '@/components/aboutUs/vip-detail'
@@ -11,9 +12,13 @@ import memorabilia from '@/components/aboutUs/memorabilia'
 import memorabiliaDetail from '@/components/aboutUs/memorabilia-detail'
 import information from '@/components/information/information'
 import industryTrends from '@/components/information/industryTrends'
+import industryTrendsDetail from '@/components/information/industryTrends-detail'
+import notice from '@/components/information/notice'
+import noticeDetail from '@/components/information/notice-detail'
+import data from '@/components/information/data'
+import dataDetail from '@/components/information/data-detail'
 
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
@@ -84,9 +89,44 @@ export default new Router({
               component: industryTrends,
               meta: { title: '信息资讯 / 行业动态' },
             },
-
+            {
+              path: '/industryTrendsDetail',
+              name: 'industryTrendsDetail',
+              component: industryTrendsDetail,
+              meta: { title: '信息资讯 / 行业动态 / 详情' },
+            },
+            {
+              path: '/notice',
+              component:notice,
+              name: 'notice',
+              meta: { title: '信息资讯 / 通知公告' },
+            },
+            {
+              path: '/noticeDetail',
+              name: 'noticeDetail',
+              component: noticeDetail,
+              meta: { title: '信息资讯 / 行业动态 / 详情' },
+            },
+            {
+              path: '/data',
+              component:data,
+              name: 'data',
+              meta: { title: '信息资讯 / 资料中心 ' },
+            },
+            {
+              path: '/dataDetail',
+              name: 'dataDetail',
+              component: dataDetail,
+              meta: { title: '信息资讯 / 行业动态 / 详情' },
+            },
           ]
-        }
+        },
+        {
+          path: '/vipReply',
+          name: 'vipReply',
+          component: vipReply,
+          meta: { title: '申请会员' },
+        },
       ]
     }
   ]
