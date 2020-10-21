@@ -3,7 +3,7 @@
     <div class="header-top">
       <div class="container">
         <img class="header-logo" src="../../static/img/logo-2.png" alt="">
-        <div class="go-lt">
+        <div class="go-lt pointer" @click="$router.push({name:'lt'})">
           工作论坛 <img src="../../static/img/go-lt.png" alt="">
         </div>
       </div>
@@ -33,6 +33,11 @@
           <div class="his-name-en">MEMBER</div>
           <div class="his-line"></div>
           <div class="his-name-zn">入会申请</div>
+        </div>
+        <div v-show="title=='会员个人中心'">
+          <div class="his-name-en">PERSONAL CENTER</div>
+          <div class="his-line"></div>
+          <div class="his-name-zn">会员个人中心</div>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@
         <img src="" alt="" class="inline-block">
         <div class="inline-block">
           <div>调整城镇土地使用税和申报表单.pdf</div>
-          <div class="down-fj">立即下载</div>
+         <div class="down-fj pointer">立即下载</div>
         </div>
       </div>
       <div class="detail-pre detail-url pointer">上一篇：无人机适航审定首次审查会顺利召开</div>

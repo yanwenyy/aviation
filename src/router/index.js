@@ -5,6 +5,7 @@ import home from  '@/components/home'
 import login from  '@/components/login'
 import aboutUs from '@/components/aboutUs/aboutUs'
 import vipReply from '@/components/vip-reply'
+import personalCenter from '@/components/personalCenter'
 import aboutUsDetail from '@/components/aboutUs/aboutUs-detail'
 import vip from '@/components/aboutUs/vip'
 import vipDetail from '@/components/aboutUs/vip-detail'
@@ -17,6 +18,10 @@ import notice from '@/components/information/notice'
 import noticeDetail from '@/components/information/notice-detail'
 import data from '@/components/information/data'
 import dataDetail from '@/components/information/data-detail'
+import lt from '@/components/lt/lt'
+import ltList from '@/components/lt/list'
+import ltListDetail from '@/components/lt/list-detail'
+import release from '@/components/lt/release'
 
 Vue.use(Router)
 export default new Router({
@@ -126,6 +131,35 @@ export default new Router({
           name: 'vipReply',
           component: vipReply,
           meta: { title: '申请会员' },
+        },
+        {
+          path: '/personalCenter',
+          name: 'personalCenter',
+          component: personalCenter,
+          meta: { title: '会员个人中心' },
+        },
+        {
+          path: '/lt',
+          name: 'lt',
+          component: lt,
+          redirect:'/ltList',
+          children:[
+            {
+              path: '/ltList',
+              name: 'ltList',
+              component: ltList
+            },
+            {
+              path: '/ltListDetail',
+              name: 'ltListDetail',
+              component: ltListDetail
+            },
+            {
+              path: '/release',
+              name: 'release',
+              component: release
+            }
+          ]
         },
       ]
     }

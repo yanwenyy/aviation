@@ -78,6 +78,9 @@
   background: #EBF4FE;
   margin-bottom: 34px;
 }
+.white-space{
+  color: transparent;
+}
 @media (max-width: 900px){
   .container{
     width: 100%!important;

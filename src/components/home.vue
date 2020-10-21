@@ -7,10 +7,10 @@
           <div class="home-tab inline-block">
             <div class="pointer inline-block home-tab-act">首页</div>
             <div class="pointer inline-block" @click="$router.push({name:'aboutUs'})">关于我们</div>
-            <div class="pointer inline-block">信息资讯</div>
-            <div class="pointer inline-block">入会申请</div>
+            <div class="pointer inline-block" @click="$router.push({name:'information'})">信息资讯</div>
+            <div class="pointer inline-block" @click="$router.push({name:'vipReply'})">入会申请</div>
           </div>
-          <div class="pointer inline-block go-login">会员登录 <img src="../../static/img/go-login.png" alt=""></div>
+          <div  @click="$router.push({name:'login'})" class="pointer inline-block go-login">会员登录 <img src="../../static/img/go-login.png" alt=""></div>
         </div>
       </div>
       <div class="banner-shadow"></div>
@@ -87,6 +87,7 @@
 </template>
 
 <script>
+  const path=process.env.NODE_ENV=='development'?'../../static':'./static';
   import Page from './page'
   import Footer from './footer'
     export default {
@@ -97,7 +98,7 @@
       },
       data () {
         return {
-          bannerImage: ["../../static/img/banner1.jpg","../../static/img/banner2.jpg"],
+          bannerImage: [path+"/img/banner1.jpg",path+"/img/banner2.jpg"],
           swiperOption: {
             // speed:5000,
             roundLengths: true,
@@ -115,7 +116,7 @@
         }
       },
       mounted(){
-
+        console.log(process.env.NODE_ENV)
       },
       methods:{
         pageNumClick(val){

@@ -14,6 +14,11 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 // import 'swiper/dist/css/swiper.css'
 
+
+import '../static/plugins/ueditor-1.4.3.3/ueditor.config'
+import '../static/plugins/ueditor-1.4.3.3/ueditor.all.min'
+import '../static/plugins/ueditor-1.4.3.3/lang/zh-cn/zh-cn'
+
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 Vue.use(VueCookie)
 Vue.use(infiniteScroll)
