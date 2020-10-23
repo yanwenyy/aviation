@@ -1,10 +1,24 @@
 <template>
-    <div>专委会介绍</div>
+  <div v-html="detail.content" class="detail-msg"></div>
 </template>
 
 <script>
     export default {
-        name: "aboutus-detail"
+      data(){
+        return{
+          detail:{}
+        }
+      },
+      mounted(){
+        this.$http({
+          url: this.$http.adornUrl(`/aviation/big/introduction/info`),
+          method: 'GET',
+        }).then(({data}) => {
+          if (data && data.code === 10000) {
+            this.detail=data.data;
+          }
+        })
+      },
     }
 </script>
 

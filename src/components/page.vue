@@ -20,7 +20,7 @@
           function(msg) {
             //回调函数 msg为选中页码
             console.log(msg);
-            that.$emit('pageClik', 'hello');
+            that.$emit('pageClik', msg);
           });
       }
     }

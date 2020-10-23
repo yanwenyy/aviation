@@ -14,10 +14,12 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 // import 'swiper/dist/css/swiper.css'
 
-
-import '../static/plugins/ueditor-1.4.3.3/ueditor.config'
-import '../static/plugins/ueditor-1.4.3.3/ueditor.all.min'
-import '../static/plugins/ueditor-1.4.3.3/lang/zh-cn/zh-cn'
+import './utils/validate'
+import Message from 'vue-m-message'
+import 'vue-m-message/dist/index.css'
+import '../static/plugins/ueditor/ueditor.config'
+import '../static/plugins/ueditor/ueditor.all.min'
+import '../static/plugins/ueditor/lang/zh-cn/zh-cn'
 
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 Vue.use(VueCookie)
@@ -27,6 +29,7 @@ Vue.config.productionTip = false
 Vue.prototype.$http = httpRequest // ajax请求方法
 Vue.prototype.$baseUrl = baseUrl // ajax请求方法
 Vue.prototype.$Paging=paging //分页插件
+Vue.prototype.$Message=Message //消息提示插件
 
 /* eslint-disable no-new */
 new Vue({

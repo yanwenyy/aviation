@@ -1,30 +1,62 @@
 <template>
     <div class="memorabilia-body box-sizing">
-      <div @click="$router.push({name:'memorabiliaDetail'})" class="memorabilia-list pointer" v-for="item in 5">
+      <div @click="$router.push({name:'memorabiliaDetail',query:{id:item.id} })" class="memorabilia-list pointer" v-for="item in list">
         <span class="inline-block ml-dot"></span>
         <div class="ml-msg inline-block">
           <div class="ml-date-show">
-            2020.10.23
+            {{item.releaseDate}}
           </div>
           <div class="ml-line"></div>
-          <div class="ml-msg-show">电动航空时代来了？当地时间10日，世界上第一架全电动商用飞机完成了首次试飞。</div>
+          <div class="ml-msg-show">{{item.title}}</div>
         </div>
       </div>
-      <Page :total="100" :pageSize="10" @pageClik="pageNumClick"></Page>
+      <Page v-if="pageStatus" :total="totalPage" :pageSize="pageSize" @pageClik="pageNumClick"></Page>
     </div>
 </template>
 
 <script>
   import Page from '../page'
     export default {
-        name: "memorabilia",
       components:{
         Page
       },
+      data(){
+        return{
+          pageIndex: 1,
+          pageSize: 10,
+          totalPage: 0,
+          pageStatus:false,
+          list:[],
+        }
+      },
+      mounted(){
+        this.getList();
+      },
       methods:{
         pageNumClick(val){
-          console.log("我是父组件的方法"+val)
-        }
+          // console.log("我是父组件的方法"+val)
+          this.pageIndex=val;
+          this.getList();
+        },
+        getList(){
+          this.$http({
+            url: this.$http.adornUrl(`/aviation/big/list`),
+            method: 'GET',
+            params: this.$http.adornParams({
+              'pageNum': this.pageIndex,
+              'pageSize': this.pageSize,
+            })
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              this.list = data.data;
+              this.totalPage = data.total;
+              this.pageStatus=true;
+            } else {
+              this.list = [];
+              this.totalPage = 0
+            }
+          })
+        },
       }
     }
 </script>

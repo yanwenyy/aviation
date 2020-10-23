@@ -9,13 +9,13 @@
           <div class="reply-list">
             <div class="reply-input-name inline-block">用户名</div>
             <div class="inline-block">
-              <input class="reply-input box-sizing" type="text" placeholder="请输入用户名" name="replyName">
+              <input disabled v-model="userMsg.userName" class="reply-input box-sizing" type="text" placeholder="用户名" name="replyName">
             </div>
           </div>
           <div class="reply-list">
             <div class="reply-input-name inline-block">密码设置</div>
             <div class="inline-block">
-              <input class="reply-input box-sizing" type="text" placeholder="请输入密码设置" name="replyName">
+              <input disabled v-model="userMsg.password" class="reply-input box-sizing" type="password" placeholder="密码" name="replyName">
               <div @click="passWordShadow=true" class="blue input-msg pointer">修改密码</div>
             </div>
           </div>
@@ -61,9 +61,20 @@
     data(){
       return{
         passWordShadow:false,
+        userMsg:{}
       }
     },
-
+    mounted(){
+      //获取用户信息
+      this.$http({
+        url: this.$http.adornUrl('/front/user/get/user'),
+        method: 'POST',
+      }).then(({data}) => {
+        if (data && data.code === 10000) {
+          this.userMsg=data.data;
+        }
+      });
+    }
   }
 </script>
 

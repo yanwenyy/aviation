@@ -39,7 +39,6 @@
     mounted() {
       //初始化UE
       const _this = this;
-      console.log('==>',UE)
       this.editor = UE.delEditor(this.id);
       this.editor = UE.getEditor(this.id,{
         serverUrl: baseUrl.httpUrl+"/ueditor/exec?token="+_this.$cookie.get('token')

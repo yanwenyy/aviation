@@ -1,19 +1,19 @@
 <template>
   <div class="memorabilia-body box-sizing">
-    <div class="notice-label-group box-sizing">
-      #机型标签
+    <div v-show="tagId" class="notice-label-group box-sizing">
+      #{{tagName}}
     </div>
-    <div @click="$router.push({name:'noticeDetail'})" class="memorabilia-list pointer" v-for="item in 5">
+    <div @click="$router.push({name:'noticeDetail',query:{id:item.id} })"  class="memorabilia-list pointer" v-for="item in list">
       <span class="inline-block ml-dot"></span>
       <div class="ml-msg inline-block">
         <div class="ml-date-show">
-          2020.10.23
+          {{item.insertTime}}
         </div>
-        <div class="ml-msg-show">电动航空时代来了？当地时间10日，世界上第一架全电动商用飞机完成了首次试飞。</div>
-        <div class="notice-label">#机型标签</div>
+        <div class="ml-msg-show">{{item.title}}</div>
+        <div class="notice-label"><span v-for="i in item.tagEntities"  @click.stop="tagName=i.tagName,getTagList(i.tagId)">#{{i.tagName}}</span></div>
       </div>
     </div>
-    <Page :total="100" :pageSize="10" @pageClik="pageNumClick"></Page>
+    <Page v-if="pageStatus" :total="totalPage" :pageSize="pageSize" @pageClik="pageNumClick"></Page>
   </div>
 </template>
 
@@ -23,9 +23,51 @@
     components:{
       Page
     },
+    data(){
+      return{
+        pageIndex: 1,
+        pageSize: 10,
+        totalPage: 0,
+        pageStatus:false,
+        list:[],
+        tagId:'',
+        tagName:'',
+      }
+    },
+    mounted(){
+      this.tagId=this.$route.query.tagId||'';
+      this.getList();
+    },
     methods:{
       pageNumClick(val){
-        console.log("我是父组件的方法"+val)
+        // console.log("我是父组件的方法"+val)
+        this.pageIndex=val;
+        this.getList();
+      },
+      getList(){
+        this.$http({
+          url: this.$http.adornUrl(`/aviation/notice/list`),
+          method: 'GET',
+          params: this.$http.adornParams({
+            'pageNum': this.pageIndex,
+            'pageSize': this.pageSize,
+            'tagId': this.tagId,
+          })
+        }).then(({data}) => {
+          if (data && data.code === 10000) {
+            this.list = data.data;
+            this.totalPage = data.total;
+            this.pageStatus=true;
+          } else {
+            this.list = [];
+            this.totalPage = 0
+          }
+        })
+      },
+      //获取标签集合列表
+      getTagList(val){
+        this.tagId=val;
+        this.getList();
       }
     }
   }
@@ -36,6 +78,9 @@
     font-size: 14px;
     color:#2A5AAC;
     margin-top: 16px;
+  }
+  .notice-label>span{
+    margin-right: 20px;
   }
   .ml-msg-show{
     font-size: 19px;

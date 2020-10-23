@@ -5,15 +5,14 @@
       <div class="container">
         <div class="lt-left box-sizing">
           <ul class="lt-left-ul">
-            <li v-for="item in 3">
-              <div class="left-list-one pointer" :class="leftMsg==item?'left-list-one-act':''" @click="leftMsg=item">
-                <span v-show="leftMsg!=item" class="inline-block right-triangle"></span>
-                <span v-show="leftMsg==item" class="inline-block bottom-triangle"></span>
-                {{item}}级模块
+            <li v-for="item in classList">
+              <div class="left-list-one pointer" :class="leftMsg==item.name?'left-list-one-act':''" @click="leftMsg=item.name,getTwo(item.id)">
+                <span v-show="leftMsg!=item.name" class="inline-block right-triangle"></span>
+                <span v-show="leftMsg==item.name" class="inline-block bottom-triangle"></span>
+                {{item.name}}
               </div>
-              <div v-show="leftMsg==item" class="left-list-two pointer">
-                <div class="left-list-two-list">二级模块</div>
-                <div class="left-list-two-list">二级模块</div>
+              <div v-show="leftMsg==item.name" class="left-list-two pointer">
+                <div v-for="i in twoClassList" @click="twoMsg=i.childName,$router.push({name:'ltList',query:{id:i.id} })" class="left-list-two-list"  :class="twoMsg==i.childName?'blue':''">{{i.childName}}</div>
               </div>
             </li>
           </ul>
@@ -37,13 +36,41 @@
       },
       data(){
         return{
-          leftMsg:''
+          leftMsg:'',
+          twoMsg:'',
+          classList:[],
+          twoClassList:[],
         }
-      }
+      },
+      mounted(){
+        //板块下拉列表
+        this.$http({
+          url: this.$http.adornUrl('/biz/jobmodel/select/list'),
+          method: 'GET',
+        }).then(({data}) => {
+          this.classList = data.data
+        });
+      },
+      methods:{
+        getTwo(id){
+          this.$http({
+            url: this.$http.adornUrl('/biz/jobchildmodel/select/list'),
+            method: 'GET',
+            params: this.$http.adornParams({
+              'id': id,
+            })
+          }).then(({data}) => {
+            this.twoClassList = data.data
+          });
+        }
+      },
     }
 </script>
 
 <style scoped>
+  .blue{
+    color:#2A5AAC!important;
+  }
   .lt-right{
     width: 74%;
   }

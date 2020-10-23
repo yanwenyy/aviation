@@ -19,44 +19,44 @@
     </div>
     <div class="list-main">
       <div class="list-main-head box-sizing">
-        <div @click="lmhTab='最新'" class="inline-block pointer" :class="lmhTab=='最新'?'list-main-head-act':''">最新</div>
+        <div @click="type=0" class="inline-block pointer" :class="lmhTab=='最新'?'list-main-head-act':''">最新</div>
         <div class="inline-block lmh-line"></div>
-        <div @click="lmhTab='最热'" class="inline-block pointer" :class="lmhTab=='最热'?'list-main-head-act':''">最热</div>
+        <div @click="type=1" class="inline-block pointer" :class="lmhTab=='最热'?'list-main-head-act':''">最热</div>
         <div @click="$router.push({name:'release'})" class="lmh-sub pointer">+ 发帖</div>
       </div>
       <div class="list-main-body box-sizing">
-        <div @click="$router.push({name:'ltListDetail'})" v-for="item in 5" class="list-main-list pointer">
+        <div @click="$router.push({name:'ltListDetail',query:{id:item.id}})" v-for="item in list" class="list-main-list pointer">
           <div class="lml-title">
-            <span v-show="false" class="inline-block lml-zd">置顶</span>
-            <span class="inline-block lml-sd">锁定</span>
-            <div class="inline-block lml-name">民航西北局A60系列飞机空气再循环系统加装高效空气过滤器适航审定工作装高效空</div>
+            <span v-show="item.ifTop==1" class="inline-block lml-zd">置顶</span>
+            <span v-show="item.ifLocking==1" class="inline-block lml-sd">锁定</span>
+            <div class="inline-block lml-name">{{item.title}}</div>
           </div>
           <div class="lml-foot">
             <div class="inline-block">
-              <span class="inline-block">2020.10.19 10:00:00</span>
-              <span class="inline-block"><span class="white-space">空格</span>作者名字</span>
+              <span class="inline-block">{{item.createDate}}</span>
+              <span class="inline-block"><span class="white-space">空格</span>{{item.byUser}}</span>
             </div>
             <div class="inline-block">
               <span class="inline-block lml-img-group">
                 <img src="" alt="">
-                121
+                {{item.lookNum}}
               </span>
               <span class="inline-block lml-img-group">
                 <img src="" alt="">
-                121
+                {{item.replyNum}}
               </span>
               <span class="inline-block lml-img-group">
                 <img src="" alt="">
-                121
+                {{item.supportNum}}
               </span>
               <span class="inline-block lml-img-group">
                 <img src="" alt="">
-                121
+                {{item.opposeNum}}
               </span>
             </div>
           </div>
         </div>
-        <Page :total="100" :pageSize="10" @pageClik="pageNumClick"></Page>
+        <Page v-if="pageStatus" :total="totalPage" :pageSize="pageSize" @pageClik="pageNumClick"></Page>
       </div>
     </div>
   </div>
@@ -70,13 +70,57 @@
       },
       data(){
           return{
+            id:'',
             headShowMore:false,
-            lmhTab:'最新'
+            lmhTab:'最新',
+            type:0,
+            pageIndex: 1,
+            pageSize: 10,
+            totalPage: 0,
+            pageStatus:false,
+            list:[],
           }
+      },
+      mounted(){
+        this.id=this.$route.query.id;
+        this.getList();
       },
       methods:{
         pageNumClick(val){
-          console.log("我是父组件的方法"+val)
+          // console.log("我是父组件的方法"+val)
+          this.pageIndex=val;
+          this.getList();
+        },
+        getList(){
+          this.$http({
+            url: this.$http.adornUrl(`/front/jobmodel/theme/list`),
+            method: 'GET',
+            params: this.$http.adornParams({
+              'pageNum': this.pageIndex,
+              'pageSize': this.pageSize,
+              'type': this.type,
+              'modelId': this.id,
+            })
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              this.list = data.data;
+              this.totalPage = data.total;
+              this.pageStatus=true;
+            } else {
+              this.list = [];
+              this.totalPage = 0
+            }
+          })
+        },
+      },
+      watch :{
+        $route: {
+          handler: function(route) {
+            // console.log(route)
+            this.id=route.query.id;
+            this.getList();
+          },
+          immediate: true
         }
       }
     }

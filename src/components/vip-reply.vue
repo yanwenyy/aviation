@@ -8,50 +8,52 @@
         <div class="reply-notice">申请后，我们会7个工作日内联系您，请您耐心等待</div>
         <div class="reply-box box-sizing">
           <div class="reply-list">
-            <div class="reply-input-name inline-block">委员类型</div>
+            <div class="reply-input-name inline-block" style="margin-top: 0">委员类型</div>
             <div class="inline-block">
               <div class="reply-radio inline-block">
-                <input type="radio" name="replyClass"> 个人申请
+                <input type="radio" name="typeClass" value="1" v-model="type"> 个人申请
               </div>
               <div class="reply-radio inline-block">
-                <input type="radio" name="replyClass"> 企业申请
+                <input type="radio" name="typeClass" value="2" v-model="type"> 企业申请
               </div>
             </div>
           </div>
           <div class="reply-list">
             <div class="reply-input-name inline-block">企业名称/个人姓名</div>
             <div class="inline-block">
-              <input class="reply-input box-sizing" type="text" placeholder="请输入企业名称/个人姓名" name="replyName">
+              <input class="reply-input box-sizing" type="text" placeholder="请输入企业名称/个人姓名" name="nameDes" v-model="nameDes">
             </div>
           </div>
           <div class="reply-list">
             <div class="reply-input-name inline-block">专业领域</div>
             <div class="inline-block">
-              <input class="reply-input box-sizing" type="text" placeholder="请输入专业领域" name="replyName">
+              <input class="reply-input box-sizing" type="text" placeholder="请输入专业领域" name="professional" v-model="professional">
             </div>
           </div>
           <div class="reply-list">
             <div class="reply-input-name inline-block">申请人姓名</div>
             <div class="inline-block">
-              <input class="reply-input box-sizing" type="text" placeholder="请输入申请人姓名" name="replyName">
+              <input class="reply-input box-sizing" type="text" placeholder="请输入申请人姓名" name="applyName" v-model="applyName">
             </div>
           </div>
           <div class="reply-list">
             <div class="reply-input-name inline-block">联系电话</div>
             <div class="inline-block">
-              <input class="reply-input box-sizing" type="text" placeholder="请输入联系电话 " name="replyName">
+              <input v-validate="'required|phone'" class="reply-input box-sizing" type="text" placeholder="请输入联系电话 " name="phone" v-model="phone">
+              <div v-show="errors.has('phone')" class="text-style"> {{ errors.first('phone') }} </div>
             </div>
           </div>
           <div class="reply-list">
             <div class="reply-input-name inline-block">联系邮箱</div>
             <div class="inline-block">
-              <input class="reply-input box-sizing" type="text" placeholder="请输入联系邮箱 " name="replyName">
+              <input v-validate="'required|email'" class="reply-input box-sizing" type="text" placeholder="请输入联系邮箱 " name="email" v-model="email">
+              <div v-show="errors.has('email')" class="text-style"> {{ errors.first('email') }} </div>
             </div>
           </div>
           <div class="reply-list">
             <div class="reply-input-name inline-block">基本情况介绍</div>
             <div class="inline-block">
-              <textarea class="reply-textarea box-sizing" placeholder="请输入联系邮箱 " name="replyName"></textarea>
+              <textarea class="reply-textarea box-sizing" placeholder="请输入基本情况介绍 " name="introduction" v-model="introduction"></textarea>
               <div class="input-msg">
                 <div class="inline-block">提示： </div>
                 <div class="inline-block">
@@ -64,10 +66,10 @@
           <div class="reply-list">
             <div class="reply-input-name inline-block">入会后简要工作设想</div>
             <div class="inline-block">
-              <textarea class="reply-textarea box-sizing" placeholder="请输入入会后简要工作设想 " name="replyName"></textarea>
+              <textarea class="reply-textarea box-sizing" placeholder="请输入入会后简要工作设想 " name="workIdea" v-model="workIdea"></textarea>
             </div>
           </div>
-          <div class="reply-btn">提交申请</div>
+          <div @click="subMsg()" class="reply-btn pointer">提交申请</div>
         </div>
       </div>
     </div>
@@ -87,14 +89,55 @@
     },
     data(){
       return{
-
+        type:'',
+        nameDes:'',
+        professional:'',
+        applyName:'',
+        phone:'',
+        email:'',
+        introduction:'',
+        workIdea:'',
       }
     },
-
+    methods:{
+      subMsg(){
+        this.$http({
+          url: this.$http.adornUrl(`/aviation/big/save`),
+          method: 'post',
+          data: this.$http.adornData({
+            'type': this.type,
+            'nameDes': this.nameDes,
+            'professional': this.professional,
+            'applyName': this.applyName,
+            'phone': this.phone,
+            'email': this.email,
+            'introduction': this.introduction,
+            'workIdea': this.workIdea
+          })
+        }).then(({data}) => {
+          if (data && data.code == 10000) {
+            this.$Message.success({
+              message: '操作成功',
+              type: 'success',
+              duration: 1500,
+              onClose: () => {
+                this.$router.push({name:'home'});
+              }
+            })
+          } else {
+            this.$Message.error(data.msg)
+          }
+        })
+      }
+    }
   }
 </script>
 
 <style scoped>
+  .text-style{
+    color:red;
+    margin-top: 10px;
+  }
   .reply-btn{
     width: 180px;
     height: 50px;
@@ -145,12 +188,14 @@
     text-align: right;
     margin-right: 42px;
     vertical-align: top;
+    margin-top: 15px;
   }
   .reply-box{
     width: 100%;
     background: #FCFCFC;
     padding: 73px 76px;
     margin-bottom: 70px;
+    border: 1px solid #E5E5E5;
   }
   .reply-title{
     font-size: 26px;

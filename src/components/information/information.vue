@@ -6,13 +6,13 @@
         <Crumbs></Crumbs>
         <div class="main-msg-body">
           <div class="left-tab">
-            <div @click="tabMsg='通知公告',$router.push({name:'notice'})" class="pointer" :class="tabMsg=='通知公告'?'left-tab-act':''">
+            <div @click="tabMsg='通知公告',$router.push({path:'notice'})" class="pointer" :class="tabMsg=='notice'||tabMsg=='noticeDetail'?'left-tab-act':''">
               <span class="inline-block left-tab-dot"></span>通知公告
             </div>
-            <div @click="tabMsg='行业动态',$router.push({name:'industryTrends'})" class="pointer" :class="tabMsg=='行业动态'?'left-tab-act':''">
+            <div @click="tabMsg='行业动态',$router.push({name:'industryTrends'})" class="pointer" :class="tabMsg=='industryTrends'||tabMsg=='industryTrendsDetail'?'left-tab-act':''">
               <span class="inline-block left-tab-dot"></span>行业动态
             </div>
-            <div @click="tabMsg='资料中心',$router.push({name:'data'})" class="pointer" :class="tabMsg=='资料中心'?'left-tab-act':''">
+            <div @click="tabMsg='资料中心',$router.push({name:'data'})" class="pointer" :class="tabMsg=='data'||tabMsg=='dataDetail'?'left-tab-act':''">
               <span class="inline-block left-tab-dot"></span>资料中心
             </div>
           </div>
@@ -39,10 +39,17 @@
     },
     data(){
       return{
-        tabMsg:"通知公告"
+        tabMsg:"notice"
       }
     },
-
+    watch: {
+      $route: {
+        handler: function(route) {
+          this.tabMsg=route.name
+        },
+        immediate: true
+      }
+    },
   }
 </script>
 

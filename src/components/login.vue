@@ -12,7 +12,7 @@
           <div class="title">工作平台账户登录</div>
           <div class="input-list">
             <img src="../../static/img/user.png" alt="">
-            <input class="box-sizing" type="text" v-model="name" placeholder="请输入用户名">
+            <input class="box-sizing" type="text" v-model="username" placeholder="请输入用户名">
           </div>
           <div class="input-list">
             <img src="../../static/img/password.png" alt="">
@@ -40,18 +40,44 @@
       data(){
         return{
           autoLogin:false,
-          name:'',
+          username:'',
           password:''
         }
       },
       methods:{
         login(){
-          if(this.autoLogin){
-            localStorage.setItem("userName",this.name);
-          }
-          this.$store.commit('changeLogin',this.name);
-          sessionStorage.setItem("userName",this.name);
-          this.$router.push({name:'home'});
+          this.$http({
+            url: this.$http.adornUrl(`/front/user/login`),
+            method: 'post',
+            data: this.$http.adornData({
+              'password': this.password,
+              'username': this.username,
+            })
+          }).then(({data}) => {
+            if (data && data.code == 0) {
+              this.$Message.success({
+                message: '操作成功',
+                type: 'success',
+                duration: 1500,
+                onClose: () => {
+                  if(this.autoLogin){
+                    localStorage.setItem("userName",this.username);
+                    localStorage.setItem('token',data.token)
+                  }else{
+                    localStorage.removeItem('userName')
+                    localStorage.removeItem('token')
+                  }
+                  this.$store.commit('changeLogin',this.username);
+                  sessionStorage.setItem("userName",this.username);
+                  sessionStorage.setItem("token",data.token);
+                  this.$router.push({name:'home'});
+                }
+              })
+            } else {
+              this.$Message.error(data.msg)
+            }
+          })
+
         }
       }
     }

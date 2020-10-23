@@ -3,30 +3,30 @@
       <div class="detail-msg">
         <div class="dm-head">
           <div class="dmh-title">
-            电动航空时代真的要来了？当地时间10日10点22分，世界上第一架全电动商用 机场完成了首次试飞。
+            {{detail.title}}
           </div>
           <div class="dmh-date">
-            <span>发表于：2020.10.23 10:00:00</span>
+            <span>发表于：{{detail.createDate}}</span>
             <span class="white-space">空格</span>
-            <span>发布人：刘德华</span>
+            <span>发布人：{{detail.byUser}}</span>
           </div>
           <div class="dmh-foot">
             <div class="inline-block">
               <span class="inline-block lml-img-group">
                 <img src="" alt="">
-                121
+                {{detail.lookNum}}
               </span>
               <span class="inline-block lml-img-group">
                 <img src="" alt="">
-                121
+                {{detail.replyNum}}
               </span>
               <span class="inline-block lml-img-group">
                 <img src="" alt="">
-                121
+                {{detail.supportNum}}
               </span>
               <span class="inline-block lml-img-group">
                 <img src="" alt="">
-                121
+                {{detail.opposeNum}}
               </span>
             </div>
             <div class="inline-block">
@@ -37,22 +37,22 @@
           </div>
         </div>
         <div class="dm-msg box-sizing">
-          <div class="dm-html"></div>
-          <div class="detial-fj box-sizing">
+          <div class="detail-msg" v-html="detail.content"></div>
+          <div v-for="item in detail.tbAnnexActions" class="detial-fj box-sizing">
             <img src="" alt="" class="inline-block">
             <div class="inline-block">
-              <div>调整城镇土地使用税和申报表单.pdf</div>
-             <div class="down-fj pointer">立即下载</div>
+              <div>{{item.fileOriginalName}}</div>
+              <div @click="down(item.fileRealName)" class="down-fj pointer">立即下载</div>
             </div>
           </div>
           <div class="dm-zan-group">
             <div class="inline-block dm-zan-group-btn">
               <img src="" alt="">
-              <div>支持 <span class="red">113票</span></div>
+              <div>支持 <span class="red">{{detail.supportNum}}票</span></div>
             </div>
             <div class="inline-block dm-zan-group-btn">
               <img src="" alt="">
-              <div>支持 <span class="blue">113票</span></div>
+              <div>支持 <span class="blue">{{detail.opposeNum}}票</span></div>
             </div>
           </div>
         </div>
@@ -153,8 +153,31 @@
                 msg:'22222',
                 replyMore:false
               }
-            ]
+            ],
+            id:'',
+            detail:{},
           }
+      },
+      mounted(){
+        this.id=this.$route.query.id;
+        this.getDetail()
+      },
+      methods:{
+        //下载附件
+        down (name){
+          var url='/jinding/download/'+name;
+          window.open(this.$http.adornUrl(url));
+        },
+        getDetail(){
+          this.$http({
+            url: this.$http.adornUrl(`/front/jobmodel/theme/info/${this.id}`),
+            method: 'GET',
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              this.detail=data.data;
+            }
+          })
+        }
       }
     }
 </script>
