@@ -3,9 +3,7 @@
  * version: ueditor
  * build: Wed Aug 10 2016 11:06:16 GMT+0800 (CST)
  */
-
 (function(){
-
 // editor.js
   UEDITOR_CONFIG = window.UEDITOR_CONFIG || {};
 
@@ -24530,7 +24528,8 @@
           var params = utils.serializeParam(me.queryCommandValue('serverparam')) || '';
           var action = utils.formatUrl(imageActionUrl + (imageActionUrl.indexOf('?') == -1 ? '?' : '&') + params);
           var formData = new FormData();
-          formData.append("upfile", form[0].files[0] );
+          // formData.file=form[0].files[0];
+          formData.append("file", form[0].files[0]);
           function getCookie2(name){
             var strcookie = document.cookie;//获取cookie字符串
             var arrcookie = strcookie.split("; ");//分割
@@ -24543,11 +24542,16 @@
             }
             return "";
           }
+
           $.ajax({
-            url: window.SITE_CONFIG['baseUrl']+'ueditor/uploadimage?token='+getCookie2('token'),
+            // url: window.SITE_CONFIG['baseUrl']+'jinding/file/upload?token='+getCookie2('token'),
+            url:"http://123.56.130.178:8080/lxb-aviation/jinding/file/upload",
             type: 'POST',
             cache: false,
             data: formData,
+            headers:{
+              'token': localStorage.getItem("token")||sessionStorage.getItem("token")
+            },
             processData: false,
             contentType: false,
             success: function (data) {
@@ -24555,11 +24559,10 @@
               var link, loader,
                 body = (iframe.contentDocument || iframe.contentWindow.document).body,
                 result = body.innerText || body.textContent || '';
-             link = 'http://'+me.options.imageUrlPrefix + data.url; //修改图片上传回显路径 此处为源码 修改人lhf
-             /* link = 'http://'+ data.url;*/
+             link ='http://123.56.130.178:8080/lxb-aviation/jinding/showImg/'+data.data; //修改图片上传回显路径 此处为源码 修改人lhf
 
-              if(data.state == 'SUCCESS' && data.url) {
-                me.execCommand('inserthtml', '<img src="http://'+me.options.imageUrlPrefix + data.url+'" title="'+data.title+'" alt="'+data.original+'" width="100%">');
+              if(data.code == '10000' && data.data) {
+                me.execCommand('inserthtml', '<img src="'+link+'" title="'+data.title+'" alt="'+data.original+'" width="100%">');
                /* loader = me.document.getElementById(loadingId);
                 loader.setAttribute('src', link);
                 loader.setAttribute('_src', link);

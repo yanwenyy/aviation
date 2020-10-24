@@ -12,7 +12,7 @@
                 {{item.name}}
               </div>
               <div v-show="leftMsg==item.name" class="left-list-two pointer">
-                <div v-for="i in twoClassList" @click="twoMsg=i.childName,$router.push({name:'ltList',query:{id:i.id} })" class="left-list-two-list"  :class="twoMsg==i.childName?'blue':''">{{i.childName}}</div>
+                <div v-for="i in twoClassList" @click="twoMsg=i.childName,$router.push({name:'ltList',query:{id:i.id,jobModelId:item.id} })" class="left-list-two-list"  :class="twoMsg==i.childName?'blue':''">{{i.childName}}</div>
               </div>
             </li>
           </ul>
@@ -48,7 +48,10 @@
           url: this.$http.adornUrl('/biz/jobmodel/select/list'),
           method: 'GET',
         }).then(({data}) => {
-          this.classList = data.data
+          this.classList = data.data;
+          if(data.msg=='invalid token'||data.code==401){
+            this.$router.push({name:'login',query:{from:'lt'}});
+          }
         });
       },
       methods:{

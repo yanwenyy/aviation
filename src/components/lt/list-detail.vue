@@ -30,9 +30,9 @@
               </span>
             </div>
             <div class="inline-block">
-              <span class="inline-block dmh-foot-btn"><img src="" alt="">删除</span>
-              <span class="inline-block dmh-foot-btn"><img src="" alt="">修改</span>
-              <span class="inline-block dmh-foot-btn"><img src="" alt="">回复</span>
+              <span class="inline-block dmh-foot-btn"><img src="../../../static/img/lt-detail-sc.png" alt="">删除</span>
+              <span class="inline-block dmh-foot-btn"><img src="../../../static/img/lt-detail-xg.png" alt="">修改</span>
+              <span @click="replyForm.id=detail.id,replyForm.status=1,scrollToSection" class="inline-block dmh-foot-btn"><img src="../../../static/img/lt-detail-hf.png" alt="">回复</span>
             </div>
           </div>
         </div>
@@ -46,88 +46,98 @@
             </div>
           </div>
           <div class="dm-zan-group">
+            <!--<div class="inline-block dm-zan-group-btn">-->
+              <!--<img src="../../../static/img/lt-detail-zt.png" alt="">-->
+            <!--</div>-->
             <div class="inline-block dm-zan-group-btn">
-              <img src="" alt="">
+              <img @click="goVote(1)" :src="detail.votesNum==0?'../../../static/img/lt-detail-zt-show.png':'../../../static/img/lt-detail-zt.png'" alt="">
               <div>支持 <span class="red">{{detail.supportNum}}票</span></div>
             </div>
             <div class="inline-block dm-zan-group-btn">
-              <img src="" alt="">
+              <img @click="goVote(0)" src="../../../static/img/lt-detail-fd-show.png" alt="">
               <div>支持 <span class="blue">{{detail.opposeNum}}票</span></div>
             </div>
+            <!--<div class="inline-block dm-zan-group-btn">-->
+              <!--<img src="../../../static/img/lt-detail-fd.png" alt="">-->
+            <!--</div>-->
           </div>
         </div>
       </div>
       <div class="detail-reply box-sizing">
-        <div class="reply-group">
-          <textarea class="reply-textarea box-sizing" name="" id="" cols="30" rows="10"></textarea>
+        <div id="replyInput" class="reply-group">
+          <textarea v-model="replyForm.content" class="reply-textarea box-sizing" name="" id="" cols="30" rows="10"></textarea>
           <div class="reply-foot">
             <div class="inline-block rf-fj">
-              <span class="blue">上传附件</span>
+              <span class="blue pointer inline-block">
+                <span>上传附件</span>
+                <input class="fileInput pointer" type="file"  ref="clearFile" @change="getFile($event)" multiple="multiplt" accept=".docx,.doc,.pdf">
+              </span>
               <span class="white-space">空</span>
-              <span class="blue">上传图片</span>
+              <span class="blue pointer inline-block">
+                <span>上传图片</span>
+                <input :disabled="replyForm.imgList.length>2" class="fileInput pointer" type="file"  ref="clearImg" @change="getImg($event)" multiple="multiplt" accept="image/*">
+              </span>
               <span class="white-space">1</span>
               <span class="reply-foot-notice"> 最多上传3张，单张不得超过100k</span>
             </div>
             <div class="inline-block">
-              <span class="blue">清空</span>
-              <span class="sub-reply inline-block">发布</span>
+              <span @click="replyForm.content=''" class="blue pointer">清空</span>
+              <span @click="subReply()" class="sub-reply inline-block pointer">发布</span>
             </div>
           </div>
           <div class="reply-img">
-            <div class="inline-block reply-img-list">
-              <img src="" alt="">
-              <b class="del-reply-img">X</b>
+            <div class="inline-block reply-img-list" v-for="item in replyForm.imgList">
+              <img :src="imgUrlfront+item" alt="">
+              <b @click="delImg(item)" class="del-reply-img pointer">X</b>
             </div>
           </div>
-          <div class="detial-fj box-sizing">
+          <div v-for="item in replyForm.tbAnnexActions" class="detial-fj box-sizing">
             <img src="" alt="" class="inline-block">
             <div class="inline-block">
-              <div>调整城镇土地使用税和申报表单.pdf</div>
-             <div class="down-fj pointer">立即下载</div>
+              <div>{{item.fileOriginalName}}</div>
+              <div @click="delFj(item)" class="down-fj pointer">删除</div>
             </div>
           </div>
         </div>
         <div class="reply-msg">
-          <div class="reply-msg-title">全部回复（4）</div>
+          <div class="reply-msg-title">全部回复（{{replyList.length}}）</div>
           <div class="reply-msg-list" v-for="item in replyList">
             <div class="rml-name">
-              <span>王佳佳</span>
+              <span>{{item.userName}}</span>
               <span class="white-space">1</span>
-              <span class="blue">楼主</span>
+              <span v-show="item.author==1" class="blue">楼主</span>
             </div>
             <div class="rml-date">
-              <div class="inline-block">8小时前</div>
+              <div class="inline-block">{{showtime(item.careateDate)}}</div>
               <div class="inline-block">
-                <span class="inline-block blue rml-date-btn">
-                  <img src="" alt="">
+                <span @click="replyForm.id=item.id,replyForm.status=2,scrollToSection" class="inline-block blue rml-date-btn">
+                  <img src="../../../static/img/lt-detail-hf.png" alt="">
                   回复
                 </span>
-                <span class="inline-block blue rml-date-btn">
-                  <img src="" alt="">
+                <span @click="eidtReply(item)" v-show="item.ifSelf==1" class="inline-block blue rml-date-btn pointer">
+                  <img src="../../../static/img/lt-detail-xg.png" alt="">
                   修改
                 </span>
                 <span class="inline-block red rml-date-btn">
-                  <img src="" alt="">
+                  <img src="../../../static/img/lt-detail-sc.png" alt="">
                   删除
                 </span>
               </div>
             </div>
             <div class="rml-msg">
-              回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复
-              的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容
+              {{item.content}}
             </div>
-            <div class="detial-fj box-sizing">
+            <div v-for="item in detail.tbAnnexActions" class="detial-fj box-sizing">
               <img src="" alt="" class="inline-block">
               <div class="inline-block">
-                <div>调整城镇土地使用税和申报表单.pdf</div>
-               <div class="down-fj pointer">立即下载</div>
+                <div>{{item.fileOriginalName}}</div>
+                <div @click="down(item.fileRealName)" class="down-fj pointer">立即下载</div>
               </div>
             </div>
             <div class="rml-reply box-sizing">
-              <span class="rml-reply-name">@挖基甲烷：</span>
+              <span class="rml-reply-name">@{{item.replyUserName}}：</span>
               <span class="rml-reply-msg inline-block" :style="item.replyMore?'height:auto':'height:64px'">
-                回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的容回复的回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容容
-                回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的内容回复的容回复的
+                {{item.pcontent}}
               </span>
               <div class="blue pointer rml-reply-more" @click="item.replyMore=!item.replyMore">  {{item.replyMore?'收起':'查看全部'}}</div>
             </div>
@@ -142,6 +152,7 @@
         name: "list-detail",
       data(){
           return{
+            imgUrlfront:this.$http.adornUrl('/jinding/showImg/'),
             replyList:[
               {
                 name:'111',
@@ -154,13 +165,31 @@
                 replyMore:false
               }
             ],
+            userMsg:{},
             id:'',
             detail:{},
+            replyForm:{
+              tbAnnexActions:[],
+              imgList:[],
+              content:'',
+              id:'',
+              status:'1'
+            },
           }
       },
       mounted(){
         this.id=this.$route.query.id;
-        this.getDetail()
+        this.getDetail();
+        this.getDiscuss();
+        //获取用户信息
+        this.$http({
+          url: this.$http.adornUrl('/front/user/get/user'),
+          method: 'POST',
+        }).then(({data}) => {
+          if (data && data.code === 10000) {
+            this.userMsg=data.data;
+          }
+        });
       },
       methods:{
         //下载附件
@@ -177,12 +206,225 @@
               this.detail=data.data;
             }
           })
+        },
+        getDiscuss(){
+          this.$http({
+            url: this.$http.adornUrl(`/front/discuss/vote/discuss/list`),
+            method: 'GET',
+            params: this.$http.adornParams({
+              'pageNum': 1,
+              'pageSize': 100000,
+              'id': this.id,
+            })
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              this.replyList=data.data;
+            }
+          })
+        },
+        //时间格式转换
+        showtime(time) {
+          let date =
+            typeof time === "number"
+              ? new Date(time)
+              : new Date((time || "").replace(/-/g, "/"));
+          let diff = (new Date().getTime() - date.getTime()) / 1000;
+          let dayDiff = Math.floor(diff / 86400);
+
+          let isValidDate =
+            Object.prototype.toString.call(date) === "[object Date]" &&
+            !isNaN(date.getTime());
+
+          if (!isValidDate) {
+            window.console.error("不是有效日期格式");
+          }
+          const formatDate = function(date) {
+            let today = new Date(date);
+            let year = today.getFullYear();
+            let month = ("0" + (today.getMonth() + 1)).slice(-2);
+            let day = ("0" + today.getDate()).slice(-2);
+            let hour = today.getHours();
+            let minute = today.getMinutes();
+            let second = today.getSeconds();
+            return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+          };
+          //小于0或者大于等于31显示原时间
+          if (isNaN(dayDiff) || dayDiff < 0 || dayDiff >= 31) {
+            return formatDate(date);
+          }
+          return (
+            (dayDiff === 0 &&
+              ((diff < 60 && "刚刚") ||
+                (diff < 120 && "1分钟前") ||
+                (diff < 3600 && Math.floor(diff / 60) + "分钟前") ||
+                (diff < 7200 && "1小时前") ||
+                (diff < 86400 && Math.floor(diff / 3600) + "小时前"))) ||
+            (dayDiff === 1 && "昨天") ||
+            (dayDiff < 7 && dayDiff + "天前") ||
+            (dayDiff < 31 && Math.ceil(dayDiff / 7) + "周前")
+          );
+        },
+        //锚点跳转
+        scrollToSection() {
+          let section = document.getElementById('replyInput');
+          if (section) {
+            section.scrollIntoView()
+          }
+        },
+        // 上传附件
+        getFile(event){
+          var file = event.target.files;
+          for(var i = 0;i<file.length;i++){
+            //    上传类型判断
+            var imgName = file[i].name;
+            var idx = imgName.lastIndexOf(".");
+            if (idx != -1){
+              var ext = imgName.substr(idx+1).toUpperCase();
+              ext = ext.toLowerCase( );
+              if (ext!='pdf' && ext!='doc' && ext!='docx'){
+                this.$Message.error('请上传pdf、doc、docx格式的附件')
+              }else{
+                var _file=file[i];
+                var formData = new FormData();
+                formData.append("file", _file);
+                this.$http({
+                  url: this.$http.adornUrl(`/jinding/file/upload`),
+                  method: 'POST',
+                  data: formData
+                }).then(({data}) => {
+                  if (data && data.code === 10000) {
+                   var i={
+                     fileOriginalName: _file.name,
+                     fileRealName:data.data
+                   };
+                   this.replyForm.tbAnnexActions.push(i);
+                  } else {
+                    this.$Message.error(data.msg)
+                  }
+                });
+
+              }
+            }else{
+
+            }
+          }
+        },
+        //删除附件
+        delFj(i){
+          this.replyForm.tbAnnexActions.remove(i)
+        },
+        // 上传图片
+        getImg(event){
+          var file = event.target.files;
+          for(var i = 0;i<file.length;i++){
+            //    上传类型判断
+            var imgName = file[i].name;
+            var idx = imgName.lastIndexOf(".");
+            if (idx != -1){
+              var ext = imgName.substr(idx+1).toUpperCase();
+              ext = ext.toLowerCase( );
+              console.log(ext)
+              var _file=file[i];
+              var formData = new FormData();
+              formData.append("file", _file);
+              this.$http({
+                url: this.$http.adornUrl(`/jinding/file/upload`),
+                method: 'POST',
+                data: formData
+              }).then(({data}) => {
+                if (data && data.code === 10000) {
+                  this.replyForm.imgList.push(data.data)
+                } else {
+                  this.$Message.error(data.msg)
+                }
+              });
+            }else{
+
+            }
+          }
+        },
+        //删除图片
+        delImg(i){
+          this.replyForm.imgList.remove(i)
+        },
+        //提交评论
+        subReply(){
+          this.$http({
+            url: this.$http.adornUrl(`/front/discuss/vote/save`),
+            method: 'POST',
+            data: this.$http.adornData({
+              'content': this.replyForm.content,
+              'id': this.replyForm.id||this.detail.id,
+              'img': this.replyForm.imgList!=''?this.replyForm.imgList.join(','):'',
+              'status': this.replyForm.status,
+              'tbAnnexActions': this.replyForm.tbAnnexActions,
+            })
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              this.replyForm={
+                tbAnnexActions:[],
+                imgList:[],
+                content:'',
+                id:'',
+                status:'1'
+              };
+              this.getDiscuss();
+            } else {
+              this.$Message.error(data.msg)
+            }
+          })
+        },
+        //投票和反对
+        goVote(type){
+          this.$http({
+            url: this.$http.adornUrl(`/front/discuss/vote/votes/save`),
+            method: 'POST',
+            data: this.$http.adornData({
+              'id': this.detail.id,
+              'modelId': this.id,
+              'type': type,
+              'userId': this.userMsg.userId,
+            })
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              this.$Message.success({
+                message: '投票成功',
+                type: 'success',
+                duration: 1500,
+                onClose: () => {
+                  this.getDetail();
+                }
+              })
+            } else {
+              this.$Message.error(data.msg)
+            }
+          })
+        },
+        //修改回复
+        eidtReply(val){
+          this.replyForm={
+            tbAnnexActions:val.tbAnnexActions,
+            imgList:val.img&&val.img!=''?val.img.split(','):[],
+            content:val.content,
+            id:val.id,
+            status:'2'
+          };
+          this.scrollToSection();
         }
       }
     }
 </script>
 
 <style scoped>
+  .fileInput{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    opacity: 0;
+    z-index: 999;
+  }
   .rml-reply-more{
    text-align: right;
   }
@@ -214,7 +456,6 @@
     height: 17px;
     min-width: 17px;
     min-height: 17px;
-    background: #eee;
     vertical-align: middle;
     margin-top: -3px;
   }
@@ -277,6 +518,9 @@
   .rf-fj{
     margin-top: 11px;
   }
+  .rf-fj>span{
+    position: relative;
+  }
   .sub-reply{
     width: 107px;
     height: 39px;
@@ -315,11 +559,12 @@
     height: 65px;
     min-width: 65px;
     min-height: 65px;
-    background: #E5E5E5;
     margin-bottom: 19px;
+    vertical-align: top;
   }
-  .dm-zan-group-btn:first-child{
+  .dm-zan-group-btn{
     margin-right: 57px;
+    vertical-align: top;
   }
   .dm-zan-group{
     text-align: center;
@@ -335,12 +580,11 @@
     padding: 39px 37px;
   }
   .dmh-foot-btn>img{
-    min-width: 17px;
-    min-height: 17px;
-    width: 17px;
+    /*min-width: 17px;*/
+    /*min-height: 17px;*/
+    width: 17px!important;
     height: 17px;
     vertical-align: middle;
-    background: #2A5AAC;
     margin-right: 7px;
     margin-top: -2px;
   }

@@ -37,11 +37,12 @@
       }
     },
     mounted() {
+      var token=localStorage.getItem("token")||sessionStorage.getItem("token");
       //初始化UE
       const _this = this;
       this.editor = UE.delEditor(this.id);
       this.editor = UE.getEditor(this.id,{
-        serverUrl: baseUrl.httpUrl+"/ueditor/exec?token="+_this.$cookie.get('token')
+        serverUrl: baseUrl.httpUrl+"/ueditor/exec?token="+token
       });
 
       this.editor.ready(function() {

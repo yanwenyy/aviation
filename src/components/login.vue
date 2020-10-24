@@ -41,8 +41,12 @@
         return{
           autoLogin:false,
           username:'',
-          password:''
+          password:'',
+          from:''
         }
+      },
+      mounted(){
+        this.from=this.$route.query.from;
       },
       methods:{
         login(){
@@ -70,7 +74,11 @@
                   this.$store.commit('changeLogin',this.username);
                   sessionStorage.setItem("userName",this.username);
                   sessionStorage.setItem("token",data.token);
-                  this.$router.push({name:'home'});
+                  if(this.from=='lt'){
+                    this.$router.push({name:'lt'});
+                  }else{
+                    this.$router.push({name:'home'});
+                  }
                 }
               })
             } else {
@@ -79,7 +87,7 @@
           })
 
         }
-      }
+      },
     }
 </script>
 

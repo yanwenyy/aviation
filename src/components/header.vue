@@ -3,7 +3,7 @@
     <div class="header-top">
       <div class="container">
         <img class="header-logo" src="../../static/img/logo-2.png" alt="">
-        <div class="go-lt pointer" @click="$router.push({name:'lt'})">
+        <div class="go-lt pointer" @click="$router.push({name:'ltList',query:{id:id,jobModelId:jobModelId} })">
           工作论坛 <img src="../../static/img/go-lt.png" alt="">
         </div>
       </div>
@@ -49,7 +49,31 @@
       name: "Header",
       props:{
           'title':String,
+        },
+      data(){
+        return{
+          id:'',
+          jobModelId:''
         }
+      },
+      mounted(){
+        //板块下拉列表
+        this.$http({
+          url: this.$http.adornUrl('/biz/jobmodel/select/list'),
+          method: 'GET',
+        }).then(({data}) => {
+          this.jobModelId = data.data[0].id;
+          this.$http({
+            url: this.$http.adornUrl('/biz/jobchildmodel/select/list'),
+            method: 'GET',
+            params: this.$http.adornParams({
+              'id': this.jobModelId,
+            })
+          }).then(({data}) => {
+            this.id = data.data[0].id;
+          });
+        });
+      },
     }
 </script>
 

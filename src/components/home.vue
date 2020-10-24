@@ -11,7 +11,7 @@
             <div class="pointer inline-block" @click="$router.push({name:'vipReply'})">入会申请</div>
           </div>
           <div v-if="userName==''"  @click="$router.push({name:'login'})" class="pointer inline-block go-login">会员登录 <img src="../../static/img/go-login.png" alt=""></div>
-          <div v-if="userName!=''"   @click="$router.push({name:'personalCenter'})" class="pointer inline-block go-login">{{userName}} <img src="../../static/img/go-login.png" alt=""></div>
+          <div v-if="userName!=''"  @click="$router.push({name:'personalCenter'})" class="pointer inline-block go-login">{{userName}} <img src="../../static/img/go-login.png" alt=""></div>
         </div>
       </div>
       <div class="banner-shadow"></div>

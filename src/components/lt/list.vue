@@ -3,26 +3,35 @@
     <div class="list-head box-sizing">
       <div class="list-head-name">
         <div class="inline-block">
-          <span class="lhn-name">板块板块类型</span>
-          <span class="lhn-type">全员开放</span>
+          <span class="lhn-name">{{modelMsg.childName}}</span>
         </div>
+
+      </div>
+      <div class="list-head-msg">
+        <div class="inline-block" :style="headShowMore?'height:auto':'height:68px'">
+          {{modelMsg.introduction}}
+          <div v-show="modelMsg.introduction&&modelMsg.introduction.length>50" class="list-head-more pointer inline-block" @click="headShowMore=!headShowMore">查看全部</div>
+        </div>
+      </div>
+      <div class="list-head-foot">
         <div class="inline-block">
-          <span class="lhn-tz-name">帖子数:</span>
-          <span class="lhn-tz-num">1090909</span>
+          <span class="">帖子数:</span>
+          <span class="">{{modelMsg.themeNum}}</span>
+        </div>
+        <span class="white-space">空格</span>
+        <span v-show="modelMsg.purviewType=='0'" class="">全员开放</span>
+        <div v-show="modelMsg.purviewType=='1'" class="zd-vip inline-block">
+          <span>指定{{modelMsg.users&&modelMsg.users.length}}位会员开放：</span>
+          <span v-for="item in modelMsg.users">{{item.userName}}</span>
         </div>
       </div>
-      <div class="list-head-msg" :style="headShowMore?'height:auto':'height:68px'">
-        板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块
-        介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板块介绍板板板板...
-      </div>
-      <div class="list-head-more pointer" @click="headShowMore=!headShowMore">查看全部</div>
     </div>
     <div class="list-main">
       <div class="list-main-head box-sizing">
         <div @click="type=0" class="inline-block pointer" :class="lmhTab=='最新'?'list-main-head-act':''">最新</div>
         <div class="inline-block lmh-line"></div>
         <div @click="type=1" class="inline-block pointer" :class="lmhTab=='最热'?'list-main-head-act':''">最热</div>
-        <div @click="$router.push({name:'release'})" class="lmh-sub pointer">+ 发帖</div>
+        <div @click="$router.push({name:'release',query:{id:id,jobModelId:jobModelId}})" class="lmh-sub pointer">+ 发帖</div>
       </div>
       <div class="list-main-body box-sizing">
         <div @click="$router.push({name:'ltListDetail',query:{id:item.id}})" v-for="item in list" class="list-main-list pointer">
@@ -71,6 +80,8 @@
       data(){
           return{
             id:'',
+            jobModelId:'',
+            modelMsg:{},
             headShowMore:false,
             lmhTab:'最新',
             type:0,
@@ -83,7 +94,9 @@
       },
       mounted(){
         this.id=this.$route.query.id;
+        this.jobModelId=this.$route.query.jobModelId;
         this.getList();
+        this.getModel();
       },
       methods:{
         pageNumClick(val){
@@ -112,6 +125,15 @@
             }
           })
         },
+        //版块信息
+        getModel(){
+          this.$http({
+            url: this.$http.adornUrl('/biz/jobchildmodel/info/'+this.id,),
+            method: 'GET',
+          }).then(({data}) => {
+            this.modelMsg = data.data;
+          });
+        },
       },
       watch :{
         $route: {
@@ -119,6 +141,7 @@
             // console.log(route)
             this.id=route.query.id;
             this.getList();
+            this.getModel();
           },
           immediate: true
         }
@@ -127,6 +150,11 @@
 </script>
 
 <style scoped>
+  .list-head-foot{
+    font-size: 15px;
+    color:#999;
+    margin-top: 22px;
+  }
   .lmh-sub{
     width: 124px;
     height: 45px;

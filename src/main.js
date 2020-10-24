@@ -14,12 +14,14 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 // import 'swiper/dist/css/swiper.css'
 
+import './utils/public'
 import './utils/validate'
 import Message from 'vue-m-message'
 import 'vue-m-message/dist/index.css'
 import '../static/plugins/ueditor/ueditor.config'
-import '../static/plugins/ueditor/ueditor.all.min'
+import '../static/plugins/ueditor/ueditor.all'
 import '../static/plugins/ueditor/lang/zh-cn/zh-cn'
+import '../static/plugins/ueditor/jquery-2.2.3.min'
 
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 Vue.use(VueCookie)
