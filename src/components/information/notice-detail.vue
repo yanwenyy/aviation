@@ -10,7 +10,7 @@
       </div>
       <div v-html="detail.content" class="detail-msg"></div>
       <div v-for="item in detail.tbAnnexActions" class="detial-fj box-sizing">
-        <img src="" alt="" class="inline-block">
+        <img :src="'../../../static/img/'+getFileImg(item.fileOriginalName)" alt="" class="inline-block">
         <div class="inline-block">
           <div>{{item.fileOriginalName}}</div>
           <div @click="down(item.fileRealName)" class="down-fj pointer">立即下载</div>
@@ -19,7 +19,7 @@
       <!--<div class="detail-pre detail-url pointer">上一篇：无人机适航审定首次审查会顺利召开</div>-->
       <!--<div class="detail-next detail-url pointer">下一篇：无人机适航审定首次审查会顺利召开</div>-->
     </div>
-    <div class="left">
+    <div v-if="false" class="left">
       <div class="notice-more-title">更多推荐</div>
       <div class="notice-more-list pointer" v-for="item in 4">
         <div class="notice-more-date">2020.02.12 <div class="nmd-line"></div></div>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+  import {getFileImg} from "../../utils/public"
     export default {
       data(){
         return{
@@ -49,6 +50,9 @@
         })
       },
       methods:{
+        getFileImg(val){
+          return getFileImg(val)
+        },
         //下载附件
         down (name){
           var url='/jinding/download/'+name;
@@ -97,7 +101,8 @@
     width: 29%;
   }
   .right{
-    width: 64%;
+    /*width: 64%;*/
+    width: 100%;
   }
   .notice-detail{
     display: flex;

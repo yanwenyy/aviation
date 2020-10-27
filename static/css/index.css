@@ -74,7 +74,8 @@
 .detail-url{
   font-size: 15px;
   color:#2A5AAC;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
+  margin-top: 20px;
 }
 .detail-title-label{
   font-size: 13px;
@@ -104,6 +105,14 @@
 }
 .white-space{
   color: transparent;
+}
+.shadow{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,0.3);
 }
 @media (max-width: 900px){
   .container{

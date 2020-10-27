@@ -6,8 +6,8 @@
         <div class="detail-title-line"></div>
       </div>
       <div class="detail-msg" v-html="detail.content"></div>
-      <div class="detail-pre detail-url pointer">上一篇：无人机适航审定首次审查会顺利召开</div>
-      <div class="detail-next detail-url pointer">下一篇：无人机适航审定首次审查会顺利召开</div>
+      <div @click="goNextOrPre(pre)" v-if="pre" class="detail-pre detail-url pointer">上一篇：{{pre.title}}</div>
+      <div @click="goNextOrPre(next)" v-if="next" class="detail-next detail-url pointer">下一篇：{{next.title}}</div>
     </div>
 </template>
 
@@ -17,6 +17,8 @@
         return{
           id:'',
           detail:{},
+          pre:{},
+          next:{},
         }
       },
       mounted(){
@@ -36,8 +38,28 @@
           }).then(({data}) => {
             if (data && data.code === 10000) {
               this.detail=data.data;
+              this.nextOrPre()
             }
           })
+        },
+        nextOrPre(){
+          this.$http({
+            url: this.$http.adornUrl(`aviation/big/updown/notice`),
+            method: 'GET',
+            params: this.$http.adornParams({
+              'id': this.detail.id,
+            })
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              var datas=data.data;
+              this.pre=datas[0];
+              this.next=datas[1];
+            }
+          })
+        },
+        goNextOrPre(e){
+          this.id=e.id;
+          this.getDetail();
         }
       }
     }

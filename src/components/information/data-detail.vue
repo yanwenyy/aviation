@@ -1,26 +1,82 @@
 <template>
   <div>
     <div class="detail-title box-sizing">
-      <div class="detail-title-name">电动航空时代真的要来了？当地时间10日10点22分，世界上第一架全电动商用飞机在俄罗斯 机场完成了首次试飞。</div>
-      <div class="detail-title-source"><span class="dts-date inline-block">2020.10.23</span> <span>来源：百度</span></div>
+      <div class="detail-title-name">{{detail.title}}</div>
+      <div class="detail-title-source"><span class="dts-date inline-block">{{detail.insertTime}}</span> <span>来源：{{detail.source}}</span></div>
       <div class="detail-title-line"></div>
     </div>
-    <div class="detail-msg"></div>
-    <div class="detial-fj box-sizing">
-      <img src="" alt="" class="inline-block">
+    <div v-html="detail.content" class="detail-msg"></div>
+    <div v-for="item in detail.tbAnnexActions" class="detial-fj box-sizing">
+      <img :src="'../../../static/img/'+getFileImg(item.fileOriginalName)"  alt="" class="inline-block">
       <div class="inline-block">
-        <div>调整城镇土地使用税和申报表单.pdf</div>
-       <div class="down-fj pointer">立即下载</div>
+        <div>{{item.fileOriginalName}}</div>
+        <div @click="down(item.fileRealName)" class="down-fj pointer">立即下载</div>
       </div>
     </div>
-    <div class="detail-pre detail-url pointer">上一篇：无人机适航审定首次审查会顺利召开</div>
-    <div class="detail-next detail-url pointer">下一篇：无人机适航审定首次审查会顺利召开</div>
+    <div @click="goNextOrPre(pre)" v-if="pre" class="detail-pre detail-url pointer">上一篇：{{pre.title}}</div>
+    <div @click="goNextOrPre(next)" v-if="next" class="detail-next detail-url pointer">下一篇：{{next.title}}</div>
   </div>
 </template>
 
 <script>
+  import {getFileImg} from "../../utils/public"
   export default {
-
+    data(){
+      return{
+        id:'',
+        type:'',
+        detail:{},
+        pre:{},
+        next:{},
+      }
+    },
+    mounted(){
+      this.id=this.$route.query.id;
+      this.type=this.$route.query.type;
+      this.getDetail();
+    },
+    methods:{
+      getFileImg(val){
+        return getFileImg(val)
+      },
+      //下载附件
+      down (name){
+        var url='/jinding/download/'+name;
+        window.open(this.$http.adornUrl(url));
+      },
+      getDetail(){
+        this.$http({
+          url: this.$http.adornUrl(`/aviation/trend/${this.id}`),
+          method: 'GET',
+        }).then(({data}) => {
+          if (data && data.code === 10000) {
+            this.detail=data.data;
+            this.nextOrPre();
+          }
+        })
+      },
+      nextOrPre(){
+        this.$http({
+          url: this.$http.adornUrl(`/aviation/updown/list`),
+          method: 'GET',
+          params: this.$http.adornParams({
+            'type': this.type,
+            'id': this.detail.id,
+            'trndType': 1,
+          })
+        }).then(({data}) => {
+          if (data && data.code === 10000) {
+            var datas=data.data;
+            this.pre=datas[0];
+            this.next=datas[1];
+          }
+        })
+      },
+      goNextOrPre(e){
+        this.id=e.id;
+        this.getDetail();
+      }
+    }
   }
 </script>
 

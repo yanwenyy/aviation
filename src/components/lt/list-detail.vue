@@ -1,6 +1,6 @@
 <template>
     <div class="detail-body">
-      <div class="detail-msg">
+      <div class="detail-body">
         <div class="dm-head">
           <div class="dmh-title">
             {{detail.title}}
@@ -13,33 +13,33 @@
           <div class="dmh-foot">
             <div class="inline-block">
               <span class="inline-block lml-img-group">
-                <img src="" alt="">
+                <img class="lml-img-group-ck" src="../../../static/img/list-ck.png" alt="">
                 {{detail.lookNum}}
               </span>
               <span class="inline-block lml-img-group">
-                <img src="" alt="">
+                <img class="lml-img-group-hf" src="../../../static/img/list-hf.png" alt="">
                 {{detail.replyNum}}
               </span>
               <span class="inline-block lml-img-group">
-                <img src="" alt="">
+                <img :src="detail.votesNum>0?'../../../static/img/list-zan-act.png':'../../../static/img/list-zan.png'" alt="">
                 {{detail.supportNum}}
               </span>
               <span class="inline-block lml-img-group">
-                <img src="" alt="">
+                <img src="../../../static/img/list-cai.png" alt="">
                 {{detail.opposeNum}}
               </span>
             </div>
             <div class="inline-block">
-              <span class="inline-block dmh-foot-btn"><img src="../../../static/img/lt-detail-sc.png" alt="">删除</span>
-              <span class="inline-block dmh-foot-btn"><img src="../../../static/img/lt-detail-xg.png" alt="">修改</span>
-              <span @click="replyForm.id=detail.id,replyForm.status=1,scrollToSection" class="inline-block dmh-foot-btn"><img src="../../../static/img/lt-detail-hf.png" alt="">回复</span>
+              <span v-show="userMsg.userRole==1" @click="delStatus=true" class="inline-block dmh-foot-btn"><img src="../../../static/img/lt-detail-sc.png" alt="">删除</span>
+              <span v-show="userMsg.id==detail.userId" @click="$router.push({name:'release',query:{id:id,jobModelId:jobModelId,edit:true}})" class="inline-block dmh-foot-btn"><img src="../../../static/img/lt-detail-xg.png" alt="">修改</span>
+              <span @click="replyForm.id=detail.id,replyForm.status=1,scrollToSection()" class="inline-block dmh-foot-btn pointer"><img src="../../../static/img/lt-detail-hf.png" alt="">回复</span>
             </div>
           </div>
         </div>
         <div class="dm-msg box-sizing">
           <div class="detail-msg" v-html="detail.content"></div>
           <div v-for="item in detail.tbAnnexActions" class="detial-fj box-sizing">
-            <img src="" alt="" class="inline-block">
+            <img :src="'../../../static/img/'+getFileImg(item.fileOriginalName)" alt="" class="inline-block">
             <div class="inline-block">
               <div>{{item.fileOriginalName}}</div>
               <div @click="down(item.fileRealName)" class="down-fj pointer">立即下载</div>
@@ -92,7 +92,7 @@
             </div>
           </div>
           <div v-for="item in replyForm.tbAnnexActions" class="detial-fj box-sizing">
-            <img src="" alt="" class="inline-block">
+            <img  :src="'../../../static/img/'+getFileImg(item.fileOriginalName)" alt="" class="inline-block">
             <div class="inline-block">
               <div>{{item.fileOriginalName}}</div>
               <div @click="delFj(item)" class="down-fj pointer">删除</div>
@@ -103,14 +103,14 @@
           <div class="reply-msg-title">全部回复（{{replyList.length}}）</div>
           <div class="reply-msg-list" v-for="item in replyList">
             <div class="rml-name">
-              <span>{{item.userName}}</span>
+              <span>{{item.type=='2'?item.userName:'管理员'}}</span>
               <span class="white-space">1</span>
               <span v-show="item.author==1" class="blue">楼主</span>
             </div>
             <div class="rml-date">
               <div class="inline-block">{{showtime(item.careateDate)}}</div>
               <div class="inline-block">
-                <span @click="replyForm.id=item.id,replyForm.status=2,scrollToSection" class="inline-block blue rml-date-btn">
+                <span @click="replyForm.id=item.id,replyForm.status=2,scrollToSection()" class="pointer inline-block blue rml-date-btn">
                   <img src="../../../static/img/lt-detail-hf.png" alt="">
                   回复
                 </span>
@@ -118,8 +118,8 @@
                   <img src="../../../static/img/lt-detail-xg.png" alt="">
                   修改
                 </span>
-                <span class="inline-block red rml-date-btn">
-                  <img src="../../../static/img/lt-detail-sc.png" alt="">
+                <span v-show="userMsg.userRole==1" @click="delStatus=true,delId=item.id" class="inline-block red rml-date-btn pointer">
+                  <img src="../../../static/img/lt-detail-sc-red.png" alt="">
                   删除
                 </span>
               </div>
@@ -127,20 +127,32 @@
             <div class="rml-msg">
               {{item.content}}
             </div>
-            <div v-for="item in detail.tbAnnexActions" class="detial-fj box-sizing">
-              <img src="" alt="" class="inline-block">
+            <div v-for="item in item.tbAnnexActions" class="detial-fj box-sizing">
+              <img  :src="'../../../static/img/'+getFileImg(item.fileOriginalName)"  alt="" class="inline-block">
               <div class="inline-block">
                 <div>{{item.fileOriginalName}}</div>
                 <div @click="down(item.fileRealName)" class="down-fj pointer">立即下载</div>
               </div>
             </div>
-            <div class="rml-reply box-sizing">
+            <div v-show="item.level==2" class="rml-reply box-sizing">
               <span class="rml-reply-name">@{{item.replyUserName}}：</span>
               <span class="rml-reply-msg inline-block" :style="item.replyMore?'height:auto':'height:64px'">
                 {{item.pcontent}}
               </span>
-              <div class="blue pointer rml-reply-more" @click="item.replyMore=!item.replyMore">  {{item.replyMore?'收起':'查看全部'}}</div>
+              <div v-show="item.pcontent&&item.pcontent.length>150" class="blue pointer rml-reply-more" @click="item.replyMore=!item.replyMore">  {{item.replyMore?'收起':'查看全部'}}</div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div v-show="delStatus" class="shadow">
+        <div class="password-model box-sizing">
+          <div class="reply-title pm-title" style="text-align: center">提示</div>
+          <div>
+            确定要删除此条内容吗
+          </div>
+          <div class="sub-footer">
+            <div @click="delStatus=false" class="pointer inline-block">取消</div>
+            <div @click="del()" class="sub-password pointer inline-block">确定</div>
           </div>
         </div>
       </div>
@@ -148,10 +160,12 @@
 </template>
 
 <script>
+  import {getFileImg} from "../../utils/public"
     export default {
-        name: "list-detail",
       data(){
           return{
+            delStatus:false,
+            delId:'',
             imgUrlfront:this.$http.adornUrl('/jinding/showImg/'),
             replyList:[
               {
@@ -167,6 +181,7 @@
             ],
             userMsg:{},
             id:'',
+            jobModelId:'',
             detail:{},
             replyForm:{
               tbAnnexActions:[],
@@ -179,6 +194,7 @@
       },
       mounted(){
         this.id=this.$route.query.id;
+        this.jobModelId=this.$route.query.jobModelId;
         this.getDetail();
         this.getDiscuss();
         //获取用户信息
@@ -192,6 +208,58 @@
         });
       },
       methods:{
+        getFileImg(val){
+          return getFileImg(val)
+        },
+        del(){
+          if(this.delId!=''){
+            this.delReply();
+          }else{
+            this.delTheme();
+          }
+        },
+          //删除主题
+        delTheme(){
+          this.$http({
+            url: this.$http.adornUrl('/front/jobmodel/theme/delete/'+this.detail.id),
+            method: 'GET'
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              this.$Message.success({
+                message: '操作成功',
+                type: 'success',
+                duration: 1500,
+                onClose: () => {
+                  this.$router.go(-1)
+                }
+              })
+            } else {
+              this.$Message.error(data.msg)
+            }
+          })
+        },
+        //删除回复
+        delReply(item){
+          this.$http({
+            url: this.$http.adornUrl('/front/discuss/vote/del/'+this.delId),
+            method: 'GET'
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              this.$Message.success({
+                message: '操作成功',
+                type: 'success',
+                duration: 1500,
+                onClose: () => {
+                  this.delStatus=false;
+                  this.delId='';
+                  this.getDiscuss();
+                }
+              })
+            } else {
+              this.$Message.error(data.msg)
+            }
+          })
+        },
         //下载附件
         down (name){
           var url='/jinding/download/'+name;
@@ -236,7 +304,7 @@
             !isNaN(date.getTime());
 
           if (!isValidDate) {
-            window.console.error("不是有效日期格式");
+            // window.console.error("不是有效日期格式");
           }
           const formatDate = function(date) {
             let today = new Date(date);
@@ -402,13 +470,16 @@
         },
         //修改回复
         eidtReply(val){
-          this.replyForm={
-            tbAnnexActions:val.tbAnnexActions,
-            imgList:val.img&&val.img!=''?val.img.split(','):[],
-            content:val.content,
-            id:val.id,
-            status:'2'
-          };
+          // this.replyForm={
+          //   tbAnnexActions:val.tbAnnexActions,
+          //   imgList:val.img&&val.img!=''?val.img.split(','):[],
+          //   content:val.content,
+          //   id:val.id,
+          //   status:'2'
+          // };
+          this.replyForm.id=val.id;
+          this.replyForm.status=2;
+          this.replyForm.content=val.content;
           this.scrollToSection();
         }
       }
@@ -416,6 +487,40 @@
 </script>
 
 <style scoped>
+  .sub-footer{
+    text-align: center;
+    margin: 15px auto 0 auto;
+  }
+  .sub-footer>div{
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #999999;
+    font-size: 16px;
+    color:#fff;
+  }
+  .sub-password{
+    background: #2A5AAC!important;
+    margin-left: 30px;
+  }
+  .pm-title{
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+  }
+  .password-model{
+    width: 515px;
+    height:auto;
+    background: #fff;
+    margin: 8% auto;
+    border-radius: 4px;
+    position: relative;
+    padding: 53px 47px;
+    font-size: 15px;
+    line-height: 24px;
+  }
   .fileInput{
     width: 100%;
     height: 100%;
@@ -433,6 +538,7 @@
   }
   .rml-reply-name{
     font-weight: bold;
+    vertical-align: top;
   }
   .rml-reply{
     width: 100%;
@@ -618,16 +724,23 @@
   }
   .lml-img-group{
     font-size: 17px;
+    margin-right: 20px;
   }
   .lml-img-group>img{
-    min-width: 18px;
-    min-height: 18px;
-    width: 18px;
+    width: 16px;
     height: 18px;
-    background: #eee;
     vertical-align: middle;
+    margin-top: -5px;
   }
-  .detail-msg{
+  .lml-img-group-ck{
+    width: 18px!important;
+    height: 13px!important;
+  }
+  .lml-img-group-hf{
+    width: 18px!important;
+    height: 18px!important;
+  }
+  .detail-body{
     background: #fff;
     margin-bottom: 17px;
     padding-bottom: 67px;

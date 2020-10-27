@@ -29,19 +29,19 @@
         <div class="pm-input">
           <span class="inline-block">原密码</span>
           <span class="pmi-line inline-block"></span>
-          <input type="password" class="box-sizing pmi-input">
+          <input type="password" class="box-sizing pmi-input" v-model="password">
         </div>
         <div class="pm-input">
           <span class="inline-block">新密码</span>
           <span class="pmi-line inline-block"></span>
-          <input type="password" class="box-sizing pmi-input">
+          <input type="password" class="box-sizing pmi-input" v-model="passwordConfrim">
         </div>
         <div class="pm-input">
           <span class="inline-block">确认新密码</span>
           <span class="pmi-line inline-block"></span>
-          <input type="password" class="box-sizing pmi-input">
+          <input type="password" class="box-sizing pmi-input" v-model="passwordAgin">
         </div>
-        <div @click="passWordShadow=false" class="sub-password pointer">保存</div>
+        <div @click="edit()" class="sub-password pointer">保存</div>
       </div>
     </div>
     <Footer></Footer>
@@ -61,7 +61,10 @@
     data(){
       return{
         passWordShadow:false,
-        userMsg:{}
+        userMsg:{},
+        password:'',
+        passwordConfrim:'',
+        passwordAgin:''
       }
     },
     mounted(){
@@ -74,6 +77,41 @@
           this.userMsg=data.data;
         }
       });
+    },
+    methods:{
+      edit(){
+        if(this.password!=this.passwordConfrim||this.password!=this.passwordAgin||this.passwordConfrim!=this.passwordAgin){
+          this.$Message.error({
+            message: '密码不一致',
+            zIndex:999999999999999
+          })
+        }else{
+          this.$http({
+            url: this.$http.adornUrl(`/front/user/update/pwd`),
+            method: 'POST',
+            data: this.$http.adornData({
+              'password': this.password,
+              'username': this.userMsg.userName,
+            })
+          }).then(({data}) => {
+            if (data && data.code ==10000) {
+              this.$Message.success({
+                message: '操作成功',
+                type: 'success',
+                duration: 1500,
+                onClose: () => {
+                  this.passWordShadow=false
+                }
+              })
+            } else {
+              this.$Message.error({
+                message: data.msg,
+                zIndex:999999999999999
+              })
+            }
+          })
+        }
+      }
     }
   }
 </script>
