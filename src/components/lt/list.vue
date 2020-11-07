@@ -20,9 +20,9 @@
         </div>
         <span class="white-space">空格</span>
         <span v-show="modelMsg.purviewType=='0'" class="">全员开放</span>
-        <div v-show="modelMsg.purviewType=='1'" class="zd-vip inline-block">
+        <div @click="vipShadow=true" v-show="modelMsg.purviewType=='1'" class="zd-vip inline-block pointer">
           <span>指定{{modelMsg.users&&modelMsg.users.length}}位会员开放：</span>
-          <span v-for="item in modelMsg.users">{{item.userName}}</span>
+          <span v-for="(item,index) in modelMsg.users">{{item.userName}} <span v-show="index<modelMsg.users.length-1">、</span></span>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
         <div @click="$router.push({name:'release',query:{id:id,jobModelId:jobModelId}})" class="lmh-sub pointer">+ 发帖</div>
       </div>
       <div class="list-main-body box-sizing">
-        <div @click="$router.push({name:'ltListDetail',query:{id:item.id}})" v-for="item in list" class="list-main-list pointer">
+        <div @click="$router.push({name:'ltListDetail',query:{id:item.id,jobModelId:jobModelId}})" v-for="item in list" class="list-main-list pointer">
           <div class="lml-title">
             <span v-show="item.ifTop==1" class="inline-block lml-zd">置顶</span>
             <span v-show="item.ifLocking==1" class="inline-block lml-sd">锁定</span>
@@ -47,25 +47,34 @@
             </div>
             <div class="inline-block">
               <span class="inline-block lml-img-group">
-                <img src="" alt="">
+                <img class="lml-img-group-ck" src="../../../static/img/list-ck.png" alt="">
                 {{item.lookNum}}
               </span>
               <span class="inline-block lml-img-group">
-                <img src="" alt="">
+                <img class="lml-img-group-hf" src="../../../static/img/list-hf.png" alt="">
                 {{item.replyNum}}
               </span>
               <span class="inline-block lml-img-group">
-                <img src="" alt="">
+                <img :src="item.votesNum>0?'../../../static/img/list-zan-act.png':'../../../static/img/list-zan.png'" alt="">
                 {{item.supportNum}}
               </span>
               <span class="inline-block lml-img-group">
-                <img src="" alt="">
+                <img src="../../../static/img/list-cai.png" alt="">
                 {{item.opposeNum}}
               </span>
             </div>
           </div>
         </div>
         <Page v-if="pageStatus" :total="totalPage" :pageSize="pageSize" @pageClik="pageNumClick"></Page>
+      </div>
+    </div>
+    <div v-show="vipShadow" class="shadow">
+      <div class="password-model box-sizing">
+        <div class="reply-title pm-title">指定{{modelMsg.users&&modelMsg.users.length}}位会员开放：</div>
+        <div @click="vipShadow=false" class="close-model pointer">X</div>
+        <div>
+          <span v-for="(item,index) in modelMsg.users">{{item.userName}} <span v-show="index<modelMsg.users.length-1">、</span></span>
+        </div>
       </div>
     </div>
   </div>
@@ -90,6 +99,7 @@
             totalPage: 0,
             pageStatus:false,
             list:[],
+            vipShadow:false,
           }
       },
       mounted(){
@@ -128,7 +138,7 @@
         //版块信息
         getModel(){
           this.$http({
-            url: this.$http.adornUrl('/biz/jobchildmodel/info/'+this.id,),
+            url: this.$http.adornUrl('/front/jobmodel/info/'+this.id,),
             method: 'GET',
           }).then(({data}) => {
             this.modelMsg = data.data;
@@ -150,6 +160,46 @@
 </script>
 
 <style scoped>
+  .sub-password{
+    width: 180px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #2A5AAC;
+    font-size: 16px;
+    color:#fff;
+    margin: 15px auto 0 auto;
+  }
+  .pm-title{
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+  }
+  .password-model{
+    width: 515px;
+    height:auto;
+    background: #fff;
+    margin: 8% auto;
+    border-radius: 4px;
+    position: relative;
+    padding: 53px 47px;
+    font-size: 15px;
+    line-height: 24px;
+  }
+  .close-model{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 30px;
+    color:#fff;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    top:-64px;
+    right: 0;
+  }
   .list-head-foot{
     font-size: 15px;
     color:#999;
@@ -177,12 +227,18 @@
     font-size: 17px;
   }
   .lml-img-group>img{
-    min-width: 18px;
-    min-height: 18px;
-    width: 18px;
+    width: 16px;
     height: 18px;
-    background: #eee;
     vertical-align: middle;
+    margin-top: -5px;
+  }
+  .lml-img-group-ck{
+    width: 18px!important;
+    height: 13px!important;
+  }
+  .lml-img-group-hf{
+    width: 18px!important;
+    height: 18px!important;
   }
   .lml-foot{
     display: flex;

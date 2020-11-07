@@ -12,7 +12,8 @@ Vue.use(VeeValidate, config)
 const dictionary = {
   zh_CN: {
     messages: {
-      required: (field) => '请' + field,
+      // required: (field) => '请' + field,
+      required: (field) => '不能为空',
       number: (field) => field + '必须为数值',
       url: () => '请输入正确格式的服务器地址',
       ip: () => '请输入正确的IP地址',

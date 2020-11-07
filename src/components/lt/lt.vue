@@ -22,6 +22,16 @@
         </div>
       </div>
     </div>
+    <div v-show="notVip" class="shadow">
+      <div class="password-model box-sizing">
+        <div class="reply-title pm-title" style="text-align: center">提示</div>
+        <div @click="$router.go(-1)" class="close-model pointer">X</div>
+        <div>
+          您还不是会员用户或没登录，暂时无法访问论坛,快去看看其他内容或者申请入会吧！
+        </div>
+        <div @click="$router.go(-1)" class="sub-password pointer">确定</div>
+      </div>
+    </div>
     <Footer></Footer>
   </div>
 </template>
@@ -40,6 +50,9 @@
           twoMsg:'',
           classList:[],
           twoClassList:[],
+          id:'',
+          jobModelId:'',
+          notVip:false,
         }
       },
       mounted(){
@@ -50,7 +63,8 @@
         }).then(({data}) => {
           this.classList = data.data;
           if(data.msg=='invalid token'||data.code==401){
-            this.$router.push({name:'login',query:{from:'lt'}});
+            // this.$router.push({name:'login',query:{from:'lt'}});
+            this.notVip=true;
           }
         });
       },
@@ -67,10 +81,60 @@
           });
         }
       },
+      watch :{
+        $route: {
+          handler: function(route) {
+            // console.log(route)
+            this.id=route.query.id;
+            this.jobModelId=route.query.jobModelId;
+          },
+          immediate: true
+        }
+      }
     }
 </script>
 
 <style scoped>
+  .sub-password{
+    width: 180px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #2A5AAC;
+    font-size: 16px;
+    color:#fff;
+    margin: 15px auto 0 auto;
+  }
+  .pm-title{
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+  }
+  .password-model{
+    width: 515px;
+    height:auto;
+    background: #fff;
+    margin: 8% auto;
+    border-radius: 4px;
+    position: relative;
+    padding: 53px 47px;
+    font-size: 15px;
+    line-height: 24px;
+  }
+  .close-model{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 30px;
+    color:#fff;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    top:-64px;
+    right: 0;
+  }
   .blue{
     color:#2A5AAC!important;
   }

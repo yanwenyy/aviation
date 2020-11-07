@@ -42,14 +42,14 @@
           </div>
           <swiper ref="mySwiper2"  :options="swiperOption">
             <swiper-slide v-for="(item,index) in trendListTJ" :key="index">
-              <div @click="$router.push({name:'industryTrendsDetail',query:{id:item.id} })" class="dynamic-msg">
+              <div @click="$router.push({name:'industryTrendsDetail',query:{id:item.id,type:0} })" :data-item="item.id" class="dynamic-msg pointer">
                 <div class="inline-block box-sizing dm-img">
                   <img :src="imgUrlfront+item.coverImg" alt="">
                 </div>
                 <div class="inline-block box-sizing dm-right">
                   <div class="dm-right-date">{{item.insertTime}}</div>
                   <div class="dm-right-msg">{{item.title}}</div>
-                  <div class="dm-right-goDetail">查看详情 ></div>
+                  <div @click="$router.push({name:'industryTrendsDetail',query:{id:item.id,type:0} })" class="dm-right-goDetail">查看详情 ></div>
                 </div>
               </div>
             </swiper-slide>
@@ -59,7 +59,7 @@
             <img src="../../static/img/home-right.png" alt="">
           </div>
           <div class="dynamic-list">
-            <div v-for="item in trendList" @click="$router.push({name:'industryTrendsDetail',query:{id:item.id} })" class="inline-block box-sizing pointer">
+            <div v-for="item in trendList" @click="$router.push({name:'industryTrendsDetail',query:{id:item.id,type:1} })" class="inline-block box-sizing pointer">
               <div class="dynamic-list-date">{{item.insertTime}}</div>
               <div class="dynamic-list-msg">{{getTitle(item.title,30)}}</div>
             </div>
@@ -77,13 +77,13 @@
           </div>
         </div>
         <div class="home-notice-list">
-          <div  v-for="item in noticeList"  @click="$router.push({name:'noticeDetail',query:{id:item.id} })" class="inline-block box-sizing pointer">
+          <div  v-for="item in noticeList"  @click="noticeType=='通知公告'?$router.push({name:'noticeDetail',query:{id:item.id} }):$router.push({name:'dataDetail',query:{id:item.id,type:1} })" class="inline-block box-sizing pointer">
             <div>{{item.title}}</div>
             <div class="hn-date">{{item.insertTime}}</div>
             <div class="hn-go"> > </div>
           </div>
         </div>
-        <div @click="$router.push({name:'notice'})"  class="hnl-more pointer">查看更多内容+</div>
+        <div @click="noticeType=='通知公告'?$router.push({name:'notice'}):$router.push({name:'data'})"  class="hnl-more pointer">查看更多内容+</div>
       </div>
     </div>
     <!--<div class="container">-->
@@ -114,13 +114,16 @@
             pagination: '.swiper-pagination',
             type: 'bullets',
             paginationClickable: true,
-            loop: true, //循环播放
+            // loop: true, //循环播放
             autoplay: 3000,
             observer: true, //修改swiper自己或子元素时，自动初始化swiper
             observeParents: true ,//修改swiper的父元素时，自动初始化swiper
             // autoplayStopOnLast:false,
             nextButton: '.swiper-button-next2',
             prevButton: '.swiper-button-prev2',
+            onClick: function(swiper,event) {
+              console.log(event)
+            },
           },
           trendList:[],
           trendListTJ:[],
@@ -173,8 +176,9 @@
         },
         //通知公告和资料中心
         getNotice(){
+          console.log(this.noticeType)
           this.$http({
-            url: this.$http.adornUrl(`/aviation/${this.noticeType=='通知公告'?'notice':'notice'}/list`),
+            url: this.$http.adornUrl(`/aviation/${this.noticeType=='通知公告'?'notice':'material'}/list`),
             method: 'GET',
             params: this.$http.adornParams({
               'pageNum': 1,
@@ -191,7 +195,7 @@
         },
         bannerClick(url){
           window.open(url)
-        }
+        },
       },
       computed: {
         myValue() {

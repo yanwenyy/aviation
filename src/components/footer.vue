@@ -8,7 +8,7 @@
           <div class="inline-block">Email：hk@hangkongxiehui.com</div>
           <div class="inline-block">地址：北京市朝阳区某区某楼128号</div>
         </div>
-        <div class="copyright">©2018 电动航空适航行业委员会版权所有，并保留所有权利</div>
+        <div class="copyright">©2018 电动航空适航标准专业委员会版权所有，并保留所有权利</div>
       </div>
       <img class="foot-logo" src="../../static/img/logo.png" alt="">
     </div>

@@ -82,7 +82,7 @@
     margin-bottom: 27px;
     padding: 30px;
     float: left;
-    margin-right: 20px;
+    margin-right: 17px;
     /*-webkit-column-break-inside: avoid;*/
     /*page-break-inside: avoid;*/
     /*break-inside: avoid;*/

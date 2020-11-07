@@ -14,7 +14,7 @@
             <input class="fileInput pointer" type="file"  ref="clearFile" @change="getFile($event)" multiple="multiplt" accept=".docx,.doc,.pdf">
           </div>
           <div v-for="item in tbAnnexActions" class="detial-fj box-sizing">
-            <img src="" alt="" class="inline-block">
+            <img :src="'../../../static/img/'+getFileImg(item.fileOriginalName)" alt="" class="inline-block">
             <div class="inline-block">
               <div>{{item.fileOriginalName}}</div>
               <div @click="delFj(item)" class="down-fj pointer">删除</div>
@@ -23,13 +23,14 @@
         </div>
       </div>
       <div class="release-btn">
-        <div class="inline-block pointer" @click="$router.push({name:'lt'})">返回</div>
+        <div class="inline-block pointer" @click="$router.go(-1)">返回</div>
         <div class="inline-block pointer sub-release" @click="sub">保存</div>
       </div>
     </div>
 </template>
 
 <script>
+  import {getFileImg} from "../../utils/public"
   import UEditor from '@/components/ueditor/ueditor.vue'
     export default {
         name: "release",
@@ -44,11 +45,36 @@
             title:'',
             content:'',
             tbAnnexActions:[],
+            edit:false
           }
       },
       mounted(){
         this.childModelId=this.$route.query.id;
         this.jobModelId=this.$route.query.jobModelId;
+        this.edit=this.$route.query.edit;
+        if(this.edit){
+          this.$http({
+            url: this.$http.adornUrl(`/front/jobmodel/theme/info/${this.childModelId}`),
+            method: 'GET',
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              var datas=data.data;
+              this.title=datas.title;
+              this.content=datas.content;
+              var list=data.data.tbAnnexActions,i=0,len=list.length;
+              this.fileList=[];
+              if (len!= 0) {
+                for (;i<len;i++) {
+                  this.tbAnnexActions.push({
+                    fileRealName: list[i].fileRealName,
+                    fileOriginalName: list[i].fileOriginalName,
+                    id: list[i].id
+                  })
+                }
+              }
+            }
+          })
+        }
         //获取用户信息
         this.$http({
           url: this.$http.adornUrl('/front/user/get/user'),
@@ -60,6 +86,9 @@
         });
       },
       methods:{
+        getFileImg(val){
+          return getFileImg(val)
+        },
         //获取富文本内容
         editorContent(modelname,index,content){
           console.log(modelname)
@@ -125,7 +154,7 @@
                 type: 'success',
                 duration: 1500,
                 onClose: () => {
-                  this.$router.push({name:'lt'});
+                  this.$router.push({name:'ltList',query:{id:this.childModelId,jobModelId:this.jobModelId} });
                 }
               })
             } else {

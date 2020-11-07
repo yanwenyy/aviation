@@ -3,7 +3,7 @@
       <div v-show="tagId" class="notice-label-group box-sizing">
         #{{tagName}}
       </div>
-      <div v-for="item in list" class="it-list box-sizing pointer" @click="$router.push({name:'industryTrendsDetail',query:{id:item.id} })">
+      <div v-for="item in list" class="it-list box-sizing pointer" @click="$router.push({name:'industryTrendsDetail',query:{id:item.id,type:2} })">
         <img v-show="item.coverImg" class="it-list-img"  :src="imgUrlfront+item.coverImg">
         <div class="inline-block" :class="item.coverImg?'it-msg-show':''">
           <div class="it-title">{{item.title}}</div>
@@ -12,7 +12,7 @@
             <div class="inline-block">来源：{{item.source}}</div>
           </div>
           <div class="it-msg">
-            {{item.content}}
+            <div v-html="item.content"></div>
           </div>
           <div class="it-label">
             <div v-for="i in item.tagEntities" class="inline-block" @click.stop="tagName=i.tagName,getTagList(i.tagId)">#{{i.tagName}}</div>
@@ -85,7 +85,7 @@
 
 <style scoped>
   .it-msg-show{
-    width: 70%;
+    width: 60%;
   }
   .it-label{
     font-size: 14px;
@@ -100,6 +100,8 @@
     line-height: 27px;
     margin-top: 20px;
     color:#343434;
+    height: 70px;
+    overflow: hidden;
   }
   .it-date{
     font-size: 16px;

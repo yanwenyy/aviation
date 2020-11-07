@@ -16,3 +16,16 @@ Array.prototype.remove = function(val) {
     this.splice(index, 1);
   }
 };
+
+
+export function getFileImg (val) {
+  if(val.indexOf('ppt')!=-1){
+    return 'icon_ppt.png'
+  }else if(val.indexOf('xls')!=-1){
+    return 'icon_excel.png'
+  }else if(val.indexOf('pdf')!=-1){
+    return 'icon_PDF.png'
+  }else if(val.indexOf('doc')!=-1||val.indexOf('txt')!=-1){
+    return 'icon_doc.png'
+  }
+}

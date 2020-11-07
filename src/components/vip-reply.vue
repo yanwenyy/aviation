@@ -8,7 +8,7 @@
         <div class="reply-notice">申请后，我们会7个工作日内联系您，请您耐心等待</div>
         <div class="reply-box box-sizing">
           <div class="reply-list">
-            <div class="reply-input-name inline-block" style="margin-top: 0">委员类型</div>
+            <div class="reply-input-name inline-block" style="margin-top: 0">会员类型</div>
             <div class="inline-block">
               <div class="reply-radio inline-block">
                 <input type="radio" name="typeClass" value="1" v-model="type"> 个人申请
