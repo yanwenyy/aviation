@@ -14,7 +14,7 @@
           <div v-if="userName!=''"  @click="$router.push({name:'personalCenter'})" class="pointer inline-block go-login">{{userName}} <img src="../../static/img/go-login.png" alt=""></div>
         </div>
       </div>
-      <div class="banner-shadow"></div>
+      <!--<div class="banner-shadow"></div>-->
       <div class="banner">
         <swiper ref="mySwiper"  :options="swiperOption">
           <swiper-slide v-for="(item,index) in bannerImage" :key="index">
@@ -37,7 +37,7 @@
             <div class="home-title-en">INDUSTRY TRENDS</div>
             <div class="home-title">行业动态</div>
           </div>
-          <div class="hd-more hd-more-left pointer">
+          <div class="hd-more hd-more-left pointer swiper-button-prev2">
             <img src="../../static/img/home-left.png" alt="">
           </div>
           <swiper ref="mySwiper2"  :options="swiperOption">
@@ -55,7 +55,7 @@
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
           </swiper>
-          <div class="hd-more hd-more-right pointer">
+          <div class="hd-more hd-more-right pointer swiper-button-next2">
             <img src="../../static/img/home-right.png" alt="">
           </div>
           <div class="dynamic-list">
@@ -161,6 +161,8 @@
           url: this.$http.adornUrl('/aviation/trend/list'),
           method: 'GET',
           params: this.$http.adornParams({
+            'pageNum': 1,
+            'pageSize': 4,
             'type': 1,
           })
         }).then(({data}) => {

@@ -107,6 +107,8 @@
   }
   .memorabilia-list{
     margin-bottom: 55px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
   }
   .memorabilia-body{
     padding: 11px 0;

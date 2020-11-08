@@ -12,13 +12,13 @@
                 {{item.name}}
               </div>
               <div v-show="leftMsg==item.name" class="left-list-two pointer">
-                <div v-for="i in twoClassList" @click="twoMsg=i.childName,$router.push({name:'ltList',query:{id:i.id,jobModelId:item.id} })" class="left-list-two-list"  :class="twoMsg==i.childName?'blue':''">{{i.childName}}</div>
+                <div v-for="i in twoClassList" @click="twoMsg=i.childName,$router.push({name:'ltList',query:{id:i.id,jobModelId:item.id,time:Date.now()} })" class="left-list-two-list"  :class="twoMsg==i.childName?'blue':''">{{i.childName}}</div>
               </div>
             </li>
           </ul>
         </div>
         <div class="lt-right">
-          <router-view></router-view>
+          <router-view :key="$route.query.time"></router-view>
         </div>
       </div>
     </div>
@@ -29,7 +29,8 @@
         <div>
           您还不是会员用户或没登录，暂时无法访问论坛,快去看看其他内容或者申请入会吧！
         </div>
-        <div @click="$router.go(-1)" class="sub-password pointer">确定</div>
+        <!--<div @click="$router.go(-1)" class="sub-password pointer">确定</div>-->
+        <div @click="$router.push({name:'login',query:{from:'lt'}})" class="sub-password pointer">确定</div>
       </div>
     </div>
     <Footer></Footer>

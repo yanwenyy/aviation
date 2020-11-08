@@ -6,19 +6,19 @@
         <Crumbs></Crumbs>
         <div class="main-msg-body">
           <div class="left-tab">
-            <div @click="tabMsg='通知公告',$router.push({path:'notice'})" class="pointer" :class="tabMsg=='notice'||tabMsg=='noticeDetail'?'left-tab-act':''">
+            <div @click="tabMsg='notice',$router.push({path:'notice',query:{time:Date.now()}})" class="pointer" :class="tabMsg=='notice'||tabMsg=='noticeDetail'?'left-tab-act':''">
               <span class="inline-block left-tab-dot"></span>通知公告
             </div>
-            <div @click="tabMsg='行业动态',$router.push({name:'industryTrends'})" class="pointer" :class="tabMsg=='industryTrends'||tabMsg=='industryTrendsDetail'?'left-tab-act':''">
+            <div @click="tabMsg='industryTrends',$router.push({name:'industryTrends',query:{time:Date.now()}})" class="pointer" :class="tabMsg=='industryTrends'||tabMsg=='industryTrendsDetail'?'left-tab-act':''">
               <span class="inline-block left-tab-dot"></span>行业动态
             </div>
-            <div @click="tabMsg='资料中心',$router.push({name:'data'})" class="pointer" :class="tabMsg=='data'||tabMsg=='dataDetail'?'left-tab-act':''">
+            <div @click="tabMsg='data',$router.push({name:'data',query:{time:Date.now()}})" class="pointer" :class="tabMsg=='data'||tabMsg=='dataDetail'?'left-tab-act':''">
               <span class="inline-block left-tab-dot"></span>资料中心
             </div>
           </div>
           <div class="content-line"></div>
           <div class="right-msg">
-            <router-view></router-view>
+            <router-view :key="$route.query.time"></router-view>
           </div>
         </div>
       </div>

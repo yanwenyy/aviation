@@ -8,7 +8,8 @@
           <div class="data-class-list" v-for="item in relationList">
             <div class="inline-block data-class-name">{{item.name}}：</div>
             <div class="data-class-tab-group inline-block">
-              <div class="inline-block data-class-tab pointer"  v-for="i in item.childClassLevel"  @click="sleRelation(i.id)" :class="relationCheck.indexOf(i.id)!=-1?'data-class-tab-act':''">{{i.name}}</div>
+              <div class="inline-block data-class-tab pointer" @click="sleRelation('不限',item.childClassLevel),item.levelName='不限'" :class="item.levelName=='不限'||!item.levelName?'data-class-tab-act':''">不限</div>
+              <div class="inline-block data-class-tab pointer"  v-for="i in item.childClassLevel"  @click="sleRelation(i.id),item.levelName=item.name" :class="relationCheck.indexOf(i.id)!=-1?'data-class-tab-act':''">{{i.name}}</div>
             </div>
           </div>
         </div>
@@ -98,11 +99,21 @@
           this.getList();
         },
         //关联级别点击
-        sleRelation(e){
-          if(this.relationCheck.indexOf(e)!=-1){
-            this.relationCheck.remove(e)
+        sleRelation(e,list){
+          if(e=='不限'){
+           var i=0,len=list.length;
+           for(;i<len;i++){
+             var _id=list[i].id;
+             if(this.relationCheck.indexOf(_id)!=-1){
+               this.relationCheck.remove(_id)
+             }
+           }
           }else{
-            this.relationCheck.push(e)
+            if(this.relationCheck.indexOf(e)!=-1){
+              this.relationCheck.remove(e)
+            }else{
+              this.relationCheck.push(e)
+            }
           }
           this.getList();
         }
@@ -185,6 +196,9 @@
     /*width: 15%;*/
     margin-right: 29px;
     vertical-align: top;
+    font-size: 16px;
+    color:#333;
+    font-weight: bold;
   }
   .data-class-tab-group{
     /*width: 80%;*/
