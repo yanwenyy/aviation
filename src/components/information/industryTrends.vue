@@ -12,7 +12,7 @@
             <div class="inline-block">来源：{{item.source}}</div>
           </div>
           <div class="it-msg">
-            <div v-html="item.content"></div>
+            <div>{{preface}}</div>
           </div>
           <div class="it-label">
             <div v-for="i in item.tagEntities" class="inline-block" @click.stop="tagName=i.tagName,getTagList(i.tagId)">#{{i.tagName}}</div>
@@ -104,13 +104,13 @@
     overflow: hidden;
   }
   .it-date{
-    font-size: 16px;
-    color:#B2121A;
+    font-size: 15px;
+    color:#999;
   }
   .it-source{
     display: flex;
     justify-content: space-between;
-    font-size: 15px;
+    font-size: 14px;
     color:#9A9A9A;
   }
   .it-title{
@@ -118,6 +118,7 @@
     font-weight: bold;
     margin-bottom: 10px;
     line-height: 29px;
+    color:#333;
   }
   .it-list-img{
     width: 312px;
