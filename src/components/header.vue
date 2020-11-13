@@ -128,7 +128,8 @@
   }
   .tab-list{
     position: relative;
-    margin-right: 2.6%;
+    /*margin-right: 2.6%;*/
+    margin-right: 51px;
   }
   .header-tab{
     width: 100%;

@@ -133,7 +133,8 @@
   .data-list-msg{
     font-size: 15px;
     line-height: 27px;
-    height: 70px;
+    max-height: 70px;
+    height: auto;
     overflow: hidden;
   }
   .data-list-line{
@@ -150,6 +151,7 @@
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 15px;
+    color:#333;
   }
   .data-list{
     border: 1px solid #EEEEEE;

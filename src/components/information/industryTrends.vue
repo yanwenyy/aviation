@@ -4,7 +4,7 @@
         #{{tagName}}
       </div>
       <div v-for="item in list" class="it-list box-sizing pointer" @click="$router.push({name:'industryTrendsDetail',query:{id:item.id,type:2} })">
-        <img v-show="item.coverImg" class="it-list-img"  :src="imgUrlfront+item.coverImg">
+        <img v-if="item.coverImg" class="it-list-img"  :src="imgUrlfront+item.coverImg">
         <div class="inline-block" :class="item.coverImg?'it-msg-show':''">
           <div class="it-title">{{item.title}}</div>
           <div class="it-source">
@@ -100,7 +100,8 @@
     line-height: 27px;
     margin-top: 20px;
     color:#343434;
-    height: 70px;
+    max-height: 70px;
+    height: auto;
     overflow: hidden;
   }
   .it-date{

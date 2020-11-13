@@ -16,7 +16,7 @@
               <span class="inline-block left-tab-dot"></span>资料中心
             </div>
           </div>
-          <div class="content-line"></div>
+          <!--<div class="content-line"></div>-->
           <div class="right-msg">
             <router-view :key="$route.query.time"></router-view>
           </div>
@@ -60,7 +60,8 @@
     background: #eee;
   }
   .right-msg{
-    width:76%;
+    /*width:76%;*/
+    width:80%;
   }
   .main-msg-body{
     display: flex;

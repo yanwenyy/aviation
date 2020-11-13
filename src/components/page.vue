@@ -32,26 +32,29 @@
     margin-top: 97px;
   }
   >>>.prePage,>>>.nextPage{
-    width: 50px;
-    height: 30px;
-    line-height: 30px;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
-    border: 1px solid #999;
-    margin: 0 3px;
+    border: 1px solid #eee;
+    margin: 0 7px;
     border-radius: 3px;
+    font-size: 16px;
+    color: #333;
   }
   >>>.pageButton{
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
     border: 1px solid #999;
-    margin: 0 3px;
+    margin: 0 7px;
     border-radius: 3px;
+    font-size: 16px;
   }
   >>>.activity{
-    background: #0079cd;
-    border-color: #0079cd;
+    background: #2A5AAC;
+    border-color: #2A5AAC;
     color:#fff;
   }
 </style>

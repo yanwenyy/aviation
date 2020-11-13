@@ -39,10 +39,10 @@
         <div class="dm-msg box-sizing">
           <div class="detail-msg" v-html="detail.content"></div>
           <div v-for="item in detail.tbAnnexActions" class="detial-fj box-sizing">
-            <img :src="'../../../static/img/'+getFileImg(item.fileOriginalName)" alt="" class="inline-block">
+            <img :src="path+getFileImg(item.fileOriginalName)" alt="" class="inline-block">
             <div class="inline-block">
               <div>{{item.fileOriginalName}}</div>
-              <div @click="down(item.fileRealName)" class="down-fj pointer">立即下载</div>
+              <div @click="down(item.fileRealName,item.fileOriginalName)" class="down-fj pointer">立即下载</div>
             </div>
           </div>
           <div class="dm-zan-group">
@@ -131,7 +131,7 @@
               <img  :src="'../../../static/img/'+getFileImg(item.fileOriginalName)"  alt="" class="inline-block">
               <div class="inline-block">
                 <div>{{item.fileOriginalName}}</div>
-                <div @click="down(item.fileRealName)" class="down-fj pointer">立即下载</div>
+                <div @click="down(item.fileRealName,item.fileOriginalName)" class="down-fj pointer">立即下载</div>
               </div>
             </div>
             <div v-show="item.level==2" class="rml-reply box-sizing">
@@ -164,6 +164,7 @@
     export default {
       data(){
           return{
+            path:window.path,
             delStatus:false,
             delId:'',
             imgUrlfront:this.$http.adornUrl('/jinding/showImg/'),
@@ -261,8 +262,8 @@
           })
         },
         //下载附件
-        down (name){
-          var url='/jinding/download/'+name;
+        down (name,realName){
+          var url='/jinding/download/'+name+'?fileName='+realName;
           window.open(this.$http.adornUrl(url));
         },
         getDetail(){

@@ -17,7 +17,7 @@
       <!--<div class="banner-shadow"></div>-->
       <div class="banner">
         <swiper ref="mySwiper"  :options="swiperOption">
-          <swiper-slide v-for="(item,index) in bannerImage" :key="index">
+          <swiper-slide class="swiper-imgBox" v-for="(item,index) in bannerImage" :key="index">
             <img class="swiper-img" :src="imgUrlfront+item.imgUrl" @click="bannerClick(item.jumpUrl)" alt="">
           </swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>
@@ -280,6 +280,7 @@
   .hn-date{
     font-size: 14px;
     margin-top:9px ;
+    opacity: 0.7;
   }
   .home-notice-list{
     /*column-count: 3;*/
@@ -416,9 +417,15 @@
     font-weight: bold;
   }
   /*@import "../../static/css/swiper.min.css";*/
+  >>> .swiper-imgBox{
+    width: 100%;
+    overflow: hidden;
+    /*background-size: cover;*/
+  }
   >>>.swiper-img{
     width: 100%;
     height: 760px;
+    object-fit: cover;
   }
   .home-head{
     width: 100%;

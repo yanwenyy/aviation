@@ -27,5 +27,7 @@ export function getFileImg (val) {
     return 'icon_PDF.png'
   }else if(val.indexOf('doc')!=-1||val.indexOf('txt')!=-1){
     return 'icon_doc.png'
+  }else if(val.indexOf('png')!=-1||val.indexOf('jpg')!=-1){
+    return 'icon_img.png'
   }
 }

@@ -27,8 +27,8 @@
       },
       methods:{
         //下载附件
-        down (name){
-          var url='/jinding/download/'+name;
+        down (name,realName){
+          var url='/jinding/download/'+name+'?fileName='+realName;
           window.open(this.$http.adornUrl(url));
         },
         getDetail(){
