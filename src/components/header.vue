@@ -3,7 +3,10 @@
     <div class="header-top">
       <div class="container">
         <img class="header-logo" src="../../static/img/logo-2.png" alt="">
-        <div class="go-lt pointer" @click="$router.push({name:'ltList',query:{id:id,jobModelId:jobModelId} })">
+        <div v-if="userName!=''" class="go-lt pointer" @click="$router.push({name:'ltList',query:{id:id,jobModelId:jobModelId} })">
+          工作论坛 <img src="../../static/img/go-lt.png" alt="">
+        </div>
+        <div v-if="userName==''" class="go-lt pointer" @click="$router.push({name:'login'})">
           工作论坛 <img src="../../static/img/go-lt.png" alt="">
         </div>
       </div>
@@ -52,11 +55,13 @@
         },
       data(){
         return{
+          userName:'',
           id:'',
           jobModelId:''
         }
       },
       mounted(){
+        this.userName=localStorage.getItem("userName")||sessionStorage.getItem("userName")||'';
         //板块下拉列表
         this.$http({
           url: this.$http.adornUrl('/biz/jobmodel/select/list'),

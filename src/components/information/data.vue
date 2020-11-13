@@ -5,11 +5,13 @@
     </div>
     <div class="data-class">
         <div ref="dataHead" class="data-class-group" :class="moreMsg=='收起'?'data-class-group-show':'  '">
-          <div class="data-class-list" v-for="item in relationList">
+          <div class="data-class-list" v-for="(item,index) in relationList">
             <div class="inline-block data-class-name">{{item.name}}：</div>
             <div class="data-class-tab-group inline-block">
-              <div class="inline-block data-class-tab pointer" @click="sleRelation('不限',item.childClassLevel),item.levelName='不限'" :class="item.levelName=='不限'||!item.levelName?'data-class-tab-act':''">不限</div>
-              <div class="inline-block data-class-tab pointer"  v-for="i in item.childClassLevel"  @click="sleRelation(i.id),item.levelName=item.name" :class="relationCheck.indexOf(i.id)!=-1?'data-class-tab-act':''">{{i.name}}</div>
+              <!--<div class="inline-block data-class-tab pointer" @click="sleRelation('不限',item.childClassLevel),item.levelName='不限'" :class="item.levelName=='不限'||!item.levelName?'data-class-tab-act':''">不限</div>-->
+              <!--<div class="inline-block data-class-tab pointer"  v-for="i in item.childClassLevel"  @click="sleRelation(i.id,index),item.levelName=item.name" :class="relationCheck.indexOf(i.id)!=-1?'data-class-tab-act':''">{{i.name}}</div>-->
+              <div class="inline-block data-class-tab pointer" @click="sleRelation('不限',index),item.levelName='不限'" :class="item.checkBox==false?'data-class-tab-act':''">不限</div>
+              <div class="inline-block data-class-tab pointer"  v-for="i in item.childClassLevel"  @click="sleRelation(i.id,index),item.levelName=item.name" :class="item.checkBox==i.id?'data-class-tab-act':''">{{i.name}}</div>
             </div>
           </div>
         </div>
@@ -43,6 +45,7 @@
           moreMsg:'更多选项',
           relationList:'',
           relationCheck:[],
+          relationTab:[],
           dataHeadHeight:0,
           pageIndex: 1,
           pageSize: 10,
@@ -60,7 +63,11 @@
           method: 'GET',
         }).then(({data}) => {
           if (data && data.code === 10000) {
-            this.relationList=data.data;
+            var datas=data.data,i=0,len=datas.length;
+            for(;i<len;i++){
+              datas[i].checkBox=false;
+            }
+            this.relationList=datas;
             this.dataHeadHeight=this.$refs.dataHead.offsetHeight;
           }
         })
@@ -73,6 +80,17 @@
           this.getList();
         },
         getList(){
+          // var clssLevel=this.relationList.map(item => {
+          //   if(item.checkBox!=false){
+          //     return item.checkBox
+          //   }
+          // });
+          var clssLevel=[];
+          for(var i=0;i<this.relationList.length;i++){
+            if(this.relationList[i].checkBox!=false){
+              clssLevel.push(this.relationList[i].checkBox)
+            }
+          }
           this.$http({
             url: this.$http.adornUrl(`/aviation/material/list`),
             method: 'GET',
@@ -80,7 +98,8 @@
               'pageNum': this.pageIndex,
               'pageSize': this.pageSize,
               'tagId': this.tagId,
-              'clssLevel': this.relationCheck.join(','),
+              'clssLevel': clssLevel.join(','),
+              // 'clssLevel': this.relationCheck.join(','),
             })
           }).then(({data}) => {
             if (data && data.code === 10000) {
@@ -101,6 +120,7 @@
         //关联级别点击
         sleRelation(e,list){
           if(e=='不限'){
+            this.relationList[list].checkBox=false;
            var i=0,len=list.length;
            for(;i<len;i++){
              var _id=list[i].id;
@@ -110,9 +130,11 @@
            }
           }else{
             if(this.relationCheck.indexOf(e)!=-1){
-              this.relationCheck.remove(e)
+              this.relationCheck.remove(e);
+              this.relationList[list].checkBox=e
             }else{
-              this.relationCheck.push(e)
+              this.relationCheck.push(e);
+              this.relationList[list].checkBox=e;
             }
           }
           this.getList();

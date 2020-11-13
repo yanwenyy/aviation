@@ -85,6 +85,7 @@
   .ml-msg-show{
     font-size: 19px;
     line-height: 34px;
+    color:#333;
   }
   .ml-line{
     width: 28px;
