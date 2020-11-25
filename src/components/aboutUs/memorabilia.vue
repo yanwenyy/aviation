@@ -4,7 +4,7 @@
         <span class="inline-block ml-dot"></span>
         <div class="ml-msg inline-block">
           <div class="ml-date-show">
-            {{item.releaseDate}}
+            {{item.releaseDate.split(" ")[0]}}
           </div>
           <div class="ml-line"></div>
           <div class="ml-msg-show">{{item.title}}</div>

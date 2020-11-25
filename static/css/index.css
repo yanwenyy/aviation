@@ -47,6 +47,11 @@
 .detail-msg{
   width: 100%;
 }
+.detail-msg div,.detail-msg p{
+  font-size: 15px;
+  color:#333;
+  line-height: 25px;
+}
 .detail-msg img{
   width: 100%!important;
 }
@@ -55,7 +60,7 @@
   padding:13px;
   background: #FAFAFA;
   font-size: 14px;
-  margin-bottom: 30px;
+  margin: 30px 0 30px 0;
 }
 .detial-fj>div{
   vertical-align: middle;

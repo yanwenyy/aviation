@@ -7,7 +7,7 @@
       <span class="inline-block ml-dot"></span>
       <div class="ml-msg inline-block">
         <div class="ml-date-show">
-          {{item.insertTime}}
+          {{item.insertTime.split(" ")[0]}}
         </div>
         <div class="ml-msg-show">{{item.title}}</div>
         <div class="notice-label"><span v-for="i in item.tagEntities"  @click.stop="tagName=i.tagName,getTagList(i.tagId)">#{{i.tagName}}</span></div>
@@ -83,9 +83,10 @@
     margin-right: 20px;
   }
   .ml-msg-show{
-    font-size: 19px;
+    font-size: 18px;
     line-height: 34px;
     color:#333;
+    margin-top: 5px;
   }
   .ml-line{
     width: 28px;

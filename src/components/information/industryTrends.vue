@@ -12,7 +12,7 @@
             <div class="inline-block">来源：{{item.source}}</div>
           </div>
           <div class="it-msg">
-            <div>{{preface}}</div>
+            <div>{{item.preface}}</div>
           </div>
           <div class="it-label">
             <div v-for="i in item.tagEntities" class="inline-block" @click.stop="tagName=i.tagName,getTagList(i.tagId)">#{{i.tagName}}</div>
@@ -100,9 +100,9 @@
     line-height: 27px;
     margin-top: 20px;
     color:#343434;
-    max-height: 70px;
-    height: auto;
-    overflow: hidden;
+    /*max-height: 70px;*/
+    /*height: auto;*/
+    /*overflow: hidden;*/
   }
   .it-date{
     font-size: 15px;

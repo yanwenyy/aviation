@@ -21,10 +21,10 @@
     </div>
     <div v-for="item in list" class="data-list box-sizing pointer"  @click="$router.push({name:'dataDetail',query:{id:item.id,type:2} })">
       <div class="data-list-title">{{item.title}}</div>
-      <div class="data-list-date">{{item.insertTime}}</div>
+      <div class="data-list-date">{{item.insertTime.split(" ")[0]}}</div>
       <div class="data-list-line"></div>
       <div class="data-list-msg">
-        <div v-html="item.content"></div>
+        <div>{{item.preface}}</div>
       </div>
       <div class="data-list-label">
         <div v-for="i in item.tagEntities" class="inline-block" @click.stop="tagName=i.tagName,getTagList(i.tagId)">#{{i.tagName}}</div>
