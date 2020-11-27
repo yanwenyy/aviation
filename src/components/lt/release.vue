@@ -177,40 +177,40 @@
     z-index: 999;
   }
   .release-btn>div{
-    width: 180px;
-    height: 50px;
-    line-height: 50px;
+    width:11.25rem;
+    height:3.125rem;
+    line-height:3.125rem;
     background: #D2D2D2;
     color:#666666;
   }
   .sub-release{
     background: #2A5AAC!important;
     color:#fff!important;
-    margin-left: 89px;
+    margin-left:5.56rem;
   }
   .release-btn{
-    font-size: 16px;
+    font-size:1rem;
     text-align: center;
-    margin-top: 58px;
+    margin-top:3.625rem;
   }
   .rfb-plus{
-    width: 36px;
-    height: 36px;
-    font-size: 26px;
+    width:2.25rem;
+    height:2.25rem;
+    font-size: 1.625rem;
     color: #fff;
     text-align: center;
-    line-height: 36px;
+    line-height:2.25rem;
     border-radius: 50%;
     background: #2A5AAC;
-    margin: 39px auto 15px auto;
+    margin:2.44rem auto 0.94rem auto;
   }
   .release-fj-btn{
-    width: 268px;
-    height: 143px;
+    width:16.75rem;
+    height:8.94rem;
     background: #F2F2F2;
     text-align: center;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom:1.25rem;
   }
   .release-fj-btn::before{
     display: table;
@@ -220,34 +220,34 @@
     width: 90%;
   }
   .release-input{
-    height: 55px;
+    height:3.44rem;
     border: 1px solid #DDDDDD;
-    border-radius: 4px;
+    border-radius:0.25rem;
     background: #fff;
-    font-size: 18px;
-    padding-left: 28px;
+    font-size: 1.125rem;
+    padding-left:1.75rem;
     width: 90%;
   }
   .release-title-two{
-    font-size: 18px;
+    font-size: 1.125rem;
     color:#333;
     font-weight: bold;
-    margin: 42px 0 29px 0;
+    margin:2.625rem 0 1.81rem 0;
   }
   .release-msg{
-    padding-left: 40px;
-    padding-bottom: 49px;
+    padding-left:2.5rem;
+    padding-bottom:3.06rem;
   }
   .release-msg::after{
     display: table;
     content: '';
   }
   .release-title{
-    height: 81px;
-    line-height: 81px;
+    height:5.06rem;
+    line-height:5.06rem;
     border-bottom: 1px solid #eee;
-    padding-left: 37px;
-    font-size: 24px;
+    padding-left:2.31rem;
+    font-size:1.5rem;
     font-weight: bold;
     color:#333;
   }

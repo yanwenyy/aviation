@@ -4,6 +4,9 @@
       <div class="detail-title-name">{{detail.title}}</div>
       <div class="detail-title-source"><span class="dts-date inline-block">{{detail.insertTime}}</span> <span>来源：{{detail.source}}</span></div>
       <div class="detail-title-line"></div>
+      <div class="detail-title-label">
+        <span v-for="i in (detail.tagEntities)">{{i.tagName}}</span>
+      </div>
     </div>
     <div v-html="detail.content" class="detail-msg"></div>
     <div v-for="item in detail.tbAnnexActions" class="detial-fj box-sizing">
@@ -83,6 +86,6 @@
 
 <style scoped>
   .detail-title-line{
-    margin-top: 27px;
+    margin-top:1.69rem;
   }
 </style>

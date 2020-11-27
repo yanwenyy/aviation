@@ -62,10 +62,10 @@
 <style scoped>
   .vip-list{
     /*column-count: 3;*/
-    /*column-width: 287px;*/
-    /*column-gap: 20px;*/
-    margin-top: 40px;
-    margin-bottom: 91px;
+    /*column-width:17.94rem;*/
+    /*column-gap:1.25rem;*/
+    margin-top:2.5rem;
+    margin-bottom:5.69rem;
   }
   .vip-list::after{
     display: table;
@@ -73,16 +73,16 @@
     clear: both;
   }
   .vip-list>div{
-    width: 287px;
-    height: 92px;
+    width:17.94rem;
+    height:5.75rem;
     text-align: center;
     background: #2A5AAC;
     color:#fff;
-    font-size: 18px;
-    margin-bottom: 27px;
-    padding: 30px;
+    font-size: 1.125rem;
+    margin-bottom:1.69rem;
+    padding:1.875rem;
     float: left;
-    margin-right: 17px;
+    margin-right:1.06rem;
     /*-webkit-column-break-inside: avoid;*/
     /*page-break-inside: avoid;*/
     /*break-inside: avoid;*/
@@ -91,15 +91,21 @@
     text-align: center;
   }
   .vip-title-one{
-    font-size: 22px;
+    font-size:1.375rem;
     font-weight: bold;
     color: #343434;
-    margin-bottom: 16px;
-    margin-top: 25px;
+    margin-bottom:1rem;
+    margin-top:1.56rem;
   }
   .vip-title-two{
-    font-size: 18px;
+    font-size: 1.125rem;
     color:#2A5AAC;
     opacity: 0.34;
+  }
+  @media screen and (max-width:900px) {
+    .vip-list>div{
+      width: 80%;
+      margin: 0.5rem auto;
+    }
   }
 </style>

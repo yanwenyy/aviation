@@ -21,30 +21,36 @@
 
 <style scoped>
   .go-lt{
-    font-size: 14px;
+    font-size:0.875rem;
     color: #fff;
-    width: 145px;
-    height: 33px;
-    line-height: 33px;
+    width:9.06rem;
+    height:2.06rem;
+    line-height:2.06rem;
     text-align: center;
     border: 1px solid #fff;
-    border-radius: 17px;
+    border-radius:1.06rem;
     float: right;
-    margin-top: 27px;
+    margin-top:1.69rem;
   }
   .go-lt>img{
-    width: 17px;
-    height: 14px;
+    width:1.06rem;
+    height:0.875rem;
     vertical-align: middle;
   }
   .header-logo{
-    width: 365px;
-    height: 70px;
-    margin-top: 7px;
+    width:22.81rem;
+    height:4.375rem;
+    margin-top:0.44rem;
   }
   .header-top{
     width: 100%;
-    height: 85px;
+    height:5.31rem;
     background: #2A5AAC;
+  }
+  @media screen and (max-width:900px) {
+    .header-logo{
+      width: 16rem;
+      height: auto;
+    }
   }
 </style>

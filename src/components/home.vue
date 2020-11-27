@@ -40,7 +40,7 @@
           <div class="hd-more hd-more-left pointer swiper-button-prev2">
             <img src="../../static/img/home-left.png" alt="">
           </div>
-          <swiper ref="mySwiper2"  :options="swiperOption">
+          <swiper ref="mySwiper2"  :options="swiperOption" style="width: 100%">
             <swiper-slide v-for="(item,index) in trendListTJ" :key="index">
               <div @click="$router.push({name:'industryTrendsDetail',query:{id:item.id,type:0} })" :data-item="item.id" class="dynamic-msg pointer">
                 <div class="inline-block box-sizing dm-img">
@@ -220,32 +220,32 @@
     clear: both;
   }
   .hnl-more{
-    width: 180px;
-    height: 50px;
-    line-height: 50px;
+    width:11.25rem;
+    height:3.125rem;
+    line-height:3.125rem;
     text-align: center;
     background: #fff!important;
     color:#2A5AAC;
-    font-size: 15px;
-    margin: 86px auto;
+    font-size:0.94rem;
+    margin:5.375rem auto;
     border-radius: 1px;
   }
   .dynamic-main>.container{
     position: relative;
   }
   .hd-more{
-    width: 54px;
-    height: 54px;
-    line-height: 54px;
+    width:3.375rem;
+    height:3.375rem;
+    line-height:3.375rem;
     text-align: center;
     position: absolute;
-    top:378px;
+    top:23.625rem;
     background: #fff;
     opacity: 0.79;
   }
   .hd-more>img{
-    width: 30px;
-    height: 30px;
+    width:1.875rem;
+    height:1.875rem;
     vertical-align: middle;
   }
   .hd-more-left{
@@ -255,54 +255,54 @@
     right: -6%;
   }
   .hn-go{
-    width: 21px;
-    height: 21px;
-    line-height: 21px;
+    width:1.32rem;
+    height:1.32rem;
+    line-height:1.32rem;
     text-align: center;
     color:#3C60A8;
     background: #FFFFFF;
     border: 1px solid #FFFFFF;
     opacity: 0.52;
-    margin-top: 20px  ;
+    margin-top:1.25rem  ;
   }
   .home-notice-list>div{
-    width: 380px;
-    height: 207px;
+    width:23.75rem;
+    height:12.94rem;
     background: #2A5AAC;
     color:#fff;
-    padding: 44px 37px;
-    font-size: 18px;
-    line-height: 28px;
-    margin-bottom: 22px;
+    padding:2.75rem 2.31rem;
+    font-size: 1.125rem;
+    line-height:1.75rem;
+    margin-bottom:1.375rem;
     float: left;
-    margin-right: 20px;
+    margin-right:1.25rem;
   }
   .hn-date{
-    font-size: 14px;
-    margin-top:9px ;
+    font-size:0.875rem;
+    margin-top:0.56rem ;
     opacity: 0.7;
   }
   .home-notice-list{
     /*column-count: 3;*/
     /*column-width: 385px;*/
-    /*column-gap: 20px;*/
-    margin-top: 54px;
+    /*column-gap:1.25rem;*/
+    margin-top:3.375rem;
   }
   .home-title-notice{
-    font-size: 33px;
+    font-size:2.06rem;
     color:#fff;
   }
   .home-title-notice>div{
     margin-right: 3%;
     position: relative;
-    padding-bottom: 30px;
+    padding-bottom:1.875rem;
   }
   .home-notice-act{
     font-weight: bold;
   }
   .home-notice-act-line{
     width: 50%;
-    height: 3px;
+    height:0.19rem;
     background: #FFFFFF;
     display: inline-block;
     position: absolute;
@@ -311,65 +311,65 @@
   }
   .home-notice{
     width: 100%;
-    height: 898px;
+    height:56.125rem;
     background: url("../../static/img/home-notice-bg.png") 100% 100%;
   }
   .dynamic-list-date{
     color:#2A5AAC;
     font-weight: bold;
-    margin-bottom: 7px;
+    margin-bottom:0.44rem;
   }
   .dynamic-list{
     display: flex;
     justify-content: space-between;
-    margin-top: 62px;
+    margin-top:3.875rem;
   }
   .dynamic-list>div{
     width: 25%;
-    height: 199px;
+    height:12.44rem;
     background: rgba(255,255,255,0.95);
-    padding:43px 37px;
-    font-size: 18px;
-    line-height: 31px;
+    padding:2.69rem 2.31rem;
+    font-size: 1.125rem;
+    line-height:1.94rem;
     color:#343434;
   }
   .dynamic-list>div:hover{
-    height: 217px;
+    height:13.56rem;
     background: #2A5AAC;
     color:#fff!important;
-    margin-top: -9px;
+    margin-top:-0.56rem;
   }
   .dynamic-list>div:hover .dynamic-list-date{
     color: #fff;
   }
   .dm-right-goDetail{
-    width: 180px;
-    height: 50px;
-    line-height: 50px;
+    width:11.25rem;
+    height:3.125rem;
+    line-height:3.125rem;
     text-align: center;
-    font-size: 16px;
+    font-size: 1rem;
     color: #2A5AAC;
     border: 1px solid rgba(42,90,172,0.4);
     border-radius: 1px;
   }
   .dm-right-date{
-    font-size: 20px;
+    font-size:1.25rem;
     color:#2A5AAC;
     font-weight: bold;
-    margin: 67px 0 18px 0;
+    margin:4.19rem 0 1.125rem 0;
   }
   .dm-right-msg{
-    font-size: 20px;
+    font-size:1.25rem;
     color:#333;
     font-weight: bold;
-    line-height: 27px;
-    margin-bottom: 50px;
+    line-height:1.69rem;
+    margin-bottom:3.125rem;
   }
   .dm-right{
-    padding: 0 28px;
+    padding: 0 1.75rem;
   }
   .dm-img{
-    padding:40px;
+    padding:2.5rem;
   }
   .dm-img>img{
     width: 100%;
@@ -377,25 +377,25 @@
   }
   .dynamic-msg>div{
     width: 50%;
-    height: 372px;
+    height:23.25rem;
     background: rgba(255,255,255,0.95);
   }
   .dynamic-msg{
-    margin-top: 64px;
+    margin-top:4rem;
     display: flex;
     justify-content: space-between;
   }
   .dynamic-more{
-    width: 180px;
-    font-size: 15px;
-    height: 50px;
-    line-height: 50px;
+    width:11.25rem;
+    font-size:0.94rem;
+    height:3.125rem;
+    line-height:3.125rem;
     text-align: center;
     color:#fff;
     background: #2A5AAC;
     border-radius: 1px;
     float: right;
-    margin-top: 105px;
+    margin-top:6.56rem;
   }
   .home-title::before{
     display: table;
@@ -405,15 +405,15 @@
     z-index: 999;
   }
   .home-title-en{
-    font-size: 29px;
+    font-size:1.81rem;
     color:#2A5AAC;
     font-weight: bold;
     opacity: 0.31;
-    margin: 79px 0 20px 0;
+    margin:4.94rem 0 1.25rem 0;
   }
   .home-title{
     color:#2A5AAC;
-    font-size: 32px;
+    font-size:2rem;
     font-weight: bold;
   }
   /*@import "../../static/css/swiper.min.css";*/
@@ -424,12 +424,12 @@
   }
   >>>.swiper-img{
     width: 100%;
-    height: 760px;
+    height:47.5rem;
     object-fit: cover;
   }
   .home-head{
     width: 100%;
-    height: 129px;
+    height:8.06rem;
     position: absolute;
     top:0;
     left:0;
@@ -439,31 +439,31 @@
     z-index: 99999;
   }
   .home-logo{
-    width: 398px;
-    height: 76px;
-    margin-top: 35px;
+    width: 24.875rem;
+    height: 4.75rem;
+    margin-top: 2.18rem;
     margin-right:10%;
   }
   .home-tab{
     color:#fff;
-    font-size: 18px;
-    margin-top: 63px;
+    font-size: 1.125rem;
+    margin-top:3.94rem;
     white-space: nowrap;
   }
   .home-tab>div{
     margin-right: 3%;
-    padding-bottom: 21px;
+    padding-bottom:1.32rem;
   }
   .home-tab-act{
-    border-bottom: 2px solid #fff;
+    border-bottom:0.125rem solid #fff;
   }
   .banner{
-    height: 760px;
+    height:47.5rem;
     background: #007aff;
   }
   .banner-shadow{
     width: 100%;
-    height: 760px;
+    height:47.5rem;
     position: absolute;
     top:0;
     left: 0;
@@ -471,17 +471,17 @@
     z-index: 999;
   }
   .go-login{
-    width: 145px;
-    height:33px;
-    line-height: 33px;
+    width:9.06rem;
+    height:2.06rem;
+    line-height:2.06rem;
     border: 1px solid #fff;
-    border-radius: 17px;
+    border-radius:1.06rem;
     color:#fff;
     text-align: center;
     vertical-align: middle;
     float: right;
-    margin-top: 56px;
-    font-size: 15px;
+    margin-top:3.5rem;
+    font-size:0.94rem;
   }
   .go-login>img{
     vertical-align: middle;
@@ -518,5 +518,61 @@
     height:100%;
     background: #124D7A;
     opacity: 0.21;
+  }
+  @media screen and (max-width:900px) {
+    .dynamic-list>div{
+      width: 80%;
+      margin: 1rem auto;
+      display: block;
+      height: auto;
+    }
+    .dynamic-list{
+      display: block;
+    }
+    .hd-more-left{
+      left: 0;
+      z-index: 99999999999999;
+    }
+    .hd-more-right{
+      right: 0;
+      z-index: 99999999999999;
+    }
+    .dynamic-msg>div{
+      height: auto;
+    }
+    .dm-right-msg{
+      margin-bottom: 1rem;
+    }
+    .hd-more{
+      top:15rem;
+    }
+    >>>.swiper-pagination-bullets{
+      bottom:3rem
+    }
+    .dm-right-goDetail{
+      margin-bottom: 1rem;
+    }
+    .dynamic-list{
+      margin-top: 2rem;
+    }
+    .home-title-en{
+      margin-top: 2rem;
+    }
+    .dynamic-more{
+      margin-top: 3rem;
+    }
+    .home-notice{
+      width: 100%;
+      height:auto;
+      background: url("../../static/img/home-notice-bg.png") 100% 100% repeat;
+      padding-bottom: 3rem;
+    }
+    .hnl-more{
+      margin-bottom: 0;
+      margin-top: 3rem;
+    }
+    .home-notice-list>div{
+      width: 100%;
+    }
   }
 </style>

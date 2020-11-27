@@ -630,10 +630,10 @@ control positioning and full window mode. **
   background-color: #000;
   position: relative;
   padding: 0;
-  /* Start with 10px for base font size so other dimensions can be em based and
+  /* Start with:0.625rem for base font size so other dimensions can be em based and
      easily calculable. */
 
-  font-size: 10px;
+  font-size:0.625rem;
   /* Allow poster to be vertially aligned. */
 
   vertical-align: middle;

@@ -145,82 +145,82 @@
 
 <style scoped>
   .data-list-label>div{
-    margin-right: 10px;
+    margin-right:0.625rem;
   }
   .data-list-label{
-    font-size: 13px;
+    font-size:0.82rem;
     color:#2A5AAC;
-    margin-top: 10px;
+    margin-top:0.625rem;
   }
   .data-list-msg{
-    font-size: 15px;
-    line-height: 27px;
-    max-height: 70px;
+    font-size:0.94rem;
+    line-height:1.69rem;
+    max-height:4.375rem;
     height: auto;
     overflow: hidden;
   }
   .data-list-line{
-    width: 27px;
-    height: 2px;
+    width:1.69rem;
+    height:0.125rem;
     background: #eee;
-    margin: 16px 0 10px;
+    margin:1rem 0 0.625rem;
   }
   .data-list-date{
-    font-size: 15px;
+    font-size:0.94rem;
     color:#999;
   }
   .data-list-title{
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom:0.94rem;
     color:#333;
   }
   .data-list{
     border: 1px solid #EEEEEE;
-    padding:39px 29px;
-    margin-bottom: 16px;
+    padding:2.44rem 1.81rem;
+    margin-bottom:1rem;
   }
   .data-class-group{
-    height: 180px;
+    height:11.25rem;
     overflow: hidden;
   }
   .data-class-group-show{
     height: auto;
   }
   .data-class-more>img{
-    width: 20px;
+    width:1.25rem;
     height: auto;
     vertical-align: middle;
   }
   .data-class-more{
     text-align: center;
-    font-size: 15px;
+    font-size:0.94rem;
     color:#999;
-    margin-top: 20px;
-    margin-bottom: 36px;
+    margin-top:1.25rem;
+    margin-bottom:2.25rem;
   }
   .data-class{
-    margin-top: 19px;
+    margin-top:1.19rem;
   }
   .data-class-tab-act{
-    font-size: 17px!important;
+    font-size:1.06rem!important;
     color:#2A5AAC!important;
   }
   .data-class-tab{
     color: #333;
-    margin-right: 33px;
-    margin-bottom: 21px;
+    margin-right:2.06rem;
+    margin-bottom:1.32rem;
   }
   .data-class-list{
-    /*margin-bottom: 32px;*/
-    font-size: 16px;
+    /*margin-bottom:2rem;*/
+    font-size:1rem;
     color:#666;
   }
   .data-class-name{
     /*width: 15%;*/
-    margin-right: 29px;
+    margin-right:1.81rem;
     vertical-align: top;
-    font-size: 16px;
+    font-size:1rem;
     color:#333;
     font-weight: bold;
   }

@@ -27,7 +27,7 @@
     cursor:pointer;width:35px;height:35px;display:block;
 }
 
-.smileytable td {height: 37px;}
+.smileytable td {height:2.31rem;}
 #tabPanel{margin-left:5px;overflow: hidden;}
 #tabContent {float:left;background:#FFFFFF;}
 #tabContent div{display: none;width:480px;overflow:hidden;}

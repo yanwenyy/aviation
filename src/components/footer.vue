@@ -23,22 +23,22 @@
 
 <style scoped>
   .foot-logo{
-    width: 365px;
-    height: 70px;
-    margin-top: 62px;
+    width:22.81rem;
+    height:4.375rem;
+    margin-top:3.875rem;
     float: right;
   }
   .copyright{
-    font-size: 12px;
-    margin-top: 20px;
+    font-size:0.75rem;
+    margin-top:1.25rem;
     color:#707682;
   }
   .contract-us{
-    font-size: 18px;
-    margin: 49px 0 26px 0;
+    font-size: 1.125rem;
+    margin:3.06rem 0 1.625rem 0;
   }
   .adress{
-    font-size: 15px;
+    font-size:0.94rem;
     opacity: 0.64;
     white-space: nowrap;
   }
@@ -47,8 +47,22 @@
   }
   .footer{
     width: 100%;
-    height: 216px;
+    height:13.5rem;
     background: #010917;
     color:#fff;
+  }
+  @media screen and (max-width:900px) {
+    .footer{
+      height:20rem;
+      text-align: center;
+    }
+    .adress{
+      white-space: pre-wrap;
+      line-height: 1.4rem;
+    }
+    .foot-logo{
+      float: none;
+      margin-top: 2rem;
+    }
   }
 </style>

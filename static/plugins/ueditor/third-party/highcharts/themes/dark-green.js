@@ -24,7 +24,7 @@ Highcharts.theme = {
 	title: {
 		style: {
 			color: '#C0C0C0',
-			font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+			font: 'bold 1rem "Trebuchet MS", Verdana, sans-serif'
 		}
 	},
 	subtitle: {

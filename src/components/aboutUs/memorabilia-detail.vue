@@ -68,31 +68,31 @@
 <style scoped>
   /*详情头部*/
   .detail-title-line{
-    width: 27px;
-    height: 3px;
+    width:1.69rem;
+    height:0.19rem;
     background: #B21219;
-    margin-top: 11px;
+    margin-top:0.69rem;
   }
   .detail-title-name{
-    font-size: 22px;
+    font-size:1.375rem;
     font-weight: bold;
-    line-height: 36px;
+    line-height:2.25rem;
   }
   .detail-title-date{
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
     color:#2A5AAC;
-    margin-bottom: 12px;
+    margin-bottom:0.75rem;
   }
   .detail-title{
-    padding-bottom: 36px;
+    padding-bottom:2.25rem;
     border-bottom: 1px dotted #eee;
-    margin-bottom: 33px;
+    margin-bottom:2.06rem;
   }
   /*结束*/
   .detail-url{
-    font-size: 15px;
+    font-size:0.94rem;
     color:#2A5AAC;
-    margin-bottom: 20px;
+    margin-bottom:1.25rem;
   }
 </style>

@@ -84,18 +84,18 @@
 
 <style scoped>
   .his-name-zn{
-    font-size: 28px;
+    font-size:1.75rem;
   }
   .his-line{
-    width: 70px;
-    height: 3px;
+    width:4.375rem;
+    height:0.19rem;
     background: #FFFFFF;
     opacity: 0.46;
-    margin: 30px auto;
+    margin:1.875rem auto;
   }
   .his-name-en{
-    font-size: 46px;
-    margin-top: 169px;
+    font-size:2.875rem;
+    margin-top:10.56rem;
   }
   .header-img-shadow{
     color:#fff;
@@ -103,7 +103,7 @@
   }
   .header-img-bg{
     width: 100%;
-    height: 416px;
+    height:26rem;
   }
   .header-img-shadow{
     width: 100%;
@@ -115,17 +115,17 @@
     left: 0;
   }
   .header-img{
-    margin-top: -64px;
+    margin-top: -4rem;
     z-index: 0;
     position: relative;
   }
   .tab-list-act{
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
   }
   .tab-list-line{
     width: 50%;
-    height: 2px;
+    height:0.125rem;
     background: #fff;
     position: absolute;
     bottom:0;
@@ -134,43 +134,52 @@
   .tab-list{
     position: relative;
     /*margin-right: 2.6%;*/
-    margin-right: 51px;
+    margin-right:3.19rem;
   }
   .header-tab{
     width: 100%;
-    height: 64px;
-    line-height: 64px;
+    height:4rem;
+    line-height:4rem;
     background: rgba(0,0,0,0.16);
     color:#fff;
     text-align: right;
-    font-size: 18px;
+    font-size: 1.125rem;
     z-index: 9999;
     position: relative;
   }
   .go-lt{
-    font-size: 14px;
+    font-size:0.875rem;
     color: #0E367A;
-    width: 145px;
-    height: 33px;
-    line-height: 33px;
+    width:9.06rem;
+    height:2.06rem;
+    line-height:2.06rem;
     text-align: center;
     border: 1px solid #0E367A;
-    border-radius: 17px;
+    border-radius:1.06rem;
     float: right;
-    margin-top: 27px;
+    margin-top:1.69rem;
   }
   .go-lt>img{
-    width: 17px;
-    height: 14px;
+    width:1.06rem;
+    height:0.875rem;
     vertical-align: middle;
   }
   .header-logo{
-    width: 323px;
-    height: 70px;
-    margin-top: 7px;
+    width:20.19rem;
+    height:4.375rem;
+    margin-top:0.44rem;
   }
   .header-top{
     width: 100%;
-    height: 85px;
+    height:5.31rem;
+  }
+  @media screen and (max-width:900px) {
+    .tab-list{
+      margin-right: 1rem;
+    }
+    .header-logo{
+      width: 16rem;
+      height: auto;
+    }
   }
 </style>

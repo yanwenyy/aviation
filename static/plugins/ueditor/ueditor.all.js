@@ -1099,7 +1099,7 @@
      * //output: 500px
      * console.log( UE.utils.transUnitToPx( '20cm' ) );
      *
-     * //output: 27px
+     * //output:1.69rem
      * console.log( UE.utils.transUnitToPx( '20pt' ) );
      *
      * ```
@@ -2671,7 +2671,7 @@
      * ```html
      * <span style="font-size:12px">ssss</span>
      * <span style="font-size:12px">bbbbb</span>
-     * <span style="font-size:13px">ssss</span>
+     * <span style="font-size:0.81rem">ssss</span>
      * <span style="font-size:14px">bbbbb</span>
      *
      * <script>
@@ -2746,7 +2746,7 @@
      * ```html
      * <span style="font-size:12px">ssss</span>
      * <span style="font-size:12px">bbbbb</span>
-     * <span style="font-size:13px">ssss</span>
+     * <span style="font-size:0.81rem">ssss</span>
      * <span style="font-size:14px">bbbbb</span>
      *
      * <script>
@@ -3347,14 +3347,14 @@
      * ```html
      * <style type="text/css">
      *      #test {
-     *          font-size: 15px;
+     *          font-size:0.94rem;
      *      }
      * </style>
      *
      * <span id="test"></span>
      *
      * <script>
-     *     //output: 15px
+     *     //output:0.94rem
      *     console.log( UE.dom.domUtils.getComputedStyle( document.getElementById( "test" ), 'font-size' ) );
      * </script>
      * ```
@@ -3957,7 +3957,7 @@
      *                                  offset.top的距离
      * @example
      * ```html
-     * <div id="test" style="top: 100px; left: 50px; position: absolute;"></div>
+     * <div id="test" style="top:6.25rem; left:3.125rem; position: absolute;"></div>
      *
      * <script>
      *
@@ -3968,7 +3968,7 @@
      *         top: 50
      *     } );
      *
-     *     //output: top: 300px; left: 100px; position: absolute;
+     *     //output: top: 300px; left:6.25rem; position: absolute;
      *     console.log( testNode.style.cssText );
      *
      * </script>
@@ -13758,7 +13758,7 @@
           utils.cssRule('anchor',
             '.anchorclass{background: url(\''
             + this.options.themePath
-            + this.options.theme +'/images/anchor.gif\') no-repeat scroll left center transparent;cursor: auto;display: inline-block;height: 16px;width: 15px;}',
+            + this.options.theme +'/images/anchor.gif\') no-repeat scroll left center transparent;cursor: auto;display: inline-block;height:1rem;width:0.94rem;}',
             this.document);
         }
       },
@@ -15011,16 +15011,16 @@
         switch(p){
           case 'cn':
             customCss.push('li.list-'+p+'-paddingleft-1{padding-left:25px}');
-            customCss.push('li.list-'+p+'-paddingleft-2{padding-left:40px}');
+            customCss.push('li.list-'+p+'-paddingleft-2{padding-left:2.5rem}');
             customCss.push('li.list-'+p+'-paddingleft-3{padding-left:55px}');
             break;
           case 'cn1':
             customCss.push('li.list-'+p+'-paddingleft-1{padding-left:30px}');
-            customCss.push('li.list-'+p+'-paddingleft-2{padding-left:40px}');
+            customCss.push('li.list-'+p+'-paddingleft-2{padding-left:2.5rem}');
             customCss.push('li.list-'+p+'-paddingleft-3{padding-left:55px}');
             break;
           case 'cn2':
-            customCss.push('li.list-'+p+'-paddingleft-1{padding-left:40px}');
+            customCss.push('li.list-'+p+'-paddingleft-1{padding-left:2.5rem}');
             customCss.push('li.list-'+p+'-paddingleft-2{padding-left:55px}');
             customCss.push('li.list-'+p+'-paddingleft-3{padding-left:68px}');
             break;
@@ -15030,7 +15030,7 @@
             break;
           case 'num2':
             customCss.push('li.list-'+p+'-paddingleft-1{padding-left:35px}');
-            customCss.push('li.list-'+p+'-paddingleft-2{padding-left:40px}');
+            customCss.push('li.list-'+p+'-paddingleft-2{padding-left:2.5rem}');
             break;
           case 'dash':
             customCss.push('li.list-'+p+'-paddingleft{padding-left:35px}');
@@ -16232,7 +16232,7 @@
           lineWrapping:true
         });
         var dom = codeEditor.getWrapperElement();
-        dom.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;font-family:consolas,"Courier new",monospace;font-size:13px;';
+        dom.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;font-family:consolas,"Courier new",monospace;font-size:0.81rem;';
         codeEditor.getScrollerElement().style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;';
         codeEditor.refresh();
         return {
@@ -19988,7 +19988,7 @@
         'table.noBorderTable td,table.noBorderTable th,table.noBorderTable caption{border:1px dashed #ddd !important}' +
         //插入的表格的默认样式
         'table{margin-bottom:10px;border-collapse:collapse;display:table;}' +
-        'td,th{padding: 5px 10px;border: 1px solid #DDD;}' +
+        'td,th{padding:0.31rem:0.625rem;border: 1px solid #DDD;}' +
         'caption{border:1px dashed #DDD;border-bottom:0;padding:3px;text-align:center;}' +
         'th{border-top:1px solid #BBB;background-color:#F7F7F7;}' +
         'table tr.firstRow th{border-top-width:2px;}' +
@@ -23045,10 +23045,10 @@
   UE.plugins['customstyle'] = function() {
     var me = this;
     me.setOpt({ 'customstyle':[
-        {tag:'h1',name:'tc', style:'font-size:32px;font-weight:bold;border-bottom:#ccc 2px solid;padding:0 4px 0 0;text-align:center;margin:0 0 20px 0;'},
-        {tag:'h1',name:'tl', style:'font-size:32px;font-weight:bold;border-bottom:#ccc 2px solid;padding:0 4px 0 0;text-align:left;margin:0 0 10px 0;'},
-        {tag:'span',name:'im', style:'font-size:16px;font-style:italic;font-weight:bold;line-height:18px;'},
-        {tag:'span',name:'hi', style:'font-size:16px;font-style:italic;font-weight:bold;color:rgb(51, 153, 204);line-height:18px;'}
+        {tag:'h1',name:'tc', style:'font-size:32px;font-weight:bold;border-bottom:#ccc 2px solid;padding:0 4px 0 0;text-align:center;margin:0 0 1.25rem 0;'},
+        {tag:'h1',name:'tl', style:'font-size:32px;font-weight:bold;border-bottom:#ccc 2px solid;padding:0 4px 0 0;text-align:left;margin:0 0:0.625rem 0;'},
+        {tag:'span',name:'im', style:'font-size:16px;font-style:italic;font-weight:bold;line-height:1.125rem;'},
+        {tag:'span',name:'hi', style:'font-size:16px;font-style:italic;font-weight:bold;color:rgb(51, 153, 204);line-height:1.125rem;'}
       ]});
     me.commands['customstyle'] = {
       execCommand : function(cmdName, obj) {
@@ -23891,10 +23891,10 @@
             utils.cssRule('loading',
               '.loadingclass{display:inline-block;cursor:default;background: url(\''
               + this.options.themePath
-              + this.options.theme +'/images/loading.gif\') no-repeat center center transparent;border:1px solid #cccccc;margin-left:1px;height: 22px;width: 22px;}\n' +
+              + this.options.theme +'/images/loading.gif\') no-repeat center center transparent;border:1px solid #cccccc;margin-left:1px;height:1.375rem;width:1.375rem;}\n' +
               '.loaderrorclass{display:inline-block;cursor:default;background: url(\''
               + this.options.themePath
-              + this.options.theme +'/images/loaderror.png\') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height: 22px;width: 22px;' +
+              + this.options.theme +'/images/loaderror.png\') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height:1.375rem;width:1.375rem;' +
               '}',
               this.document);
           }
@@ -24685,10 +24685,10 @@
           utils.cssRule('loading',
             '.loadingclass{display:inline-block;cursor:default;background: url(\''
             + this.options.themePath
-            + this.options.theme +'/images/loading.gif\') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height: 22px;width: 22px;}\n' +
+            + this.options.theme +'/images/loading.gif\') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height:1.375rem;width:1.375rem;}\n' +
             '.loaderrorclass{display:inline-block;cursor:default;background: url(\''
             + this.options.themePath
-            + this.options.theme +'/images/loaderror.png\') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height: 22px;width: 22px;' +
+            + this.options.theme +'/images/loaderror.png\') no-repeat center center transparent;border:1px solid #cccccc;margin-right:1px;height:1.375rem;width:1.375rem;' +
             '}',
             this.document);
         },
@@ -24882,8 +24882,8 @@
               item = filelist[i];
               icon = iconDir + getFileIcon(item.url);
               title = item.title || item.url.substr(item.url.lastIndexOf('/') + 1);
-              html += '<p style="line-height: 16px;">' +
-                '<img style="vertical-align: middle; margin-right: 2px;" src="'+ icon + '" _src="' + icon + '" />' +
+              html += '<p style="line-height:1rem;">' +
+                '<img style="vertical-align: middle; margin-right:0.125rem;" src="'+ icon + '" _src="' + icon + '" />' +
                 '<a style="font-size:12px; color:#0066cc;" href="' + item.url +'" title="' + title + '">' + title + '</a>' +
                 '</p>';
             }
@@ -25723,11 +25723,11 @@
         '<div unselectable="on" class="edui-colorpicker-nocolor" onclick="$$._onPickNoColor(event, this);">'+ noColorText +'</div>' +
         '</div>' +
         '<table  class="edui-box" style="border-collapse: collapse;" onmouseover="$$._onTableOver(event, this);" onmouseout="$$._onTableOut(event, this);" onclick="return $$._onTableClick(event, this);" cellspacing="0" cellpadding="0">' +
-        '<tr style="border-bottom: 1px solid #ddd;font-size: 13px;line-height: 25px;color:#39C;padding-top: 2px"><td colspan="10">'+editor.getLang("themeColor")+'</td> </tr>'+
+        '<tr style="border-bottom: 1px solid #ddd;font-size:0.82rem;line-height:1.56rem;color:#39C;padding-top:0.125rem"><td colspan="10">'+editor.getLang("themeColor")+'</td> </tr>'+
         '<tr class="edui-colorpicker-tablefirstrow" >';
       for (var i=0; i<COLORS.length; i++) {
         if (i && i%10 === 0) {
-          html += '</tr>'+(i==60?'<tr style="border-bottom: 1px solid #ddd;font-size: 13px;line-height: 25px;color:#39C;"><td colspan="10">'+editor.getLang("standardColor")+'</td></tr>':'')+'<tr'+(i==60?' class="edui-colorpicker-tablefirstrow"':'')+'>';
+          html += '</tr>'+(i==60?'<tr style="border-bottom: 1px solid #ddd;font-size:0.82rem;line-height:1.56rem;color:#39C;"><td colspan="10">'+editor.getLang("standardColor")+'</td></tr>':'')+'<tr'+(i==60?' class="edui-colorpicker-tablefirstrow"':'')+'>';
         }
         html += i<70 ? '<td style="padding: 0 2px;"><a hidefocus title="'+COLORS[i]+'" onclick="return false;" href="javascript:" unselectable="on" class="edui-box edui-colorpicker-colorcell"' +
           ' data-color="#'+ COLORS[i] +'"'+

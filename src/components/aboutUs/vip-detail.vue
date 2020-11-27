@@ -36,8 +36,8 @@
 <style scoped>
   .detail-url{
     text-align: center;
-    font-size: 14px;
-    margin-top: 63px;
+    font-size:0.875rem;
+    margin-top:3.94rem;
   }
   .detail-url>a{
     color:#2A5AAC;

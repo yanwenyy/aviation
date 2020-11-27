@@ -4,9 +4,9 @@
     zoom: 1;
     width: 630px;
     *width: 626px;
-    height: 380px;
+    height:23.75rem;
     margin: 0 auto;
-    padding: 10px;
+    padding:0.625rem;
     position: relative;
     font-family: sans-serif;
 }
@@ -79,30 +79,30 @@
 }
 
 #upload .placeholder {
-    margin: 10px;
-    border: 2px dashed #e6e6e6;
+    margin:0.625rem;
+    border:0.125rem dashed #e6e6e6;
     *border: 0px dashed #e6e6e6;
     height: 172px;
     padding-top: 150px;
     text-align: center;
     background: url(./images/image.png) center 70px no-repeat;
     color: #cccccc;
-    font-size: 18px;
+    font-size: 1.125rem;
     position: relative;
     top:0;
-    *top: 10px;
+    *top:0.625rem;
 }
 
 #upload .placeholder .webuploader-pick {
-    font-size: 18px;
+    font-size: 1.125rem;
     background: #00b7ee;
-    border-radius: 3px;
-    line-height: 44px;
+    border-radius:0.19rem;
+    line-height:2.75rem;
     padding: 0 30px;
     *width: 120px;
     color: #fff;
     display: inline-block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 1.25rem auto;
     cursor: pointer;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
@@ -118,11 +118,11 @@
 
 #upload .placeholder .flashTip {
     color: #666666;
-    font-size: 12px;
+    font-size:0.75rem;
     position: absolute;
     width: 100%;
     text-align: center;
-    bottom: 20px;
+    bottom:1.25rem;
 }
 
 #upload .placeholder .flashTip a {
@@ -163,12 +163,12 @@
     background: url(./images/bg.png);
     text-align: center;
     margin: 9px 0 0 9px;
-    *margin: 6px 0 0 6px;
+    *margin:0.375rem 0 0 6px;
     position: relative;
     display: block;
     float: left;
     overflow: hidden;
-    font-size: 12px;
+    font-size:0.75rem;
 }
 
 #upload .filelist li p.log {
@@ -184,8 +184,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    top: 5px;
-    text-indent: 5px;
+    top:0.31rem;
+    text-indent:0.31rem;
     text-align: left;
 }
 
@@ -194,7 +194,7 @@
     width: 100%;
     bottom: 0;
     left: 0;
-    height: 8px;
+    height:0.5rem;
     overflow: hidden;
     z-index: 50;
     margin: 0;
@@ -230,7 +230,7 @@
         background-position: 0 0;
     }
     100% {
-        background-position: 17px 0;
+        background-position:1.06rem 0;
     }
 }
 
@@ -239,7 +239,7 @@
         background-position: 0 0;
     }
     100% {
-        background-position: 17px 0;
+        background-position:1.06rem 0;
     }
 }
 
@@ -248,7 +248,7 @@
         background-position: 0 0;
     }
     100% {
-        background-position: 17px 0;
+        background-position:1.06rem 0;
     }
 }
 
@@ -280,7 +280,7 @@
     border: 1px #eeeeee solid;
 }
 #upload .filelist li p.imgWrap.notimage i.file-preview {
-    margin-top: 15px;
+    margin-top:0.94rem;
 }
 
 #upload .filelist li img {
@@ -293,8 +293,8 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 28px;
-    line-height: 28px;
+    height:1.75rem;
+    line-height:1.75rem;
     width: 100%;
     z-index: 100;
     display:none;
@@ -305,7 +305,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 40px;
+    height:2.5rem;
     width: 100%;
     z-index: 200;
     background: url(./images/success.png) no-repeat right bottom;
@@ -342,15 +342,15 @@
 }
 
 #upload .filelist div.file-panel span {
-    width: 24px;
-    height: 24px;
+    width:1.5rem;
+    height:1.5rem;
     display: inline;
     float: right;
     text-indent: -9999px;
     overflow: hidden;
     background: url(./images/icons.png) no-repeat;
     background: url(./images/icons.gif) no-repeat \9;
-    margin: 5px 1px 1px;
+    margin:0.31rem 1px 1px;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-user-select: none;
@@ -386,27 +386,27 @@
 }
 
 #upload .statusBar {
-    height: 45px;
+    height:2.81rem;
     border-bottom: 1px solid #dadada;
-    margin: 0 10px;
+    margin: 0:0.625rem;
     padding: 0;
-    line-height: 45px;
+    line-height:2.81rem;
     vertical-align: middle;
     position: relative;
 }
 
 #upload .statusBar .progress {
     border: 1px solid #1483d8;
-    width: 198px;
+    width:12.375rem;
     background: #fff;
-    height: 18px;
+    height: 1.125rem;
     position: absolute;
-    top: 12px;
+    top:0.75rem;
     display: none;
     text-align: center;
-    line-height: 18px;
+    line-height: 1.125rem;
     color: #6dbfff;
-    margin: 0 10px 0 0;
+    margin: 0:0.625rem 0 0;
 }
 #upload .statusBar .progress span.percentage {
     width: 0;
@@ -423,15 +423,15 @@
 
 #upload .statusBar .info {
     display: inline-block;
-    font-size: 14px;
+    font-size:0.875rem;
     color: #666666;
 }
 
 #upload .statusBar .btns {
     position: absolute;
-    top: 7px;
+    top:0.44rem;
     right: 0;
-    line-height: 30px;
+    line-height:1.875rem;
 }
 
 #filePickerBtn {
@@ -445,12 +445,12 @@
     background: #ffffff;
     border: 1px solid #cfcfcf;
     color: #565656;
-    padding: 0 18px;
+    padding: 0 1.125rem;
     display: inline-block;
-    border-radius: 3px;
-    margin-left: 10px;
+    border-radius:0.19rem;
+    margin-left:0.625rem;
     cursor: pointer;
-    font-size: 14px;
+    font-size:0.875rem;
     float: left;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -489,7 +489,7 @@
 #online {
     width: 100%;
     height: 336px;
-    padding: 10px 0 0 0;
+    padding:0.625rem 0 0 0;
 }
 #online #fileList{
     width: 100%;
@@ -542,12 +542,12 @@
 #online li div span.file-title{
     display: block;
     padding: 0 3px;
-    margin: 3px 0 0 0;
-    font-size: 12px;
-    height: 13px;
+    margin:0.19rem 0 0 0;
+    font-size:0.75rem;
+    height:0.82rem;
     color: #555555;
     text-align: center;
-    width: 107px;
+    width:6.69rem;
     white-space: nowrap;
     word-break: break-all;
     overflow: hidden;
@@ -565,9 +565,9 @@
     background-repeat: no-repeat;
 }
 #online li .icon:hover {
-    width: 107px;
-    height: 107px;
-    border: 3px solid #1094fa;
+    width:6.69rem;
+    height:6.69rem;
+    border:0.19rem solid #1094fa;
 }
 #online li.selected .icon {
     background-image: url(images/success.png);
@@ -575,9 +575,9 @@
     background-position: 75px 75px;
 }
 #online li.selected .icon:hover {
-    width: 107px;
-    height: 107px;
-    border: 3px solid #1094fa;
+    width:6.69rem;
+    height:6.69rem;
+    border:0.19rem solid #1094fa;
     background-position: 72px 72px;
 }
 
@@ -585,9 +585,9 @@
 /* 在线文件的文件预览图标 */
 i.file-preview {
     display: block;
-    margin: 10px auto;
-    width: 70px;
-    height: 70px;
+    margin:0.625rem auto;
+    width:4.375rem;
+    height:4.375rem;
     background-image: url("./images/file-icons.png");
     background-image: url("./images/file-icons.gif") \9;
     background-position: -140px center;

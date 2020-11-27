@@ -266,7 +266,7 @@ function RGBColor(color_string)
                 var list_color = new RGBColor(examples[i]);
                 var example_div = document.createElement('div');
                 example_div.style.cssText =
-                        'margin: 3px; '
+                        'margin:0.19rem; '
                         + 'border: 1px solid black; '
                         + 'background:' + list_color.toHex() + '; '
                         + 'color:' + list_color.toHex()

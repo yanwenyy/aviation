@@ -93,17 +93,17 @@
 
 <style scoped>
   .go-login{
-    width: 145px;
-    height:33px;
-    line-height: 33px;
+    width:9.06rem;
+    height:2.06rem;
+    line-height:2.06rem;
     border: 1px solid #fff;
-    border-radius: 17px;
+    border-radius:1.06rem;
     color:#fff;
     text-align: center;
     vertical-align: middle;
     float: right;
-    margin-top: 56px;
-    font-size: 15px;
+    margin-top:3.5rem;
+    font-size:0.94rem;
   }
   .go-login>img{
     vertical-align: middle;
@@ -119,7 +119,7 @@
   }
   .home-head{
     width: 100%;
-    height: 129px;
+    height:8.06rem;
     position: absolute;
     top:0;
     left:0;
@@ -129,42 +129,42 @@
     z-index: 99999;
   }
   .home-logo{
-    width: 398px;
-    height: 76px;
-    margin-top: 35px;
+    width:24.875rem;
+    height:4.75rem;
+    margin-top:2.19rem;
     margin-right:10%;
   }
   .login{
-    width: 515px;
+    width:32.19rem;
     background: #fff;
-    border-radius: 4px;
+    border-radius:0.25rem;
     margin: 9% auto;
-    padding: 62px 54px;
+    padding:3.875rem 3.375rem;
   }
   .title{
     text-align: center;
-    font-size: 26px;
+    font-size: 1.625rem;
     font-weight: bold;
     color:#333;
-    margin-bottom: 44px;
+    margin-bottom:2.75rem;
   }
   .input-list{
-    margin-bottom: 21px;
+    margin-bottom:1.32rem;
     border: 1px solid #DDDDDD;
-    border-radius: 4px;
-    padding-left: 22px ;
-    height: 58px;
-    line-height: 58px;
+    border-radius:0.25rem;
+    padding-left:1.375rem ;
+    height:3.625rem;
+    line-height:3.625rem;
   }
   .input-list>img{
-    width: 25px;
+    width:1.56rem;
     height: auto;
     vertical-align: middle;
-    margin-right: 22px;
+    margin-right:1.375rem;
   }
   .input-list>input{
     height: 100%;
-    font-size: 18px;
+    font-size: 1.125rem;
     width: 86%;
     border: none;
     background: transparent;
@@ -172,20 +172,45 @@
   .notice{
     display: flex;
     justify-content: space-between;
-    margin: 13px 0 31px 0;
-    font-size: 16px;
+    margin:0.82rem 0 1.94rem 0;
+    font-size:1rem;
     color:#666;
   }
   .lx-manger{
     color:#999;
   }
   .login-btn{
-    height: 58px;
-    line-height: 58px;
+    height:3.625rem;
+    line-height:3.625rem;
     background: #2A5AAC;
     color:#fff;
-    border-radius: 4px;
+    border-radius:0.25rem;
     text-align: center;
-    font-size: 18px;
+    font-size: 1.125rem;
+  }
+  @media screen and (max-width:900px) {
+    .login{
+      width: 80%;
+      margin-top: 30%;
+    }
+    .home-logo{
+      width: 14rem;
+      height: auto;
+    }
+    .go-login{
+      margin-top: 2.5rem;
+    }
+    .input-list>input{
+      width: 80%;
+    }
+    .input-list>img{
+      margin-right: 0.5rem;
+    }
+    .notice{
+      display: block;
+    }
+    .lx-manger{
+      display: block;
+    }
   }
 </style>

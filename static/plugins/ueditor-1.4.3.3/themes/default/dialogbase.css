@@ -47,7 +47,7 @@ table {
 */
 body {
     background-color: #fff;
-    font: 12px/1.5 sans-serif, "宋体", "Arial Narrow", HELVETICA;
+    font:0.75rem/1.5 sans-serif, "宋体", "Arial Narrow", HELVETICA;
     color: #646464;
 }
 
@@ -60,17 +60,17 @@ body {
 .tabhead span {
     display: inline-block;
     padding: 0 5px;
-    height: 30px;
+    height:1.875rem;
     border: 1px solid #ccc;
     background: url("images/dialog-title-bg.png") repeat-x;
     text-align: center;
-    line-height: 30px;
+    line-height:1.875rem;
     cursor: pointer;
-    *margin-right: 5px;
+    *margin-right:0.31rem;
 }
 
 .tabhead span.focus {
-    height: 31px;
+    height:1.94rem;
     border-bottom: none;
     background: #fff;
 }
@@ -86,9 +86,9 @@ body {
 a.button {
     display: block;
     text-align: center;
-    line-height: 24px;
+    line-height:1.5rem;
     text-decoration: none;
-    height: 24px;
+    height:1.5rem;
     width: 95px;
     border: 0;
     color: #838383;

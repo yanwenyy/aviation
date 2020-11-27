@@ -59,7 +59,7 @@ defaultOptions.navigation = {
 		padding: '5px 0'
 	},
 	menuItemStyle: {
-		padding: '0 10px',
+		padding: '0:0.625rem',
 		background: NONE,
 		color: '#303030',
 		fontSize: isTouchDevice ? '14px' : '11px'
@@ -431,7 +431,7 @@ extend(Chart.prototype, {
 			cacheName = 'cache-' + className,
 			menu = chart[cacheName],
 			menuPadding = mathMax(width, height), // for mouse leave detection
-			boxShadow = '3px 3px 10px #888',
+			boxShadow = '3px 3px:0.625rem #888',
 			innerMenu,
 			hide,
 			hideTimer,

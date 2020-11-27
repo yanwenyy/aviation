@@ -97,43 +97,43 @@
 
 <style scoped>
   .sub-password{
-    width: 180px;
-    height: 50px;
-    line-height: 50px;
+    width:11.25rem;
+    height:3.125rem;
+    line-height:3.125rem;
     text-align: center;
     background: #2A5AAC;
-    font-size: 16px;
+    font-size:1rem;
     color:#fff;
-    margin: 15px auto 0 auto;
+    margin:0.94rem auto 0 auto;
   }
   .pm-title{
-    margin-bottom: 20px;
-    font-size: 18px;
+    margin-bottom:1.25rem;
+    font-size: 1.125rem;
     color: #333;
     font-weight: bold;
   }
   .password-model{
-    width: 515px;
+    width:32.19rem;
     height:auto;
     background: #fff;
     margin: 8% auto;
-    border-radius: 4px;
+    border-radius:0.25rem;
     position: relative;
-    padding: 53px 47px;
-    font-size: 15px;
-    line-height: 24px;
+    padding:3.31rem 2.94rem;
+    font-size:0.94rem;
+    line-height:1.5rem;
   }
   .close-model{
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width:2.5rem;
+    height:2.5rem;
+    line-height:2.5rem;
     text-align: center;
-    font-size: 30px;
+    font-size:1.875rem;
     color:#fff;
-    border: 3px solid #fff;
+    border:0.19rem solid #fff;
     border-radius: 50%;
     position: absolute;
-    top:-64px;
+    top:-4rem;
     right: 0;
   }
   .blue{
@@ -143,17 +143,17 @@
     width: 74%;
   }
   .left-list-two-list{
-    margin-bottom: 35px;
+    margin-bottom:2.19rem;
   }
   .left-list-two{
-    padding:26px 0 0 56px;
-    font-size: 18px;
+    padding:1.625rem 0 0 3.5rem;
+    font-size: 1.125rem;
     color: #666;
     background: #fff;
   }
   .left-list-one{
-    padding: 23px 16px;
-    border-radius: 4px;
+    padding:1.44rem 1rem;
+    border-radius:0.25rem;
   }
   .left-list-one-act{
     background: #2A5AAC;
@@ -162,33 +162,33 @@
   .right-triangle{
     width: 0;
     height: 0;
-    border-top: 6px solid transparent;
-    border-left: 6px solid #000;
-    border-bottom: 6px solid transparent;
+    border-top:0.375rem solid transparent;
+    border-left:0.375rem solid #000;
+    border-bottom:0.375rem solid transparent;
     vertical-align: middle;
-    margin-top: -3px;
-    margin-right: 15px;
+    margin-top: -0.19rem;
+    margin-right:0.94rem;
   }
   .bottom-triangle{
     width: 0;
     height: 0;
-    border-top: 6px solid #fff;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
+    border-top:0.375rem solid #fff;
+    border-left:0.375rem solid transparent;
+    border-right:0.375rem solid transparent;
     vertical-align: middle;
-    margin-top: -3px;
-    margin-right: 15px;
+    margin-top: -0.19rem;
+    margin-right:0.94rem;
   }
   .lt-left{
     width:23%;
     /*background: #fff;*/
-    font-size: 19px;
+    font-size:1.19rem;
     color:#666;
     height: auto!important;
   }
   .lt-left-ul{
     background: #fff;
-    padding: 26px 20px;
+    padding: 1.625rem 1.25rem;
   }
   .lt-body .container{
     display: flex;
@@ -196,7 +196,24 @@
   }
   .lt-body{
     background: #F6F6F6;
-    padding-bottom: 49px;
-    padding-top:22px;
+    padding-bottom:3.06rem;
+    padding-top:1.375rem;
+  }
+  @media screen and (max-width:900px) {
+    .lt-left{
+      width:30%;
+    }
+    .lt-right{
+      width: 68%;
+    }
+    .left-list-one{
+      padding: 0.5rem;
+    }
+    .left-list-two{
+      padding: 0.5rem;
+    }
+    .left-list-two-list{
+      margin-bottom: 0.5rem;
+    }
   }
 </style>

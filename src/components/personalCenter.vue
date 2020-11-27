@@ -118,60 +118,60 @@
 
 <style scoped>
   .sub-password{
-    width: 180px;
-    height: 50px;
-    line-height: 50px;
+    width:11.25rem;
+    height:3.125rem;
+    line-height:3.125rem;
     text-align: center;
     background: #2A5AAC;
-    font-size: 16px;
+    font-size:1rem;
     color:#fff;
-    margin: 15px auto 0 auto;
+    margin:0.94rem auto 0 auto;
   }
   .pmi-input{
     width: 68%;
     height: 100%;
     border: none;
     background: transparent;
-    font-size: 18px;
+    font-size: 1.125rem;
   }
   .pm-title{
-    margin-bottom: 44px;
+    margin-bottom:2.75rem;
   }
   .pmi-line{
-    width: 2px;
-    height: 16px;
+    width:0.125rem;
+    height:1rem;
     background: #DDDDDD;
-    margin: 0 15px;
+    margin: 0 0.94rem;
     vertical-align: middle;
   }
   .pm-input{
-    width: 421px;
-    height: 58px;
-    line-height: 58px;
+    width:26.32rem;
+    height:3.625rem;
+    line-height:3.625rem;
     border: 1px solid #DDDDDD;
-    border-radius: 4px;
+    border-radius:0.25rem;
     color: #999;
-    font-size: 18px;
-    padding-left: 22px;
-    margin-bottom: 24px;
+    font-size: 1.125rem;
+    padding-left:1.375rem;
+    margin-bottom:1.5rem;
   }
   .password-model{
-    width: 515px;
-    height: 480px;
+    width:32.19rem;
+    height:30rem;
     background: #fff;
     margin: 8% auto;
-    border-radius: 4px;
+    border-radius:0.25rem;
     position: relative;
-    padding: 53px 47px;
+    padding:3.31rem 2.94rem;
   }
   .close-model{
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width:2.5rem;
+    height:2.5rem;
+    line-height:2.5rem;
     text-align: center;
-    font-size: 30px;
+    font-size:1.875rem;
     color:#fff;
-    border: 3px solid #fff;
+    border:0.19rem solid #fff;
     border-radius: 50%;
     position: absolute;
     top:-64px;
@@ -193,40 +193,40 @@
     vertical-align: top;
   }
   .input-msg{
-    font-size: 14px;
+    font-size:0.875rem;
     color: #999;
-    line-height: 24px;
-    margin-top: 23px;
+    line-height:1.5rem;
+    margin-top:1.44rem;
   }
   .reply-list{
-    margin-bottom: 25px;
+    margin-bottom:1.56rem;
   }
   .reply-input{
-    width: 818px;
-    height: 55px;
+    width: 81.125rem;
+    height:3.44rem;
     border: 1px solid #ddd;
     background: #F8F8F8!important;
-    font-size: 18px;
-    padding-left: 28px;
+    font-size: 1.125rem;
+    padding-left:1.75rem;
   }
   .reply-input-name{
-    width: 180px;
+    width:11.25rem;
     color: #333;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
     text-align: right;
-    margin-right: 42px;
+    margin-right:2.625rem;
     vertical-align: top;
-    margin-top: 20px;
+    margin-top:1.25rem;
   }
   .reply-box{
     width: 100%;
     background: #FCFCFC;
-    padding: 73px 76px;
-    margin-bottom: 70px;
+    padding:4.56rem 4.75rem;
+    margin-bottom:4.375rem;
   }
   .reply-title{
-    font-size: 26px;
+    font-size: 1.625rem;
     font-weight: bold;
     color:#333;
     text-align: center;
@@ -235,10 +235,10 @@
     background: #fff;
   }
   .left-tab>div{
-    height: 61px;
-    line-height: 61px;
+    height:3.81rem;
+    line-height:3.81rem;
     text-align: center;
     background: #F2F2F2;
-    margin-bottom: 13px;
+    margin-bottom:0.82rem;
   }
 </style>

@@ -29,11 +29,11 @@
 
 <style scoped>
   .crumbs{
-    height: 63px;
-    line-height: 63px;
-    font-size: 15px;
+    height:3.94rem;
+    line-height:3.94rem;
+    font-size:0.94rem;
     color: #999;
     border-bottom: 1px solid #DCDCDC;
-    margin-bottom: 24px;
+    margin-bottom:1.5rem;
   }
 </style>

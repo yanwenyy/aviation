@@ -55,8 +55,8 @@
 
 <style scoped>
   .content-line{
-    width: 2px;
-    height: 689px;
+    width:0.125rem;
+    height:43.06rem;
     background: #eee;
   }
   .right-msg{
@@ -65,19 +65,19 @@
   .main-msg-body{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 85px;
+    margin-bottom:5.31rem;
   }
   .left-tab-dot{
-    width: 5px;
-    height: 5px;
+    width:0.31rem;
+    height:0.31rem;
     background: #000;
     border-radius: 50%;
     vertical-align: middle;
-    margin-right: 10px;
+    margin-right:0.625rem;
   }
   .left-tab{
-    width: 198px;
-    font-size: 16px;
+    width:12.375rem;
+    font-size:1rem;
   }
   .left-tab-act{
     background: #2A5AAC!important;
@@ -87,10 +87,19 @@
     background: #fff;
   }
   .left-tab>div{
-    height: 61px;
-    line-height: 61px;
+    height:3.81rem;
+    line-height:3.81rem;
     text-align: center;
     background: #F2F2F2;
-    margin-bottom: 13px;
+    margin-bottom:0.82rem;
+  }
+  @media screen and (max-width:900px) {
+    .left-tab{
+      width: 8rem;
+    }
+    .right-msg{
+      margin-left: 1rem;
+      width: 65%;
+    }
   }
 </style>

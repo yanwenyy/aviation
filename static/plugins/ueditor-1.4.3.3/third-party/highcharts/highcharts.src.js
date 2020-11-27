@@ -1766,7 +1766,7 @@ defaultOptions = {
 			year: '%Y'
 		},
 		//formatter: defaultFormatter,
-		headerFormat: '<span style="font-size: 10px">{point.key}</span><br/>',
+		headerFormat: '<span style="font-size:0.625rem">{point.key}</span><br/>',
 		pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b><br/>',
 		shadow: true,
 		//shared: false,
@@ -9479,7 +9479,7 @@ Pointer.prototype = {
 			chartY = plotTop + plotHeight;
 		}
 		
-		// determine if the mouse has moved more than 10px
+		// determine if the mouse has moved more than:0.625rem
 		this.hasDragged = Math.sqrt(
 			Math.pow(mouseDownX - chartX, 2) +
 			Math.pow(mouseDownY - chartY, 2)
@@ -16035,7 +16035,7 @@ seriesTypes.bar = BarSeries;
 defaultPlotOptions.scatter = merge(defaultSeriesOptions, {
 	lineWidth: 0,
 	tooltip: {
-		headerFormat: '<span style="font-size: 10px; color:{series.color}">{series.name}</span><br/>',
+		headerFormat: '<span style="font-size:0.625rem; color:{series.color}">{series.name}</span><br/>',
 		pointFormat: 'x: <b>{point.x}</b><br/>y: <b>{point.y}</b><br/>',
 		followPointer: true
 	},

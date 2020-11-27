@@ -65,15 +65,15 @@
 
 <style scoped>
   .notice-more-msg{
-    font-size: 15px;
-    line-height: 22px;
-    margin-top: 7px;
+    font-size:0.94rem;
+    line-height:1.375rem;
+    margin-top:0.44rem;
   }
   .notice-more-list{
-    margin-bottom: 26px;
+    margin-bottom: 1.625rem;
   }
   .nmd-line{
-    width: 25px;
+    width:1.56rem;
     height: 1px;
     background:#B21219;
     position: absolute;
@@ -81,22 +81,22 @@
     left: 0;
   }
   .notice-more-date{
-    font-size: 14px;
+    font-size:0.875rem;
     font-weight: bold;
     color:#2A5AAC;
     border-bottom: 1px solid #eee;
-    padding-bottom: 14px;
+    padding-bottom:0.875rem;
     position: relative;
   }
   .notice-more-title{
     width: 100%;
-    height: 53px;
-    line-height: 53px;
+    height:3.31rem;
+    line-height:3.31rem;
     background: #EEEEEE;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom:1.875rem;
   }
   .left{
     width: 29%;

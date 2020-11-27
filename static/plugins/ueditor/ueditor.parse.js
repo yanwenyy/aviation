@@ -391,7 +391,7 @@ UE.parse.register('table', function (utils) {
                     'background-position: center right; background-image:url(' + this.rootPath + 'themes/default/images/sortable.png);}' +
                 selector + ' table.sortEnabled tr.firstRow th:hover,' + selector + ' table.sortEnabled tr.firstRow td:hover{background-color: #EEE;}' +
                 selector + ' table{margin-bottom:10px;border-collapse:collapse;display:table;}' +
-                selector + ' td,' + selector + ' th{ background:white; padding: 5px 10px;border: 1px solid #DDD;}' +
+                selector + ' td,' + selector + ' th{ background:white; padding:0.31rem:0.625rem;border: 1px solid #DDD;}' +
                 selector + ' caption{border:1px dashed #DDD;border-bottom:0;padding:3px;text-align:center;}' +
                 selector + ' th{border-top:1px solid #BBB;background:#F7F7F7;}' +
                 selector + ' table tr.firstRow th{border-top:2px solid #BBB;background:#F7F7F7;}' +
@@ -951,16 +951,16 @@ UE.parse.register('list',function(utils){
                 switch(listStyle){
                     case 'cn':
                         utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-1{padding-left:25px}');
-                        utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-2{padding-left:40px}');
+                        utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-2{padding-left:2.5rem}');
                         utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-3{padding-left:55px}');
                         break;
                     case 'cn1':
                         utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-1{padding-left:30px}');
-                        utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-2{padding-left:40px}');
+                        utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-2{padding-left:2.5rem}');
                         utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-3{padding-left:55px}');
                         break;
                     case 'cn2':
-                        utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-1{padding-left:40px}');
+                        utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-1{padding-left:2.5rem}');
                         utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-2{padding-left:55px}');
                         utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-3{padding-left:68px}');
                         break;
@@ -970,7 +970,7 @@ UE.parse.register('list',function(utils){
                         break;
                     case 'num2':
                         utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-1{padding-left:35px}');
-                        utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-2{padding-left:40px}');
+                        utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft-2{padding-left:2.5rem}');
                         break;
                     case 'dash':
                         utils.pushItem(customCss,selector + ' li.list-'+listStyle+'-paddingleft{padding-left:35px}');

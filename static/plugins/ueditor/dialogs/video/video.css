@@ -1,5 +1,5 @@
 @charset "utf-8";
-.wrapper{ width: 570px;_width:575px;margin: 10px auto; zoom:1;position: relative}
+.wrapper{ width: 570px;_width:575px;margin:0.625rem auto; zoom:1;position: relative}
 .tabbody{height: 335px;}
 .tabbody .panel {
     position: absolute;
@@ -18,27 +18,27 @@
 .tabbody .panel table td{vertical-align: middle;}
 #videoUrl {
     width: 490px;
-    height: 21px;
-    line-height: 21px;
-    margin: 8px 5px;
+    height:1.32rem;
+    line-height:1.32rem;
+    margin:0.5rem 5px;
     background: #FFF;
     border: 1px solid #d7d7d7;
 }
-#videoSearchTxt{margin-left:15px;background: #FFF;width:200px;height:21px;line-height:21px;border: 1px solid #d7d7d7;}
+#videoSearchTxt{margin-left:15px;background: #FFF;width:200px;height:1.31rem;line-height:1.31rem;border: 1px solid #d7d7d7;}
 #searchList{width: 570px;overflow: auto;zoom:1;height: 270px;}
-#searchList div{float: left;width: 120px;height: 135px;margin: 5px 15px;}
-#searchList img{margin: 2px 8px;cursor: pointer;border: 2px solid #fff} /*不用缩略图*/
-#searchList p{margin-left: 10px;}
+#searchList div{float: left;width: 120px;height: 135px;margin:0.31rem:0.94rem;}
+#searchList img{margin:0.125rem 8px;cursor: pointer;border:0.125rem solid #fff} /*不用缩略图*/
+#searchList p{margin-left:0.625rem;}
 #videoType{
-    width: 65px;
-    height: 23px;
-    line-height: 22px;
+    width:4.06rem;
+    height:1.44rem;
+    line-height:1.375rem;
     border: 1px solid #d7d7d7;
 }
 #videoSearchBtn,#videoSearchReset{
-    /*width: 80px;*/
-    height: 25px;
-    line-height: 25px;
+    /*width:5rem;*/
+    height:1.56rem;
+    line-height:1.56rem;
     background: #eee;
     border: 1px solid #d7d7d7;
     cursor: pointer;
@@ -47,40 +47,40 @@
 
 
 
-#preview{position: relative;width: 420px;padding:0;overflow: hidden; margin-left: 10px; _margin-left:5px; height: 280px;background-color: #ddd;float: left}
+#preview{position: relative;width: 420px;padding:0;overflow: hidden; margin-left:0.625rem; _margin-left:5px; height: 280px;background-color: #ddd;float: left}
 #preview .previewMsg {position:absolute;top:0;margin:0;padding:0;height:280px;width:100%;background-color: #666;}
-#preview .previewMsg span{display:block;margin: 125px auto 0 auto;text-align:center;font-size:18px;color:#fff;}
+#preview .previewMsg span{display:block;margin: 125px auto 0 auto;text-align:center;font-size:1.125rem;color:#fff;}
 #preview .previewVideo {position:absolute;top:0;margin:0;padding:0;height:280px;width:100%;}
 .edui-video-wrapper fieldset{
     border: 1px solid #ddd;
-    padding-left: 5px;
-    margin-bottom: 20px;
-    padding-bottom: 5px;
+    padding-left:0.31rem;
+    margin-bottom:1.25rem;
+    padding-bottom:0.31rem;
     width: 115px;
 }
 
-#videoInfo {width: 120px;float: left;margin-left: 10px;_margin-left:7px;}
+#videoInfo {width: 120px;float: left;margin-left:0.625rem;_margin-left:7px;}
 fieldset{
     border: 1px solid #ddd;
-    padding-left: 5px;
-    margin-bottom: 20px;
-    padding-bottom: 5px;
+    padding-left:0.31rem;
+    margin-bottom:1.25rem;
+    padding-bottom:0.31rem;
     width: 115px;
 }
 fieldset legend{font-weight: bold;}
-fieldset p{line-height: 30px;}
+fieldset p{line-height:1.875rem;}
 fieldset input.txt{
-    width: 65px;
-    height: 21px;
-    line-height: 21px;
-    margin: 8px 5px;
+    width:4.06rem;
+    height:1.32rem;
+    line-height:1.32rem;
+    margin:0.5rem 5px;
     background: #FFF;
     border: 1px solid #d7d7d7;
 }
-label.url{font-weight: bold;margin-left: 5px;color: #06c;}
-#videoFloat div{cursor:pointer;opacity: 0.5;filter: alpha(opacity = 50);margin:9px;_margin:5px;width:38px;height:36px;float:left;}
+label.url{font-weight: bold;margin-left:0.31rem;color: #06c;}
+#videoFloat div{cursor:pointer;opacity: 0.5;filter: alpha(opacity = 50);margin:0.56rem;_margin:5px;width:38px;height:36px;float:left;}
 #videoFloat .focus{opacity: 1;filter: alpha(opacity = 100)}
-span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: blue}
+span.view{display: inline-block;width:1.875rem;float: right;cursor: pointer;color: blue}
 
 
 
@@ -101,10 +101,10 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
     display: block;
     clip: auto;
 }
-#upload_alignment div{cursor:pointer;opacity: 0.5;filter: alpha(opacity = 50);margin:9px;_margin:5px;width:38px;height:36px;float:left;}
+#upload_alignment div{cursor:pointer;opacity: 0.5;filter: alpha(opacity = 50);margin:0.56rem;_margin:5px;width:38px;height:36px;float:left;}
 #upload_alignment .focus{opacity: 1;filter: alpha(opacity = 100)}
 #upload_left { width:427px; float:left; }
-#upload_left .controller { height: 30px; clear: both; }
+#upload_left .controller { height:1.875rem; clear: both; }
 #uploadVideoInfo{margin-top:10px;float:right;padding-right:8px;}
 
 #upload .queueList {
@@ -127,34 +127,34 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
 }
 
 #upload .placeholder {
-    margin: 10px;
+    margin:0.625rem;
     margin-right:0;
-    border: 2px dashed #e6e6e6;
+    border:0.125rem dashed #e6e6e6;
     *border: 0px dashed #e6e6e6;
-    height: 161px;
+    height:10.06rem;
     padding-top: 150px;
     text-align: center;
     width: 97%;
     float: left;
     background: url(./images/image.png) center 70px no-repeat;
     color: #cccccc;
-    font-size: 18px;
+    font-size: 1.125rem;
     position: relative;
     top:0;
     *margin-left: 0;
-    *left: 10px;
+    *left:0.625rem;
 }
 
 #upload .placeholder .webuploader-pick {
-    font-size: 18px;
+    font-size: 1.125rem;
     background: #00b7ee;
-    border-radius: 3px;
-    line-height: 44px;
+    border-radius:0.19rem;
+    line-height:2.75rem;
     padding: 0 30px;
     *width: 120px;
     color: #fff;
     display: inline-block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 1.25rem auto;
     cursor: pointer;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
@@ -170,11 +170,11 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
 
 #upload .placeholder .flashTip {
     color: #666666;
-    font-size: 12px;
+    font-size:0.75rem;
     position: absolute;
     width: 100%;
     text-align: center;
-    bottom: 20px;
+    bottom:1.25rem;
 }
 
 #upload .placeholder .flashTip a {
@@ -214,13 +214,13 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
     height: 113px;
     background: url(./images/bg.png);
     text-align: center;
-    margin: 15px 0 0 20px;
-    *margin: 15px 0 0 15px;
+    margin:0.94rem 0 0 1.25rem;
+    *margin:0.94rem 0 0:0.94rem;
     position: relative;
     display: block;
     float: left;
     overflow: hidden;
-    font-size: 12px;
+    font-size:0.75rem;
 }
 
 #upload .filelist li p.log {
@@ -236,8 +236,8 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    top: 5px;
-    text-indent: 5px;
+    top:0.31rem;
+    text-indent:0.31rem;
     text-align: left;
 }
 
@@ -246,7 +246,7 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
     width: 100%;
     bottom: 0;
     left: 0;
-    height: 8px;
+    height:0.5rem;
     overflow: hidden;
     z-index: 50;
     margin: 0;
@@ -282,7 +282,7 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
         background-position: 0 0;
     }
     100% {
-        background-position: 17px 0;
+        background-position:1.06rem 0;
     }
 }
 
@@ -291,7 +291,7 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
         background-position: 0 0;
     }
     100% {
-        background-position: 17px 0;
+        background-position:1.06rem 0;
     }
 }
 
@@ -300,7 +300,7 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
         background-position: 0 0;
     }
     100% {
-        background-position: 17px 0;
+        background-position:1.06rem 0;
     }
 }
 
@@ -332,7 +332,7 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
     border: 1px #eeeeee solid;
 }
 #upload .filelist li p.imgWrap.notimage i.file-preview {
-    margin-top: 15px;
+    margin-top:0.94rem;
 }
 
 #upload .filelist li img {
@@ -345,8 +345,8 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 28px;
-    line-height: 28px;
+    height:1.75rem;
+    line-height:1.75rem;
     width: 100%;
     z-index: 100;
     display:none;
@@ -357,7 +357,7 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 40px;
+    height:2.5rem;
     width: 100%;
     z-index: 200;
     background: url(./images/success.png) no-repeat right bottom;
@@ -394,15 +394,15 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
 }
 
 #upload .filelist div.file-panel span {
-    width: 24px;
-    height: 24px;
+    width:1.5rem;
+    height:1.5rem;
     display: inline;
     float: right;
     text-indent: -9999px;
     overflow: hidden;
     background: url(./images/icons.png) no-repeat;
     background: url(./images/icons.gif) no-repeat \9;
-    margin: 5px 1px 1px;
+    margin:0.31rem 1px 1px;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-user-select: none;
@@ -438,27 +438,27 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
 }
 
 #upload .statusBar {
-    height: 45px;
+    height:2.81rem;
     border-bottom: 1px solid #dadada;
-    margin: 0 10px;
+    margin: 0:0.625rem;
     padding: 0;
-    line-height: 45px;
+    line-height:2.81rem;
     vertical-align: middle;
     position: relative;
 }
 
 #upload .statusBar .progress {
     border: 1px solid #1483d8;
-    width: 198px;
+    width:12.375rem;
     background: #fff;
-    height: 18px;
+    height: 1.125rem;
     position: absolute;
-    top: 12px;
+    top:0.75rem;
     display: none;
     text-align: center;
-    line-height: 18px;
+    line-height: 1.125rem;
     color: #6dbfff;
-    margin: 0 10px 0 0;
+    margin: 0:0.625rem 0 0;
 }
 #upload .statusBar .progress span.percentage {
     width: 0;
@@ -475,15 +475,15 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
 
 #upload .statusBar .info {
     display: inline-block;
-    font-size: 14px;
+    font-size:0.875rem;
     color: #666666;
 }
 
 #upload .statusBar .btns {
     position: absolute;
-    top: 7px;
+    top:0.44rem;
     right: 0;
-    line-height: 30px;
+    line-height:1.875rem;
 }
 
 #filePickerBtn {
@@ -497,12 +497,12 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
     background: #ffffff;
     border: 1px solid #cfcfcf;
     color: #565656;
-    padding: 0 18px;
+    padding: 0 1.125rem;
     display: inline-block;
-    border-radius: 3px;
-    margin-left: 10px;
+    border-radius:0.19rem;
+    margin-left:0.625rem;
     cursor: pointer;
-    font-size: 14px;
+    font-size:0.875rem;
     float: left;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -539,9 +539,9 @@ span.view{display: inline-block;width: 30px;float: right;cursor: pointer;color: 
 /* 在线文件的文件预览图标 */
 i.file-preview {
     display: block;
-    margin: 10px auto;
-    width: 70px;
-    height: 70px;
+    margin:0.625rem auto;
+    width:4.375rem;
+    height:4.375rem;
     background-image: url("./images/file-icons.png");
     background-image: url("./images/file-icons.gif") \9;
     background-position: -140px center;

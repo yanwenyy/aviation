@@ -21,7 +21,7 @@ var CodeMirror = (function() {
         wrapper.className = "CodeMirror" + (options.lineWrapping ? " CodeMirror-wrap" : "");
         // This mess creates the base DOM structure for the editor.
         wrapper.innerHTML =
-            '<div style="overflow: hidden; position: relative; width: 3px; height: 0px;">' + // Wraps and hides input textarea
+            '<div style="overflow: hidden; position: relative; width:0.19rem; height: 0px;">' + // Wraps and hides input textarea
                 '<textarea style="position: absolute; padding: 0; width: 1px;" wrap="off" ' +
                 'autocorrect="off" autocapitalize="off"></textarea></div>' +
                 '<div class="CodeMirror-scroll" tabindex="-1">' +
@@ -1493,7 +1493,7 @@ var CodeMirror = (function() {
 
             var oldCSS = input.style.cssText;
             inputDiv.style.position = "absolute";
-            input.style.cssText = "position: fixed; width: 30px; height: 30px; top: " + (e.clientY - 5) +
+            input.style.cssText = "position: fixed; width:1.875rem; height:1.875rem; top: " + (e.clientY - 5) +
                 "px; left: " + (e.clientX - 5) + "px; z-index: 1000; background: white; " +
                 "border-width: 0; outline: none; overflow: hidden; opacity: .05; filter: alpha(opacity=5);";
             leaveInputAlone = true;

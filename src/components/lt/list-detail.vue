@@ -490,37 +490,37 @@
 <style scoped>
   .sub-footer{
     text-align: center;
-    margin: 15px auto 0 auto;
+    margin:0.94rem auto 0 auto;
   }
   .sub-footer>div{
-    width: 100px;
-    height: 50px;
-    line-height: 50px;
+    width:6.25rem;
+    height:3.125rem;
+    line-height:3.125rem;
     text-align: center;
     background: #999999;
-    font-size: 16px;
+    font-size:1rem;
     color:#fff;
   }
   .sub-password{
     background: #2A5AAC!important;
-    margin-left: 30px;
+    margin-left:1.875rem;
   }
   .pm-title{
-    margin-bottom: 20px;
-    font-size: 18px;
+    margin-bottom:1.25rem;
+    font-size: 1.125rem;
     color: #333;
     font-weight: bold;
   }
   .password-model{
-    width: 515px;
+    width:32.19rem;
     height:auto;
     background: #fff;
     margin: 8% auto;
-    border-radius: 4px;
+    border-radius:0.25rem;
     position: relative;
-    padding: 53px 47px;
-    font-size: 15px;
-    line-height: 24px;
+    padding:3.31rem 2.94rem;
+    font-size:0.94rem;
+    line-height:1.5rem;
   }
   .fileInput{
     width: 100%;
@@ -545,137 +545,137 @@
     width: 100%;
     background: #F6F6F6;
     border: 1px solid #E5E5E5;
-    font-size: 16px;
+    font-size:1rem;
     color:#666;
-    line-height: 24px;
-    padding: 26px;
+    line-height:1.5rem;
+    padding: 1.625rem;
   }
   .rml-msg{
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 26px;
+    font-size:1rem;
+    line-height:1.5rem;
+    margin-bottom: 1.625rem;
   }
   .rml-date-btn{
-    margin-left: 31px;
+    margin-left:1.94rem;
   }
   .rml-date-btn>img{
-    width: 17px;
-    height: 17px;
-    min-width: 17px;
-    min-height: 17px;
+    width:1.06rem;
+    height:1.06rem;
+    min-width:1.06rem;
+    min-height:1.06rem;
     vertical-align: middle;
-    margin-top: -3px;
+    margin-top: -0.19rem;
   }
   .rml-date{
-    font-size: 15px;
+    font-size:0.94rem;
     color: #999;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 21px;
+    margin-bottom:1.32rem;
   }
   .rml-name>.blue{
-    font-size: 15px;
+    font-size:0.94rem;
     font-weight: normal;
   }
   .rml-name{
-    font-size: 18px;
+    font-size: 1.125rem;
     color:#333;
     font-weight: bold;
-    margin-bottom: 14px;
+    margin-bottom:0.875rem;
   }
   .reply-msg-list{
-    margin-top: 37px;
-    padding-bottom: 44px;
+    margin-top:2.31rem;
+    padding-bottom:2.75rem;
     border-bottom: 1px solid #eee;
   }
   .reply-msg-title{
-    font-size: 20px;
+    font-size:1.25rem;
     font-weight: bold;
     color: #333;
     margin-top: 69px;
   }
   .del-reply-img{
-    width: 30px;
-    height: 30px;
+    width:1.875rem;
+    height:1.875rem;
     border-radius: 50%;
-    line-height: 30px;
+    line-height:1.875rem;
     text-align: center;
-    font-size: 20px;
+    font-size:1.25rem;
     color: #fff;
     background: #A11727;
     position: absolute;
     top:0;
-    right: 6px;
+    right:0.375rem;
   }
   .reply-img-list{
-    width: 203px;
-    height: 161px;
+    width:12.69rem;
+    height:10.06rem;
     position: relative;
-    margin-right: 14px;
+    margin-right:0.875rem;
     background: #eee;
   }
   .reply-img-list{
-    margin-bottom: 34px;
-    margin-top: 20px;
+    margin-bottom:2.125rem;
+    margin-top:1.25rem;
   }
   .reply-img-list>img{
     width: 100%;
     height: 100%;
   }
   .rf-fj{
-    margin-top: 11px;
+    margin-top:0.69rem;
   }
   .rf-fj>span{
     position: relative;
   }
   .sub-reply{
-    width: 107px;
-    height: 39px;
-    line-height: 39px;
+    width:6.69rem;
+    height:2.44rem;
+    line-height:2.44rem;
     color:#fff;
     text-align: center;
     background: #2A5AAC;
-    margin-left: 11px;
+    margin-left:0.69rem;
   }
   .reply-foot-notice{
-    font-size: 14px!important;
+    font-size:0.875rem!important;
     color:#999;
   }
   .reply-foot{
     display: flex;
     justify-content: space-between;
-    font-size: 16px;
+    font-size:1rem;
     vertical-align: middle;
   }
   .reply-textarea{
     width: 100%;
-    height: 136px;
+    height:8.5rem;
     background: #F4F4F4;
     border:1px solid #DDDDDD;
-    border-radius: 4px;
-    font-size: 16px;
-    padding:24px 22px;
-    margin-bottom: 16px;
+    border-radius:0.25rem;
+    font-size:1rem;
+    padding:1.5rem 1.375rem;
+    margin-bottom:1rem;
   }
   .detail-reply{
     background: #fff;
-    padding:50px 43px;
+    padding:3.125rem 2.69rem;
   }
   .dm-zan-group-btn>img{
-    width: 65px;
-    height: 65px;
-    min-width: 65px;
-    min-height: 65px;
-    margin-bottom: 19px;
+    width:4.06rem;
+    height:4.06rem;
+    min-width:4.06rem;
+    min-height:4.06rem;
+    margin-bottom:1.19rem;
     vertical-align: top;
   }
   .dm-zan-group-btn{
-    margin-right: 57px;
+    margin-right:3.56rem;
     vertical-align: top;
   }
   .dm-zan-group{
     text-align: center;
-    font-size: 15px;
+    font-size:0.94rem;
   }
   .red{
     color:#C41313;
@@ -684,70 +684,70 @@
     color:#2A5AAC;
   }
   .dm-msg{
-    padding: 39px 37px;
+    padding:2.44rem 2.31rem;
   }
   .dmh-foot-btn>img{
-    /*min-width: 17px;*/
-    /*min-height: 17px;*/
-    width: 17px!important;
-    height: 17px;
+    /*min-width:1.06rem;*/
+    /*min-height:1.06rem;*/
+    width:1.06rem!important;
+    height:1.06rem;
     vertical-align: middle;
-    margin-right: 7px;
+    margin-right:0.44rem;
     margin-top: -2px;
   }
   .dmh-foot-btn{
-    width: 98px;
-    height: 32px;
-    line-height: 32px;
+    width:6.125rem;
+    height:2rem;
+    line-height:2rem;
     text-align: center;
-    font-size: 15px;
+    font-size:0.94rem;
     color:#2A5AAC;
     background: #E7F1FB;
     border: 1px solid #A9C0E8;
-    border-radius: 2px;
-    margin-right: 12px;
+    border-radius:0.125rem;
+    margin-right:0.75rem;
   }
   .dmh-foot{
     display: flex;
     justify-content: space-between;
   }
   .dmh-date{
-    font-size: 18px;
+    font-size: 1.125rem;
     color: #666;
-    margin-bottom: 39px;
+    margin-bottom:2.44rem;
   }
   .dmh-title{
-    font-size: 23px;
+    font-size:1.44rem;
     color:#343434;
     font-weight: bold;
-    line-height: 36px;
-    margin-bottom: 13px;
+    line-height:2.25rem;
+    margin-bottom:0.82rem;
   }
   .lml-img-group{
-    font-size: 17px;
-    margin-right: 20px;
+    font-size:1.06rem;
+    margin-right:1.25rem;
   }
   .lml-img-group>img{
-    width: 16px;
-    height: 18px;
+    width:1rem;
+    height: 1.125rem;
     vertical-align: middle;
-    margin-top: -5px;
+    margin-top: -0.31rem;
   }
   .lml-img-group-ck{
-    width: 18px!important;
-    height: 13px!important;
+    width: 1.125rem!important;
+    height:0.82rem!important;
   }
   .lml-img-group-hf{
-    width: 18px!important;
-    height: 18px!important;
+    width: 1.125rem!important;
+    height: 1.125rem!important;
   }
   .detail-body{
     background: #fff;
-    margin-bottom: 17px;
-    padding-bottom: 67px;
+    margin-bottom:1.06rem;
+    padding-bottom:4.19rem;
   }
   .dm-head{
-    padding: 35px 40px;
+    padding:2.19rem 2.5rem;
     border-bottom: 1px solid #eee;
   }
 </style>

@@ -75,44 +75,44 @@
 
 <style scoped>
   .notice-label{
-    font-size: 14px;
+    font-size:0.875rem;
     color:#2A5AAC;
-    margin-top: 16px;
+    margin-top:1rem;
   }
   .notice-label>span{
-    margin-right: 20px;
+    margin-right:1.25rem;
   }
   .ml-msg-show{
-    font-size: 18px;
-    line-height: 34px;
+    font-size: 1.125rem;
+    line-height:2.125rem;
     color:#333;
-    margin-top: 5px;
+    margin-top:0.31rem;
   }
   .ml-line{
-    width: 28px;
-    height: 3px;
+    width:1.75rem;
+    height:0.19rem;
     background: #B2131A;
-    margin: 15px 0 10px 0;
+    margin:0.94rem 0 0.625rem 0;
   }
   .ml-date-show{
-    font-size: 19px;
+    font-size:1.19rem;
     color:#333;
   }
   .ml-dot{
-    width: 6px;
-    height: 6px;
+    width:0.375rem;
+    height:0.375rem;
     background: #2A5AAC;
     border-radius: 50%;
     vertical-align: top;
-    margin-right: 12px;
-    margin-top: 7px;
+    margin-right:0.75rem;
+    margin-top:0.44rem;
   }
   .memorabilia-list{
-    margin-bottom: 55px;
+    margin-bottom:3.44rem;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
+    padding-bottom:1.25rem;
   }
   .memorabilia-body{
-    padding: 11px 0;
+    padding:0.69rem 0;
   }
 </style>

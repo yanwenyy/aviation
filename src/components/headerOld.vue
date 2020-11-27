@@ -71,23 +71,23 @@
   .header{
     width: 100%;
     color:#fff;
-    border-bottom: 8px solid #0079CD;
+    border-bottom:0.5rem solid #0079CD;
 
   }
   .tab{
     width: 10%;
-    height: 60px;
-    line-height: 60px;
+    height:3.75rem;
+    line-height:3.75rem;
     text-align: center;
-    font-size: 18px;
+    font-size: 1.125rem;
     margin-right:-5px;
   }
   .tab>a{
     color: #fff;
   }
   .logo{
-    padding: 10px 0 30px 0;
-    font-size: 30px;
+    padding:0.625rem 0 30px 0;
+    font-size:1.875rem;
     font-weight: bold;
   }
   .login-list{
@@ -97,15 +97,15 @@
   }
   .login-img{
     opacity: 0.5;
-    width: 60px;
+    width:3.75rem;
     height: auto;
     vertical-align: bottom;
   }
   .login-msg{
-    border-bottom: 3px dotted rgba(95,171,223,.5);
-    padding:0 30px 10px 10px;
+    border-bottom:0.19rem dotted rgba(95,171,223,.5);
+    padding:0 30px:0.625rem:0.625rem;
     margin-left: -5px;
-    font-size: 14px;
+    font-size:0.875rem;
   }
   .login-msg>div:hover{
     font-weight: bold;

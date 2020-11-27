@@ -136,83 +136,83 @@
 <style scoped>
   .text-style{
     color:red;
-    margin-top: 10px;
+    margin-top:0.625rem;
   }
   .reply-btn{
-    width: 180px;
-    height: 50px;
-    line-height: 50px;
+    width:11.25rem;
+    height:3.125rem;
+    line-height:3.125rem;
     background: #2A5AAC;
     color: #fff;
     text-align: center;
-    margin: 105px auto 0 auto;
-    font-size: 16px;
+    margin:6.56rem auto 0 auto;
+    font-size:1rem;
   }
   .input-msg>div{
     vertical-align: top;
   }
   .input-msg{
-    font-size: 14px;
+    font-size:0.875rem;
     color: #999;
-    line-height: 24px;
-    margin-top: 23px;
+    line-height:1.5rem;
+    margin-top:1.44rem;
   }
   .reply-textarea{
-    width: 818px;
-    height: 110px;
+    width: 81.125rem;
+    height:6.875rem;
     border: 1px solid #ddd;
     background: #F8F8F8!important;
-    padding: 17px 28px;
-    font-size: 18px;
+    padding:1.06rem 1.75rem;
+    font-size: 1.125rem;
   }
   .reply-list{
-    margin-bottom: 25px;
+    margin-bottom:1.56rem;
   }
   .reply-input{
-    width: 818px;
-    height: 55px;
+    width: 81.125rem;
+    height:3.44rem;
     border: 1px solid #ddd;
     background: #F8F8F8!important;
-    font-size: 18px;
-    padding-left: 28px;
+    font-size: 1.125rem;
+    padding-left:1.75rem;
   }
   .reply-radio{
-    margin-right: 52px;
-    font-size: 18px;
+    margin-right:3.25rem;
+    font-size: 1.125rem;
   }
   .reply-input-name{
-    width: 180px;
+    width:11.25rem;
     color: #333;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
     text-align: right;
-    margin-right: 42px;
+    margin-right:2.625rem;
     vertical-align: top;
-    margin-top: 15px;
+    margin-top:0.94rem;
   }
   .reply-box{
     width: 100%;
     background: #FCFCFC;
-    padding: 73px 76px;
-    margin-bottom: 70px;
+    padding:4.56rem 4.75rem;
+    margin-bottom:4.375rem;
     border: 1px solid #E5E5E5;
   }
   .reply-title{
-    font-size: 26px;
+    font-size: 1.625rem;
     font-weight: bold;
     color:#333;
     text-align: center;
   }
   .reply-notice{
     text-align: center;
-    font-size: 16px;
+    font-size:1rem;
     color: #999;
-    margin-top: 21px;
-    margin-bottom: 44px;
+    margin-top:1.32rem;
+    margin-bottom:2.75rem;
   }
   .content-line{
-    width: 2px;
-    height: 689px;
+    width:0.125rem;
+    height:43.06rem;
     background: #eee;
   }
   .right-msg{
@@ -221,19 +221,19 @@
   .main-msg-body{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 85px;
+    margin-bottom:5.31rem;
   }
   .left-tab-dot{
-    width: 5px;
-    height: 5px;
+    width:0.31rem;
+    height:0.31rem;
     background: #000;
     border-radius: 50%;
     vertical-align: middle;
-    margin-right: 10px;
+    margin-right:0.625rem;
   }
   .left-tab{
-    width: 198px;
-    font-size: 16px;
+    width:12.375rem;
+    font-size:1rem;
   }
   .left-tab-act{
     background: #2A5AAC!important;
@@ -243,10 +243,28 @@
     background: #fff;
   }
   .left-tab>div{
-    height: 61px;
-    line-height: 61px;
+    height:3.81rem;
+    line-height:3.81rem;
     text-align: center;
     background: #F2F2F2;
-    margin-bottom: 13px;
+    margin-bottom:0.82rem;
+  }
+  @media screen and (max-width:900px) {
+    .reply-box{
+      padding: 2rem;
+    }
+    .reply-input-name{
+     margin-bottom: 1rem;
+      text-align: left;
+    }
+    .reply-list>div{
+      display: block;
+    }
+    .reply-input{
+      width: 100%;
+    }
+    .reply-textarea{
+      width: 100%;
+    }
   }
 </style>

@@ -83,19 +83,19 @@ export default {
     padding:10px;
   }
   .list{
-    font-size: 18px;
+    font-size: 1.125rem;
     background: #42b983;
-    margin: 10px;
-    height: 50px;
+    margin:0.625rem;
+    height:3.125rem;
   }
   .load-box{
     text-align: center;
   }
   .load-box>img{
-    width: 60px;
+    width:3.75rem;
     height: auto;
     transition: 0.5s;
-    transform-origin: 30px 30px;
+    transform-origin:1.875rem 30px;
     animation: rotate 5s linear infinite;
   }
   @keyframes rotate{
