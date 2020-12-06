@@ -74,11 +74,12 @@
                   this.$store.commit('changeLogin',this.username);
                   sessionStorage.setItem("userName",this.username);
                   sessionStorage.setItem("token",data.token);
-                  if(this.from=='lt'){
-                    this.$router.push({name:'lt'});
-                  }else{
-                    this.$router.push({name:'home'});
-                  }
+                  this.$router.push({name:'lt'});
+                  // if(this.from=='lt'){
+                  //   this.$router.push({name:'lt'});
+                  // }else{
+                  //   this.$router.push({name:'home'});
+                  // }
                 }
               })
             } else {

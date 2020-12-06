@@ -11,7 +11,8 @@
             <div class="pointer inline-block" @click="$router.push({name:'vipReply'})">入会申请</div>
           </div>
           <div v-if="userName==''"  @click="$router.push({name:'login'})" class="pointer inline-block go-login">会员登录 <img src="../../static/img/go-login.png" alt=""></div>
-          <div v-if="userName!=''"  @click="$router.push({name:'personalCenter'})" class="pointer inline-block go-login">{{userName}} <img src="../../static/img/go-login.png" alt=""></div>
+          <!--<div v-if="userName!=''"  @click="$router.push({name:'personalCenter'})" class="pointer inline-block go-login">{{userName}} <img src="../../static/img/go-login.png" alt=""></div>-->
+          <div v-if="userName!=''"  @click="$router.push({name:'ltList',query:{id:id,jobModelId:jobModelId} })" class="pointer inline-block go-login">工作论坛<img src="../../static/img/go-login.png" alt=""></div>
         </div>
       </div>
       <!--<div class="banner-shadow"></div>-->
@@ -171,6 +172,26 @@
           }
         });
         this.getNotice();
+        //板块下拉列表
+        this.$http({
+          url: this.$http.adornUrl('/biz/jobmodel/select/list'),
+          method: 'GET',
+          params: this.$http.adornParams({
+            'status': 0,
+          })
+        }).then(({data}) => {
+          this.jobModelId = data.data[0].id;
+          this.$http({
+            url: this.$http.adornUrl('/biz/jobchildmodel/select/list'),
+            method: 'GET',
+            params: this.$http.adornParams({
+              'id': this.jobModelId,
+              'status': 0,
+            })
+          }).then(({data}) => {
+            this.id = data.data[0].id;
+          });
+        });
       },
       methods:{
         getTitle (val,num) {
@@ -488,7 +509,7 @@
   }
   .home-dynamic{
     width: 100%;
-    height: 1000px;
+    height: 62.5rem;
     position: relative;
   }
   .dynamic-left,.dynamic-right{
@@ -538,7 +559,7 @@
       z-index: 99999999999999;
     }
     .dynamic-msg>div{
-      height: auto;
+      height: 12rem;
     }
     .dm-right-msg{
       margin-bottom: 1rem;
@@ -573,6 +594,13 @@
     }
     .home-notice-list>div{
       width: 100%;
+    }
+    .home-dynamic{
+      height: 70rem;
+    }
+    .go-login>img{
+      width: 1rem;
+      height: auto;
     }
   }
 </style>

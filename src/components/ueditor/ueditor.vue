@@ -46,7 +46,9 @@
       });
 
       this.editor.ready(function() {
+        console.log(_this.val)
         if(_this.val!=null&&_this.val!=undefined){
+
           // _this.$emit('ready', _this.editor);
           _this.$http({
             url: _this.$http.adornUrl(_this.contentUrl+_this.val),

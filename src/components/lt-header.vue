@@ -3,6 +3,7 @@
     <div class="header-top">
       <div class="container">
         <img class="header-logo" src="../../static/img/logo.png" alt="">
+        <div v-if="userName!=''" class="inline-block username">{{userName}}</div>
         <div class="go-lt pointer"  @click="$router.push({name:'home'})">
           返回官网 <img src="../../static/img/go-login.png" alt="">
         </div>
@@ -15,11 +16,26 @@
   export default {
     props:{
       'title':String,
+    },
+    data () {
+      return {
+        userName:''
+      }
+    },
+    mounted(){
+      this.userName=localStorage.getItem("userName")||sessionStorage.getItem("userName")||'';
     }
   }
 </script>
 
 <style scoped>
+  .username{
+    color: #fff;
+    float: right;
+    font-size: 1rem;
+    line-height: 5.31rem;
+    margin-left: 1rem;
+  }
   .go-lt{
     font-size:0.875rem;
     color: #fff;

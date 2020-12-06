@@ -1,23 +1,23 @@
 <template>
     <div>
       <div class="release-body">
-        <div class='release-title'>发布主题</div>
+        <div class='release-title'>{{edit?'修改':'发布'}}主题</div>
         <div class="release-msg">
           <div class="release-title-two">请输入标题</div>
           <input v-model="title" class="release-input box-sizing" type="text" placeholder="请输入标题">
           <div class="release-title-two">请输入内容</div>
-          <UEditor  class="editor" :contentUrl='"/biz/trpolicyoriginal/info/"'  :id='"editor_tr_original"' :index="0" :econtent="content" :modelname="'tr_original'" @func="editorContent" ></UEditor>
+          <UEditor :key="key" class="editor" :contentUrl='"/front/jobmodel/theme/info/"'  :id='"release"' :index="0"  :val="childModelId" :econtent="content" :modelname="'tr_original'" @func="editorContent" ></UEditor>
           <div class="release-title-two">请上传附件</div>
-          <div class="release-fj-btn">
+          <div class="release-fj-btn" v-show="userMsg.userRole==1" >
             <div class="rfb-plus">+</div>
             <div>上传附件</div>
             <input class="fileInput pointer" type="file"  ref="clearFile" @change="getFile($event)" multiple="multiplt" accept=".docx,.doc,.pdf">
           </div>
           <div v-for="item in tbAnnexActions" class="detial-fj box-sizing">
-            <img :src="'../../../static/img/'+getFileImg(item.fileOriginalName)" alt="" class="inline-block">
+            <img :src="path+getFileImg(item.fileOriginalName)" alt="" class="inline-block">
             <div class="inline-block">
               <div>{{item.fileOriginalName}}</div>
-              <div @click="delFj(item)" class="down-fj pointer">删除</div>
+              <div v-show="userMsg.userRole==1" @click="delFj(item)" class="down-fj pointer">删除</div>
             </div>
           </div>
         </div>
@@ -39,6 +39,8 @@
       },
       data(){
           return{
+            key: 0,
+            path:window.path,
             childModelId:'',
             jobModelId:'',
             dataForm:{},
@@ -48,11 +50,12 @@
             edit:false
           }
       },
-      mounted(){
+      created(){
         this.childModelId=this.$route.query.id;
         this.jobModelId=this.$route.query.jobModelId;
         this.edit=this.$route.query.edit;
         if(this.edit){
+          this.key=this.key+1;
           this.$http({
             url: this.$http.adornUrl(`/front/jobmodel/theme/info/${this.childModelId}`),
             method: 'GET',
@@ -138,7 +141,7 @@
         },
         sub(){
           this.$http({
-            url: this.$http.adornUrl(`/front/jobmodel/theme/save`),
+            url: this.$http.adornUrl(`/front/jobmodel/theme/${this.edit?'update':'save'}`),
             method: 'POST',
             data: this.$http.adornData({
               'childModelId':this.childModelId,
@@ -146,15 +149,16 @@
               'title': this.title,
               'content': this.content,
               'tbAnnexActions': this.tbAnnexActions,
+              'id':this.edit?this.childModelId:''
             })
           }).then(({data}) => {
             if (data && data.code === 10000) {
               this.$Message.success({
-                message: '发布成功',
+                message: this.edit?'修改成功':'发布成功',
                 type: 'success',
                 duration: 1500,
                 onClose: () => {
-                  this.$router.push({name:'ltList',query:{id:this.childModelId,jobModelId:this.jobModelId} });
+                  this.$router.push({name:'ltListDetail',query:{id:this.childModelId,jobModelId:this.jobModelId} });
                 }
               })
             } else {

@@ -6,7 +6,7 @@
         <div class="lt-left box-sizing">
           <ul class="lt-left-ul">
             <li v-for="item in classList">
-              <div class="left-list-one pointer" :class="leftMsg==item.name?'left-list-one-act':''" @click="leftMsg=item.name,getTwo(item.id)">
+              <div class="left-list-one pointer" :class="leftMsg==item.name?'left-list-one-act':''" @click="getTwo(item.id,item.name)">
                 <span v-show="leftMsg!=item.name" class="inline-block right-triangle"></span>
                 <span v-show="leftMsg==item.name" class="inline-block bottom-triangle"></span>
                 {{item.name}}
@@ -61,6 +61,9 @@
         this.$http({
           url: this.$http.adornUrl('/biz/jobmodel/select/list'),
           method: 'GET',
+          params: this.$http.adornParams({
+            'status': 0,
+          })
         }).then(({data}) => {
           this.classList = data.data;
           if(data.msg=='invalid token'||data.code==401){
@@ -70,12 +73,18 @@
         });
       },
       methods:{
-        getTwo(id){
+        getTwo(id,name){
+         if(this.leftMsg==name){
+           this.leftMsg='';
+         }else{
+           this.leftMsg=name
+         }
           this.$http({
             url: this.$http.adornUrl('/biz/jobchildmodel/select/list'),
             method: 'GET',
             params: this.$http.adornParams({
               'id': id,
+              'status': 0,
             })
           }).then(({data}) => {
             this.twoClassList = data.data

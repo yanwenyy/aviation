@@ -96,7 +96,7 @@
   }
   @media screen and (max-width:900px) {
     .left-tab{
-      width: 8rem;
+      width:30%;
     }
     .right-msg{
       margin-left: 1rem;

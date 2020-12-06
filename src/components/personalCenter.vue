@@ -202,7 +202,7 @@
     margin-bottom:1.56rem;
   }
   .reply-input{
-    width: 81.125rem;
+    width: 45.69rem;
     height:3.44rem;
     border: 1px solid #ddd;
     background: #F8F8F8!important;

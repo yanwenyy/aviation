@@ -1,5 +1,5 @@
 <template>
-    <div class="detail-body">
+    <div class="">
       <div class="detail-body">
         <div class="dm-head">
           <div class="dmh-title">
@@ -21,7 +21,8 @@
                 {{detail.replyNum}}
               </span>
               <span class="inline-block lml-img-group">
-                <img :src="detail.votesNum>0?'../../../static/img/list-zan-act.png':'../../../static/img/list-zan.png'" alt="">
+                 <img v-show="detail.votesNum>0" src="../../../static/img/list-zan-act.png" alt="">
+                <img v-show="detail.votesNum==0" src="../../../static/img/list-zan.png" alt="">
                 {{detail.supportNum}}
               </span>
               <span class="inline-block lml-img-group">
@@ -50,12 +51,14 @@
               <!--<img src="../../../static/img/lt-detail-zt.png" alt="">-->
             <!--</div>-->
             <div class="inline-block dm-zan-group-btn">
-              <img @click="goVote(1)" :src="detail.votesNum==0?'../../../static/img/lt-detail-zt-show.png':'../../../static/img/lt-detail-zt.png'" alt="">
+              <img v-show="detail.votesNum>0" src="../../../static/img/lt-detail-zt.png" alt="">
+              <img  @click="goVote(1)" v-show="detail.votesNum==0" src="../../../static/img/lt-detail-zt-show.png" alt="">
+              <!--<img @click="goVote(1)" :src="detail.votesNum==0?'../../../static/img/lt-detail-zt-show.png':'../../../static/img/lt-detail-zt.png'" alt="">-->
               <div>支持 <span class="red">{{detail.supportNum}}票</span></div>
             </div>
             <div class="inline-block dm-zan-group-btn">
               <img @click="goVote(0)" src="../../../static/img/lt-detail-fd-show.png" alt="">
-              <div>支持 <span class="blue">{{detail.opposeNum}}票</span></div>
+              <div>反对 <span class="blue">{{detail.opposeNum}}票</span></div>
             </div>
             <!--<div class="inline-block dm-zan-group-btn">-->
               <!--<img src="../../../static/img/lt-detail-fd.png" alt="">-->
@@ -70,12 +73,12 @@
             <div class="inline-block rf-fj">
               <span class="blue pointer inline-block">
                 <span>上传附件</span>
-                <input class="fileInput pointer" type="file"  ref="clearFile" @change="getFile($event)" multiple="multiplt" accept=".docx,.doc,.pdf">
+                <input class="fileInput pointer" type="file"  ref="clearFile" @change="getFile($event,1)" multiple="multiplt" accept=".docx,.doc,.pdf">
               </span>
               <span class="white-space">空</span>
               <span class="blue pointer inline-block">
                 <span>上传图片</span>
-                <input :disabled="replyForm.imgList.length>2" class="fileInput pointer" type="file"  ref="clearImg" @change="getImg($event)" multiple="multiplt" accept="image/*">
+                <input :disabled="replyForm.imgList.length>2" class="fileInput pointer" type="file"  ref="clearImg" @change="getImg($event,1)" multiple="multiplt" accept="image/*">
               </span>
               <span class="white-space">1</span>
               <span class="reply-foot-notice"> 最多上传3张，单张不得超过100k</span>
@@ -88,58 +91,98 @@
           <div class="reply-img">
             <div class="inline-block reply-img-list" v-for="item in replyForm.imgList">
               <img :src="imgUrlfront+item" alt="">
-              <b @click="delImg(item)" class="del-reply-img pointer">X</b>
+              <b @click="delImg(item,1)" class="del-reply-img pointer">X</b>
             </div>
           </div>
           <div v-for="item in replyForm.tbAnnexActions" class="detial-fj box-sizing">
             <img  :src="'../../../static/img/'+getFileImg(item.fileOriginalName)" alt="" class="inline-block">
             <div class="inline-block">
               <div>{{item.fileOriginalName}}</div>
-              <div @click="delFj(item)" class="down-fj pointer">删除</div>
+              <div @click="delFj(item,1)" class="down-fj pointer">删除</div>
             </div>
           </div>
         </div>
-        <div class="reply-msg">
-          <div class="reply-msg-title">全部回复（{{replyList.length}}）</div>
-          <div class="reply-msg-list" v-for="item in replyList">
-            <div class="rml-name">
-              <span>{{item.type=='2'?item.userName:'管理员'}}</span>
-              <span class="white-space">1</span>
-              <span v-show="item.author==1" class="blue">楼主</span>
-            </div>
-            <div class="rml-date">
-              <div class="inline-block">{{showtime(item.careateDate)}}</div>
-              <div class="inline-block">
-                <span @click="replyForm.id=item.id,replyForm.status=2,scrollToSection()" class="pointer inline-block blue rml-date-btn">
+      </div>
+      <div class="reply-msg">
+        <div class="reply-msg-title">全部回复（{{replyList.length}}）</div>
+        <div class="reply-msg-list" v-for="(item,index) in replyList">
+          <div class="rml-name">
+            <span>{{item.type=='2'?item.userName:'管理员'}}</span>
+            <span class="white-space">1</span>
+            <span v-show="item.author==1" class="blue">楼主</span>
+          </div>
+          <div class="rml-date">
+            <div class="inline-block">{{showtime(item.careateDate)}}</div>
+            <div class="inline-block">
+                <span @click="item.replyStatus=!item.replyStatus" class="pointer inline-block blue rml-date-btn">
                   <img src="../../../static/img/lt-detail-hf.png" alt="">
                   回复
                 </span>
-                <span @click="eidtReply(item)" v-show="item.ifSelf==1" class="inline-block blue rml-date-btn pointer">
+              <span @click="eidtReply(item,index)" v-show="item.ifSelf==1" class="inline-block blue rml-date-btn pointer">
                   <img src="../../../static/img/lt-detail-xg.png" alt="">
                   修改
                 </span>
-                <span v-show="userMsg.userRole==1" @click="delStatus=true,delId=item.id" class="inline-block red rml-date-btn pointer">
+              <span v-show="userMsg.userRole==1" @click="delStatus=true,delId=item.id" class="inline-block red rml-date-btn pointer">
                   <img src="../../../static/img/lt-detail-sc-red.png" alt="">
                   删除
                 </span>
-              </div>
             </div>
-            <div class="rml-msg">
-              {{item.content}}
+          </div>
+          <div class="rml-msg">
+            {{item.content}}
+          </div>
+          <div class="rml-img">
+            <img v-for="i in item.img" :src="imgUrlfront+i" alt="">
+          </div>
+          <div v-for="item in item.tbAnnexActions" class="detial-fj box-sizing">
+            <img  :src="path+getFileImg(item.fileOriginalName)"  alt="" class="inline-block">
+            <div class="inline-block">
+              <div>{{item.fileOriginalName}}</div>
+              <div @click="down(item.fileRealName,item.fileOriginalName)" class="down-fj pointer">立即下载</div>
             </div>
-            <div v-for="item in item.tbAnnexActions" class="detial-fj box-sizing">
-              <img  :src="'../../../static/img/'+getFileImg(item.fileOriginalName)"  alt="" class="inline-block">
-              <div class="inline-block">
-                <div>{{item.fileOriginalName}}</div>
-                <div @click="down(item.fileRealName,item.fileOriginalName)" class="down-fj pointer">立即下载</div>
-              </div>
-            </div>
-            <div v-show="item.level==2" class="rml-reply box-sizing">
-              <span class="rml-reply-name">@{{item.replyUserName}}：</span>
-              <span class="rml-reply-msg inline-block" :style="item.replyMore?'height:auto':'height:64px'">
+          </div>
+          <div v-show="item.level==2" class="rml-reply box-sizing">
+            <span class="rml-reply-name">@{{item.replyUserName}}：</span>
+            <span class="rml-reply-msg inline-block" :style="item.replyMore?'height:auto':'height:64px'">
                 {{item.pcontent}}
               </span>
-              <div v-show="item.pcontent&&item.pcontent.length>150" class="blue pointer rml-reply-more" @click="item.replyMore=!item.replyMore">  {{item.replyMore?'收起':'查看全部'}}</div>
+            <div v-show="item.pcontent&&item.pcontent.length>150" class="blue pointer rml-reply-more" @click="item.replyMore=!item.replyMore">  {{item.replyMore?'收起':'查看全部'}}</div>
+          </div>
+          <div v-show="item.replyStatus" class="detail-reply box-sizing">
+            <div id="replyInput2" class="reply-group">
+              <textarea v-model="plForm.content" class="reply-textarea box-sizing" name="" id="" cols="30" rows="10"></textarea>
+              <div class="reply-foot">
+                <div class="inline-block rf-fj">
+              <span class="blue pointer inline-block">
+                <span>上传附件</span>
+                <input class="fileInput pointer" type="file"  ref="clearFile" @change="getFile($event,2)" multiple="multiplt" accept=".docx,.doc,.pdf">
+              </span>
+                  <span class="white-space">空</span>
+                  <span class="blue pointer inline-block">
+                <span>上传图片</span>
+                <input :disabled="plForm.imgList.length>2" class="fileInput pointer" type="file"  ref="clearImg" @change="getImg($event,2)" multiple="multiplt" accept="image/*">
+              </span>
+                  <span class="white-space">1</span>
+                  <span class="reply-foot-notice"> 最多上传3张，单张不得超过100k</span>
+                </div>
+                <div class="inline-block">
+                  <span @click="plForm.content=''" class="blue pointer">清空</span>
+                  <span @click="replyPl(item.id)" class="sub-reply inline-block pointer">发布</span>
+                </div>
+              </div>
+              <div class="reply-img">
+                <div class="inline-block reply-img-list" v-for="item in plForm.imgList">
+                  <img :src="imgUrlfront+item" alt="">
+                  <b @click="delImg(item,2)" class="del-reply-img pointer">X</b>
+                </div>
+              </div>
+              <div v-for="item in plForm.tbAnnexActions" class="detial-fj box-sizing">
+                <img  :src="'../../../static/img/'+getFileImg(item.fileOriginalName)" alt="" class="inline-block">
+                <div class="inline-block">
+                  <div>{{item.fileOriginalName}}</div>
+                  <div @click="delFj(item,2)" class="down-fj pointer">删除</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -190,6 +233,14 @@
               content:'',
               id:'',
               status:'1'
+            },
+            plForm:{
+              tbAnnexActions:[],
+              imgList:[],
+              content:'',
+              id:'',
+              status:'1',
+              edit:false
             },
           }
       },
@@ -287,7 +338,12 @@
             })
           }).then(({data}) => {
             if (data && data.code === 10000) {
-              this.replyList=data.data;
+              var datas=data.data,i=0,len=datas.length;
+              for(;i<len;i++){
+                datas[i].img=datas[i].img!=''?datas[i].img.split(","):[];
+                datas[i].replyStatus=false;
+              }
+              this.replyList=datas;
             }
           })
         },
@@ -341,7 +397,7 @@
           }
         },
         // 上传附件
-        getFile(event){
+        getFile(event,type){
           var file = event.target.files;
           for(var i = 0;i<file.length;i++){
             //    上传类型判断
@@ -366,7 +422,11 @@
                      fileOriginalName: _file.name,
                      fileRealName:data.data
                    };
-                   this.replyForm.tbAnnexActions.push(i);
+                   if(type==1){
+                     this.replyForm.tbAnnexActions.push(i);
+                   }else{
+                     this.plForm.tbAnnexActions.push(i);
+                   }
                   } else {
                     this.$Message.error(data.msg)
                   }
@@ -379,11 +439,16 @@
           }
         },
         //删除附件
-        delFj(i){
-          this.replyForm.tbAnnexActions.remove(i)
+        delFj(i,type){
+          if(type==1){
+            this.replyForm.tbAnnexActions.remove(i)
+          }else{
+            this.plForm.tbAnnexActions.remove(i)
+          }
+
         },
         // 上传图片
-        getImg(event){
+        getImg(event,type){
           var file = event.target.files;
           for(var i = 0;i<file.length;i++){
             //    上传类型判断
@@ -402,7 +467,12 @@
                 data: formData
               }).then(({data}) => {
                 if (data && data.code === 10000) {
-                  this.replyForm.imgList.push(data.data)
+                  if(type==1){
+                    this.replyForm.imgList.push(data.data)
+                  }else{
+                    this.plForm.imgList.push(data.data)
+                  }
+
                 } else {
                   this.$Message.error(data.msg)
                 }
@@ -413,8 +483,13 @@
           }
         },
         //删除图片
-        delImg(i){
-          this.replyForm.imgList.remove(i)
+        delImg(i,type){
+          if(type==1){
+            this.replyForm.imgList.remove(i)
+          }else{
+            this.plForm.imgList.remove(i)
+          }
+
         },
         //提交评论
         subReply(){
@@ -436,6 +511,34 @@
                 content:'',
                 id:'',
                 status:'1'
+              };
+              this.getDiscuss();
+            } else {
+              this.$Message.error(data.msg)
+            }
+          })
+        },
+        //回复评论
+        replyPl(id){
+          this.$http({
+            url: this.$http.adornUrl(`/front/discuss/vote/${!this.plForm.edit?'save':'udpate/discuss'}`),
+            method: 'POST',
+            data: this.$http.adornData({
+              'content': this.plForm.content,
+              'id': id,
+              'img': this.plForm.imgList!=''?this.plForm.imgList.join(','):'',
+              'status':'2',
+              'tbAnnexActions': this.plForm.tbAnnexActions,
+            })
+          }).then(({data}) => {
+            if (data && data.code === 10000) {
+              this.plForm={
+                tbAnnexActions:[],
+                imgList:[],
+                content:'',
+                id:'',
+                status:'2',
+                edit:false
               };
               this.getDiscuss();
             } else {
@@ -470,7 +573,7 @@
           })
         },
         //修改回复
-        eidtReply(val){
+        eidtReply(val,i){
           // this.replyForm={
           //   tbAnnexActions:val.tbAnnexActions,
           //   imgList:val.img&&val.img!=''?val.img.split(','):[],
@@ -478,16 +581,28 @@
           //   id:val.id,
           //   status:'2'
           // };
-          this.replyForm.id=val.id;
-          this.replyForm.status=2;
-          this.replyForm.content=val.content;
-          this.scrollToSection();
+          this.replyList[i].replyStatus=!this.replyList[i].replyStatus;
+          this.plForm.id=val.id;
+          this.plForm.edit=true;
+          this.plForm.status=2;
+          this.plForm.content=val.content;
+          // this.scrollToSection();
         }
       }
     }
 </script>
 
 <style scoped>
+  .rml-img>img{
+    width: 12.69rem;
+    height: 10.06rem;
+    margin-right:0.875rem;
+  }
+  .reply-msg{
+    padding: 1.69rem 2.44rem;
+    background: #fff;
+    margin-top: 1.125rem;
+  }
   .sub-footer{
     text-align: center;
     margin:0.94rem auto 0 auto;
@@ -592,7 +707,7 @@
     font-size:1.25rem;
     font-weight: bold;
     color: #333;
-    margin-top: 69px;
+    /*margin-top: 69px;*/
   }
   .del-reply-img{
     width:1.875rem;

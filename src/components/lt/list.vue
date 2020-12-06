@@ -8,9 +8,9 @@
 
       </div>
       <div class="list-head-msg">
-        <div class="inline-block" :style="headShowMore?'height:auto':'height:68px'">
-          {{modelMsg.introduction}}
-          <div v-show="modelMsg.introduction&&modelMsg.introduction.length>50" class="list-head-more pointer inline-block" @click="headShowMore=!headShowMore">查看全部</div>
+        <div class="inline-block">
+          {{modelMsg.introduction.length>150&&!headShowMore?modelMsg.introduction.slice(0,150)+"...":modelMsg.introduction}}
+          <div v-show="modelMsg.introduction&&modelMsg.introduction.length>150" class="list-head-more pointer inline-block" @click="headShowMore=!headShowMore">{{headShowMore?'收起':'查看全部'}}</div>
         </div>
       </div>
       <div class="list-head-foot">
@@ -55,7 +55,8 @@
                 {{item.replyNum}}
               </span>
               <span class="inline-block lml-img-group">
-                <img :src="item.votesNum>0?'../../../static/img/list-zan-act.png':'../../../static/img/list-zan.png'" alt="">
+                <img v-show="item.votesNum>0" src="../../../static/img/list-zan-act.png" alt="">
+                <img v-show="item.votesNum==0" src="../../../static/img/list-zan.png" alt="">
                 {{item.supportNum}}
               </span>
               <span class="inline-block lml-img-group">
@@ -225,6 +226,7 @@
   }
   .lml-img-group{
     font-size:1.06rem;
+    margin-right: 1.125rem;
   }
   .lml-img-group>img{
     width:1rem;

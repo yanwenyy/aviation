@@ -66,6 +66,9 @@
         this.$http({
           url: this.$http.adornUrl('/biz/jobmodel/select/list'),
           method: 'GET',
+          params: this.$http.adornParams({
+            'status': 0,
+          })
         }).then(({data}) => {
           this.jobModelId = data.data[0].id;
           this.$http({
@@ -73,6 +76,7 @@
             method: 'GET',
             params: this.$http.adornParams({
               'id': this.jobModelId,
+              'status': 0,
             })
           }).then(({data}) => {
             this.id = data.data[0].id;
