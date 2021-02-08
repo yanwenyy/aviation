@@ -12,7 +12,9 @@
           </div>
           <div v-if="userName==''"  @click="$router.push({name:'login'})" class="pointer inline-block go-login">会员登录 <img src="../../static/img/go-login.png" alt=""></div>
           <!--<div v-if="userName!=''"  @click="$router.push({name:'personalCenter'})" class="pointer inline-block go-login">{{userName}} <img src="../../static/img/go-login.png" alt=""></div>-->
+          <div v-if="userName!=''"  @click="goLogin" class="pointer inline-block go-login2">退出登录</div>
           <div v-if="userName!=''"  @click="$router.push({name:'ltList',query:{id:id,jobModelId:jobModelId} })" class="pointer inline-block go-login">工作论坛<img src="../../static/img/go-login.png" alt=""></div>
+
         </div>
       </div>
       <!--<div class="banner-shadow"></div>-->
@@ -48,7 +50,7 @@
                   <img :src="imgUrlfront+item.coverImg" alt="">
                 </div>
                 <div class="inline-block box-sizing dm-right">
-                  <div class="dm-right-date">{{item.insertTime}}</div>
+                  <div class="dm-right-date"> {{item.insertTime.split(" ")[0]}}</div>
                   <div class="dm-right-msg">{{item.title}}</div>
                   <div @click="$router.push({name:'industryTrendsDetail',query:{id:item.id,type:0} })" class="dm-right-goDetail">查看详情 ></div>
                 </div>
@@ -61,7 +63,7 @@
           </div>
           <div class="dynamic-list">
             <div v-for="item in trendList" @click="$router.push({name:'industryTrendsDetail',query:{id:item.id,type:1} })" class="inline-block box-sizing pointer">
-              <div class="dynamic-list-date">{{item.insertTime}}</div>
+              <div class="dynamic-list-date"> {{item.insertTime.split(" ")[0]}}</div>
               <div class="dynamic-list-msg">{{getTitle(item.title,30)}}</div>
             </div>
           </div>
@@ -194,6 +196,14 @@
         });
       },
       methods:{
+        //退出登录
+        goLogin(){
+          localStorage.removeItem('userName');
+          localStorage.removeItem('token');
+          sessionStorage.removeItem('userName');
+          sessionStorage.removeItem('token');
+          this.$router.push({name:'login'});
+        },
         getTitle (val,num) {
           return val.length>num?val.slice(0,num)+"...":val;
         },
@@ -490,6 +500,17 @@
     left: 0;
     background: rgba(0,0,0,.3);
     z-index: 999;
+  }
+  .go-login2{
+    height:2.06rem;
+    line-height:2.06rem;
+    color:#fff;
+    text-align: center;
+    vertical-align: middle;
+    float: right;
+    margin-top:3.5rem;
+    font-size:0.94rem;
+    margin-left: 1rem;
   }
   .go-login{
     width:9.06rem;

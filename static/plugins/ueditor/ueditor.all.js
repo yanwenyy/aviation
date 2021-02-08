@@ -24545,7 +24545,7 @@
 
           $.ajax({
             // url: window.SITE_CONFIG['baseUrl']+'jinding/file/upload?token='+getCookie2('token'),
-            url:"http://123.56.130.178:8080/lxb-aviation/jinding/file/upload",
+            url:"http://123.56.130.178/lxb-aviation/jinding/file/upload",
             type: 'POST',
             cache: false,
             data: formData,
@@ -24559,7 +24559,7 @@
               var link, loader,
                 body = (iframe.contentDocument || iframe.contentWindow.document).body,
                 result = body.innerText || body.textContent || '';
-             link ='http://123.56.130.178:8080/lxb-aviation/jinding/showImg/'+data.data; //修改图片上传回显路径 此处为源码 修改人lhf
+             link ='http://123.56.130.178/lxb-aviation/jinding/showImg/'+data.data; //修改图片上传回显路径 此处为源码 修改人lhf
 
               if(data.code == '10000' && data.data) {
                 me.execCommand('inserthtml', '<img src="'+link+'" title="'+data.title+'" alt="'+data.original+'" width="100%">');

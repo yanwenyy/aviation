@@ -8,8 +8,8 @@
         <div class="inline-block" :class="item.coverImg?'it-msg-show':''">
           <div class="it-title">{{item.title}}</div>
           <div class="it-source">
-            <div class="inline-block it-date">{{item.insertTime}}</div>
-            <div class="inline-block">来源：{{item.source}}</div>
+            <div class="inline-block it-date">{{item.insertTime.split(" ")[0]}}</div>
+            <div class="inline-block">&nbsp;&nbsp;&nbsp;来源：{{item.source}}</div>
           </div>
           <div class="it-msg">
             <div>{{item.preface}}</div>

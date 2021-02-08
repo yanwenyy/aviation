@@ -80,7 +80,7 @@
     },
     methods:{
       edit(){
-        if(this.password!=this.passwordConfrim||this.password!=this.passwordAgin||this.passwordConfrim!=this.passwordAgin){
+        if(this.passwordConfrim!=this.passwordAgin){
           this.$Message.error({
             message: '密码不一致',
             zIndex:999999999999999
@@ -91,6 +91,7 @@
             method: 'POST',
             data: this.$http.adornData({
               'password': this.password,
+              'newPassWord':this.passwordAgin,
               'username': this.userMsg.userName,
             })
           }).then(({data}) => {
@@ -100,7 +101,10 @@
                 type: 'success',
                 duration: 1500,
                 onClose: () => {
-                  this.passWordShadow=false
+                  this.passWordShadow=false;
+                  this.password='';
+                  this.passwordConfrim='';
+                  this.passwordAgin='';
                 }
               })
             } else {

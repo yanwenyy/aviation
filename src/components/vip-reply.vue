@@ -8,7 +8,7 @@
         <div class="reply-notice">申请后，我们会7个工作日内联系您，请您耐心等待</div>
         <div class="reply-box box-sizing">
           <div class="reply-list">
-            <div class="reply-input-name inline-block" style="margin-top: 0">会员类型</div>
+            <div class="reply-input-name inline-block" style="margin-top: 0"><span class="red">*</span>会员类型</div>
             <div class="inline-block">
               <div class="reply-radio inline-block">
                 <input type="radio" name="typeClass" value="1" v-model="type"> 个人申请
@@ -19,39 +19,39 @@
             </div>
           </div>
           <div class="reply-list">
-            <div class="reply-input-name inline-block">企业名称/个人姓名</div>
+            <div class="reply-input-name inline-block"><span class="red">*</span>企业名称/个人姓名</div>
             <div class="inline-block">
               <input class="reply-input box-sizing" type="text" placeholder="请输入企业名称/个人姓名" name="nameDes" v-model="nameDes">
             </div>
           </div>
           <div class="reply-list">
-            <div class="reply-input-name inline-block">专业领域</div>
+            <div class="reply-input-name inline-block"><span class="red">*</span>专业领域</div>
             <div class="inline-block">
               <input class="reply-input box-sizing" type="text" placeholder="请输入专业领域" name="professional" v-model="professional">
             </div>
           </div>
           <div class="reply-list">
-            <div class="reply-input-name inline-block">申请人姓名</div>
+            <div class="reply-input-name inline-block"><span class="red">*</span>申请人姓名</div>
             <div class="inline-block">
               <input class="reply-input box-sizing" type="text" placeholder="请输入申请人姓名" name="applyName" v-model="applyName">
             </div>
           </div>
           <div class="reply-list">
-            <div class="reply-input-name inline-block">联系电话</div>
+            <div class="reply-input-name inline-block"><span class="red">*</span>联系电话</div>
             <div class="inline-block">
               <input v-validate="'required|phone'" class="reply-input box-sizing" type="text" placeholder="请输入联系电话 " name="phone" v-model="phone">
               <div v-show="errors.has('phone')" class="text-style"> {{ errors.first('phone') }} </div>
             </div>
           </div>
           <div class="reply-list">
-            <div class="reply-input-name inline-block">联系邮箱</div>
+            <div class="reply-input-name inline-block"><span class="red">*</span>联系邮箱</div>
             <div class="inline-block">
               <input v-validate="'required|email'" class="reply-input box-sizing" type="text" placeholder="请输入联系邮箱 " name="email" v-model="email">
               <div v-show="errors.has('email')" class="text-style"> {{ errors.first('email') }} </div>
             </div>
           </div>
           <div class="reply-list">
-            <div class="reply-input-name inline-block">基本情况介绍</div>
+            <div class="reply-input-name inline-block"><span class="red">*</span>基本情况介绍</div>
             <div class="inline-block">
               <textarea class="reply-textarea box-sizing" placeholder="请输入基本情况介绍 " name="introduction" v-model="introduction"></textarea>
               <div class="input-msg">
@@ -64,7 +64,7 @@
             </div>
           </div>
           <div class="reply-list">
-            <div class="reply-input-name inline-block">入会后简要工作设想</div>
+            <div class="reply-input-name inline-block"><span class="red">*</span>入会后简要工作设想</div>
             <div class="inline-block">
               <textarea class="reply-textarea box-sizing" placeholder="请输入入会后简要工作设想 " name="workIdea" v-model="workIdea"></textarea>
             </div>
@@ -101,33 +101,37 @@
     },
     methods:{
       subMsg(){
-        this.$http({
-          url: this.$http.adornUrl(`/aviation/big/save`),
-          method: 'post',
-          data: this.$http.adornData({
-            'type': this.type,
-            'nameDes': this.nameDes,
-            'professional': this.professional,
-            'applyName': this.applyName,
-            'phone': this.phone,
-            'email': this.email,
-            'introduction': this.introduction,
-            'workIdea': this.workIdea
-          })
-        }).then(({data}) => {
-          if (data && data.code == 10000) {
-            this.$Message.success({
-              message: '操作成功',
-              type: 'success',
-              duration: 1500,
-              onClose: () => {
-                this.$router.push({name:'home'});
-              }
+        if(this.type!=''&&this.nameDes!=''&&this.professional!=''&&this.applyName!=''&&this.phone!=''&&this.email!=''&&this.introduction!=''&&this.workIdea!=''){
+          this.$http({
+            url: this.$http.adornUrl(`/aviation/big/save`),
+            method: 'post',
+            data: this.$http.adornData({
+              'type': this.type,
+              'nameDes': this.nameDes,
+              'professional': this.professional,
+              'applyName': this.applyName,
+              'phone': this.phone,
+              'email': this.email,
+              'introduction': this.introduction,
+              'workIdea': this.workIdea
             })
-          } else {
-            this.$Message.error(data.msg)
-          }
-        })
+          }).then(({data}) => {
+            if (data && data.code == 10000) {
+              this.$Message.success({
+                message: '操作成功',
+                type: 'success',
+                duration: 1500,
+                onClose: () => {
+                  this.$router.push({name:'home'});
+                }
+              })
+            } else {
+              this.$Message.error(data.msg)
+            }
+          })
+        }else{
+          this.$Message.error('请补全信息')
+        }
       }
     }
   }
@@ -266,5 +270,8 @@
     .reply-textarea{
       width: 100%;
     }
+  }
+  .red{
+    color: red!important;
   }
 </style>

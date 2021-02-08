@@ -3,7 +3,7 @@
     <div class="header-top">
       <div class="container">
         <img class="header-logo" src="../../static/img/logo.png" alt="">
-        <div v-if="userName!=''" class="inline-block username">{{userName}}</div>
+        <div v-if="userName!=''" class="inline-block username pointer"  @click="$router.push({name:'personalCenter'})" >{{userName}}</div>
         <div class="go-lt pointer"  @click="$router.push({name:'home'})">
           返回官网 <img src="../../static/img/go-login.png" alt="">
         </div>

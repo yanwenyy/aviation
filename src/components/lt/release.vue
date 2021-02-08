@@ -6,9 +6,10 @@
           <div class="release-title-two">请输入标题</div>
           <input v-model="title" class="release-input box-sizing" type="text" placeholder="请输入标题">
           <div class="release-title-two">请输入内容</div>
-          <UEditor :key="key" class="editor" :contentUrl='"/front/jobmodel/theme/info/"'  :id='"release"' :index="0"  :val="childModelId" :econtent="content" :modelname="'tr_original'" @func="editorContent" ></UEditor>
+          <UEditor v-if="edit" :key="key" class="editor" :contentUrl='"/front/jobmodel/theme/info/"'  :id='"release"' :index="0"  :val="childModelId" :econtent="content" :modelname="'tr_original'" @func="editorContent" ></UEditor>
+          <UEditor v-if="!edit" :key="key" class="editor" :id='"release2"' :index="0" :econtent="content" :modelname="'tr_original'" @func="editorContent" ></UEditor>
           <div class="release-title-two">请上传附件</div>
-          <div class="release-fj-btn" v-show="userMsg.userRole==1" >
+          <div class="release-fj-btn" v-show="userMsg.userRole==1||edit!='发布'" >
             <div class="rfb-plus">+</div>
             <div>上传附件</div>
             <input class="fileInput pointer" type="file"  ref="clearFile" @change="getFile($event)" multiple="multiplt" accept=".docx,.doc,.pdf">
@@ -47,7 +48,8 @@
             title:'',
             content:'',
             tbAnnexActions:[],
-            edit:false
+            edit:false,
+            userMsg:{}
           }
       },
       created(){
@@ -158,7 +160,12 @@
                 type: 'success',
                 duration: 1500,
                 onClose: () => {
-                  this.$router.push({name:'ltListDetail',query:{id:this.childModelId,jobModelId:this.jobModelId} });
+                  if(this.edit){
+                    this.$router.push({name:'ltListDetail',query:{id:this.childModelId,jobModelId:this.jobModelId} });
+                  }else{
+                    this.$router.push({name:'ltList',query:{id:this.childModelId,jobModelId:this.jobModelId} });
+                  }
+
                 }
               })
             } else {
